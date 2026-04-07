@@ -1,0 +1,2461 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LSCSD — Правовая памятка сотрудника | Majestic RP Phoenix</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Serif:wght@600;700&display=swap');
+
+:root {
+  --bg:        #070a12;
+  --bg2:       #0d1420;
+  --bg3:       #121b29;
+  --bg4:       #172336;
+  --bg5:       #1f2f46;
+  --line:      #263650;
+  --line2:     #324867;
+  --gold:      #d7a84f;
+  --gold-l:    #f1c979;
+  --gold-d:    #8f6b2b;
+  --gold-a:    rgba(196,151,62,.10);
+  --gold-b:    rgba(196,151,62,.18);
+  --blue:      #4a8df7;
+  --blue-l:    #83b4ff;
+  --blue-a:    rgba(74,141,247,.12);
+  --red:       #c94040;
+  --red-l:     #e07070;
+  --red-a:     rgba(201,64,64,.10);
+  --green:     #2e9e64;
+  --green-l:   #5cc98c;
+  --green-a:   rgba(46,158,100,.10);
+  --orange:    #d4702a;
+  --orange-a:  rgba(212,112,42,.10);
+  --purple:    #7056d4;
+  --purple-a:  rgba(112,86,212,.10);
+  --txt1:      #e8eefc;
+  --txt2:      #a7b4d2;
+  --txt3:      #617497;
+  --txt4:      #415577;
+  --mono:      'IBM Plex Mono', monospace;
+  --sans:      'IBM Plex Sans', sans-serif;
+  --serif:     'IBM Plex Serif', serif;
+  --sidebar-w: 230px;
+  --top-h:     52px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--txt1);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════ TOPBAR ═══════════════════════ */
+#topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+  height: var(--top-h);
+  background: rgba(8,10,13,.97);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+  display: flex; align-items: center;
+  padding: 0 20px; gap: 16px;
+}
+.tb-emblem {
+  display: flex; align-items: center; gap: 10px;
+  padding-right: 16px;
+  border-right: 1px solid var(--line2);
+}
+.tb-star { font-size: 20px; color: var(--gold); text-shadow: 0 0 12px var(--gold-d); }
+.tb-brand {
+  font-family: var(--mono);
+  font-size: 15px; font-weight: 600;
+  color: var(--gold); letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(196,151,62,.3);
+}
+.tb-sub { font-size: 10px; color: var(--txt3); letter-spacing: 1.5px; text-transform: uppercase; }
+.tb-divider { width: 1px; height: 28px; background: var(--line); flex-shrink: 0; }
+
+/* Search */
+.search-wrap {
+  position: relative; flex: 1; max-width: 420px;
+}
+.search-icon {
+  position: absolute; left: 11px; top: 50%; transform: translateY(-50%);
+  color: var(--txt3); font-size: 13px; pointer-events: none;
+}
+#globalSearch {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--line2);
+  border-radius: 4px;
+  padding: 7px 12px 7px 34px;
+  color: var(--txt1);
+  font-family: var(--sans);
+  font-size: 13px;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+#globalSearch::placeholder { color: var(--txt3); }
+#globalSearch:focus {
+  border-color: var(--gold-d);
+  box-shadow: 0 0 0 2px var(--gold-a);
+}
+#search-results {
+  display: none;
+  position: absolute; top: 38px; left: 0; right: 0;
+  background: var(--bg3);
+  border: 1px solid var(--line2);
+  border-radius: 4px;
+  max-height: 420px; overflow-y: auto;
+  box-shadow: 0 12px 40px rgba(0,0,0,.7);
+  z-index: 1200;
+}
+#search-results::-webkit-scrollbar { width: 4px; }
+#search-results::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 2px; }
+.sr-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--line);
+  transition: background .1s;
+}
+.sr-item:hover { background: var(--bg4); }
+.sr-item:last-child { border-bottom: none; }
+.sr-art { font-family: var(--mono); font-size: 11px; color: var(--gold); font-weight: 600; }
+.sr-desc { font-size: 12px; color: var(--txt2); margin-top: 1px; }
+.sr-tag { font-size: 10px; color: var(--txt3); margin-top: 1px; }
+.sr-item mark { background: rgba(196,151,62,.25); color: var(--gold-l); border-radius: 2px; padding: 0 1px; }
+.sr-empty { padding: 16px; text-align: center; color: var(--txt3); font-size: 13px; }
+.sr-header { padding: 8px 14px 4px; font-size: 10px; color: var(--txt3); letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid var(--line); }
+
+.tb-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+.tb-info { text-align: right; }
+.tb-date { font-family: var(--mono); font-size: 11px; color: var(--txt3); }
+.tb-ver { font-size: 10px; color: var(--gold-d); letter-spacing: 1px; }
+
+/* Progress bar */
+#progress {
+  position: fixed; top: var(--top-h); left: 0; right: 0; height: 2px; z-index: 900;
+  background: var(--gold); transform: scaleX(0); transform-origin: left;
+  transition: transform .05s linear;
+}
+
+/* ═══════════════════════ SIDEBAR ═══════════════════════ */
+#sidebar {
+  position: fixed; left: 0; top: var(--top-h); bottom: 0;
+  width: var(--sidebar-w);
+  background: var(--bg2);
+  border-right: 1px solid var(--line);
+  overflow-y: auto; overflow-x: hidden;
+  z-index: 700;
+  padding-bottom: 24px;
+}
+#sidebar::-webkit-scrollbar { width: 3px; }
+#sidebar::-webkit-scrollbar-thumb { background: var(--line2); }
+
+.nav-group-label {
+  padding: 16px 16px 4px;
+  font-size: 9px; font-weight: 700; letter-spacing: 3px;
+  color: var(--txt4); text-transform: uppercase;
+  margin-top: 8px;
+}
+.nav-group-label:first-child { margin-top: 0; }
+
+.nav-link {
+  display: flex; align-items: center; gap: 9px;
+  padding: 7px 16px;
+  color: var(--txt2);
+  text-decoration: none;
+  font-size: 12.5px; font-weight: 500;
+  cursor: pointer;
+  transition: background .1s, color .1s;
+  border-left: 2px solid transparent;
+  user-select: none;
+}
+.nav-link:hover { background: var(--bg3); color: var(--txt1); }
+.nav-link.active {
+  background: var(--bg4);
+  color: var(--txt1);
+  border-left-color: var(--gold);
+}
+.nav-ico { width: 16px; text-align: center; font-size: 14px; flex-shrink: 0; }
+.nav-tag {
+  margin-left: auto;
+  font-size: 9px; font-weight: 700; letter-spacing: 1px;
+  padding: 1px 5px; border-radius: 2px;
+  background: var(--gold-a); color: var(--gold-d);
+}
+.nav-sep { height: 1px; background: var(--line); margin: 8px 0; }
+
+/* ═══════════════════════ MAIN ═══════════════════════ */
+#main {
+  margin-left: var(--sidebar-w);
+  padding: calc(var(--top-h) + 28px) 32px 60px 32px;
+  min-height: 100vh;
+  max-width: 1200px;
+}
+
+/* ═══════════════════════ SECTIONS ═══════════════════════ */
+.section {
+  margin-bottom: 60px;
+  background: linear-gradient(180deg, rgba(255,255,255,.015), transparent 70%);
+  border: 1px solid var(--line);
+  border-left: 3px solid rgba(215,168,79,.45);
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.section-head {
+  display: flex; align-items: flex-end; gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+.section-ico { font-size: 24px; flex-shrink: 0; }
+.section-title {
+  font-family: var(--serif);
+  font-size: 22px; font-weight: 700;
+  color: var(--txt1); letter-spacing: .5px;
+}
+.section-sub {
+  font-size: 11px; color: var(--txt3);
+  letter-spacing: 2px; text-transform: uppercase; margin-top: 2px;
+}
+.section-meta {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 10px; color: var(--txt4);
+  text-align: right; white-space: nowrap;
+}
+
+/* ═══════════════════════ HERO ═══════════════════════ */
+.hero {
+  background: var(--bg3);
+  border: 1px solid var(--line2);
+  border-radius: 6px;
+  padding: 32px 36px;
+  margin-bottom: 28px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; right: 0; bottom: 0; width: 240px;
+  background: linear-gradient(to left, rgba(196,151,62,.05), transparent);
+}
+.hero::after {
+  content: 'LSCSD';
+  position: absolute; right: 24px; bottom: -10px;
+  font-family: var(--serif);
+  font-size: 80px; font-weight: 700;
+  color: rgba(196,151,62,.04);
+  pointer-events: none; user-select: none;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--gold-a); border: 1px solid var(--gold-d);
+  padding: 3px 10px; border-radius: 3px;
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 14px;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: 36px; font-weight: 700;
+  color: var(--txt1); line-height: 1.15;
+  margin-bottom: 10px;
+}
+.hero h1 em { color: var(--gold); font-style: normal; }
+.hero p { font-size: 14px; color: var(--txt2); max-width: 580px; line-height: 1.7; }
+.hero-stats {
+  display: flex; gap: 32px; margin-top: 24px; flex-wrap: wrap;
+}
+.hs-label { font-size: 10px; color: var(--txt3); letter-spacing: 2px; text-transform: uppercase; }
+.hs-val { font-family: var(--mono); font-size: 15px; font-weight: 600; color: var(--gold); }
+
+/* ═══════════════════════ GRID ═══════════════════════ */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+@media (max-width: 960px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px)  { .grid-3, .grid-2 { grid-template-columns: 1fr; } }
+
+/* ═══════════════════════ CARD ═══════════════════════ */
+.card {
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: 6px; padding: 18px 20px;
+  transition: border-color .15s;
+}
+.card:hover { border-color: var(--line2); }
+.card-gold  { border-left: 3px solid var(--gold); }
+.card-blue  { border-left: 3px solid var(--blue); }
+.card-red   { border-left: 3px solid var(--red); }
+.card-green { border-left: 3px solid var(--green); }
+.card-orange{ border-left: 3px solid var(--orange); }
+.card-purple{ border-left: 3px solid var(--purple); }
+.card-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--txt3);
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 7px;
+}
+.card-body { font-size: 13px; color: var(--txt2); line-height: 1.75; }
+.card-body strong { color: var(--txt1); font-weight: 600; }
+
+/* ═══════════════════════ TABLE WRAP ═══════════════════════ */
+.tbl-wrap {
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+.tbl-head {
+  background: var(--bg4);
+  padding: 10px 16px;
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  color: var(--txt2); text-transform: uppercase;
+  border-bottom: 1px solid var(--line2);
+  display: flex; align-items: center; gap: 8px;
+}
+.tbl-scroll { overflow-x: auto; }
+.tbl-scroll::-webkit-scrollbar { height: 4px; }
+.tbl-scroll::-webkit-scrollbar-thumb { background: var(--line2); }
+
+/* Law Table */
+.law-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 12.5px;
+}
+.law-table th {
+  background: var(--bg5);
+  color: var(--txt3); font-size: 9.5px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 8px 14px; text-align: left;
+  border-bottom: 1px solid var(--line2);
+  white-space: nowrap;
+  position: sticky; top: 0; z-index: 10;
+}
+.law-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  color: var(--txt1);
+}
+.law-table tbody tr:last-child td { border-bottom: none; }
+.law-table tbody tr {
+  cursor: pointer;
+  transition: background .1s;
+}
+.law-table tbody tr:hover td { background: var(--bg4); }
+.law-table tbody tr.art-expanded td { background: var(--bg4); }
+
+.art-num {
+  font-family: var(--mono);
+  font-size: 11.5px; color: var(--gold); font-weight: 600;
+  white-space: nowrap; user-select: none;
+}
+.art-desc { max-width: 480px; color: var(--txt2); font-size: 12.5px; }
+.art-desc strong { color: var(--txt1); }
+.art-stars { color: var(--gold); font-size: 11px; white-space: nowrap; letter-spacing: -1px; }
+.art-fine {
+  font-family: var(--mono); font-size: 11.5px;
+  color: var(--green); white-space: nowrap;
+}
+.art-pun {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--red-l); white-space: nowrap;
+}
+.art-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.tag {
+  display: inline-flex; align-items: center;
+  font-size: 9px; font-weight: 700; letter-spacing: 1px;
+  padding: 1px 6px; border-radius: 2px;
+  white-space: nowrap;
+}
+.tag-f  { background: rgba(201,64,64,.12);   color: var(--red-l);   border: 1px solid rgba(201,64,64,.25); }
+.tag-r  { background: rgba(59,125,216,.12);  color: var(--blue-l);  border: 1px solid rgba(59,125,216,.25); }
+.tag-fin{ background: rgba(196,151,62,.12);  color: var(--gold);    border: 1px solid rgba(196,151,62,.25); }
+.tag-mil{ background: rgba(112,86,212,.12);  color: #a080ff;        border: 1px solid rgba(112,86,212,.25); }
+.tag-reg{ background: rgba(46,158,100,.12);  color: var(--green-l); border: 1px solid rgba(46,158,100,.25); }
+
+/* ═══════════════════════ ARTICLE EXPAND PANEL ═══════════════════════ */
+.art-panel {
+  display: none;
+  background: var(--bg5);
+  padding: 14px 18px;
+  border-top: 1px dashed var(--line2);
+  font-size: 12.5px; color: var(--txt2);
+  line-height: 1.75;
+}
+.art-panel.open { display: block; }
+.art-panel-title {
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 600;
+  color: var(--gold); margin-bottom: 8px;
+}
+.art-panel-body { color: var(--txt2); }
+.art-panel-body strong { color: var(--txt1); }
+.art-panel-pun {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(201,64,64,.08);
+  border: 1px solid rgba(201,64,64,.2);
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 12px; color: var(--red-l);
+}
+.art-panel-note {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: var(--gold-a);
+  border: 1px solid var(--gold-d);
+  border-radius: 4px;
+  font-size: 12px; color: var(--txt2);
+}
+
+/* ═══════════════════════ ALERTS ═══════════════════════ */
+.alert {
+  display: flex; gap: 12px;
+  padding: 13px 16px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  font-size: 13px; line-height: 1.65;
+}
+.alert-ico { flex-shrink: 0; margin-top: 1px; font-size: 16px; }
+.a-info    { background: var(--blue-a);   border: 1px solid rgba(59,125,216,.25);  color: #9fc4f8; }
+.a-warn    { background: var(--orange-a); border: 1px solid rgba(212,112,42,.25);  color: #f0c09a; }
+.a-danger  { background: var(--red-a);    border: 1px solid rgba(201,64,64,.25);   color: #f0a0a0; }
+.a-success { background: var(--green-a);  border: 1px solid rgba(46,158,100,.25);  color: #90e0b0; }
+.a-gold    { background: var(--gold-a);   border: 1px solid var(--gold-d);          color: var(--gold-l); }
+
+/* ═══════════════════════ STEPS ═══════════════════════ */
+.steps { display: flex; flex-direction: column; gap: 8px; }
+.step {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 12px 16px;
+  background: var(--bg3); border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.step-n {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--gold); color: #0a0b0e;
+  font-weight: 700; font-size: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.step-c strong { display: block; font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+.step-c span { font-size: 12.5px; color: var(--txt2); }
+
+/* ═══════════════════════ MIRANDA ═══════════════════════ */
+.miranda-box {
+  background: linear-gradient(135deg, #090e18, #0e1626);
+  border: 1px solid rgba(59,125,216,.3);
+  border-radius: 6px; padding: 24px 28px;
+  position: relative; overflow: hidden;
+}
+.miranda-box::before {
+  content: '§';
+  position: absolute; right: 16px; top: 4px;
+  font-family: var(--serif);
+  font-size: 90px; color: rgba(59,125,216,.05);
+  pointer-events: none;
+}
+.miranda-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 3px;
+  color: var(--blue-l); text-transform: uppercase; margin-bottom: 12px;
+}
+.miranda-text {
+  font-size: 15px; line-height: 1.85; color: var(--txt1);
+  font-weight: 500; border-left: 3px solid var(--blue);
+  padding-left: 18px; font-style: italic;
+}
+.miranda-notes { margin-top: 14px; display: flex; flex-direction: column; gap: 5px; }
+.miranda-note {
+  font-size: 12px; color: var(--txt2);
+  display: flex; gap: 8px;
+}
+.miranda-note::before { content: '—'; color: var(--blue-l); flex-shrink: 0; }
+
+/* ═══════════════════════ INFO LIST ═══════════════════════ */
+.info-list { display: flex; flex-direction: column; }
+.info-row {
+  display: flex; align-items: baseline;
+  justify-content: space-between; gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 12.5px;
+}
+.info-row:last-child { border-bottom: none; }
+.ir-k { color: var(--txt2); flex-shrink: 0; }
+.ir-v { color: var(--txt1); font-weight: 500; text-align: right; }
+.ir-v.mono { font-family: var(--mono); font-size: 12px; color: var(--gold); }
+.ir-v.red  { color: var(--red-l); }
+.ir-v.green{ color: var(--green-l); }
+
+/* ═══════════════════════ FORCE LEVELS ═══════════════════════ */
+.force-bar { display: flex; flex-direction: column; gap: 7px; }
+.force-level {
+  display: flex; align-items: center; gap: 14px;
+  padding: 11px 16px; border-radius: 4px;
+  background: var(--bg3); border: 1px solid var(--line);
+}
+.fn {
+  width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 12px; flex-shrink: 0;
+}
+.fn1 { background: var(--green-a); color: var(--green-l); border: 1px solid var(--green); }
+.fn2 { background: var(--gold-a);  color: var(--gold-l);  border: 1px solid var(--gold); }
+.fn3 { background: var(--orange-a);color: #f0b060;        border: 1px solid var(--orange); }
+.fn4 { background: var(--red-a);   color: var(--red-l);   border: 1px solid var(--red); }
+.fn5 { background: rgba(201,64,64,.2); color: #ff6060;    border: 1px solid rgba(201,64,64,.6); }
+.f-title { font-weight: 600; font-size: 13px; }
+.f-desc  { font-size: 12px; color: var(--txt2); }
+
+/* ═══════════════════════ IMMUNITY BLOCK ═══════════════════════ */
+.imm-list { display: flex; flex-direction: column; gap: 0; }
+.imm-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+.imm-row:last-child { border-bottom: none; }
+.imm-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.imm-role { color: var(--txt1); font-weight: 500; flex: 1; }
+.imm-note { font-size: 11px; color: var(--txt3); font-style: italic; }
+
+/* ═══════════════════════ TERRITORY BLOCK ═══════════════════════ */
+.territory-card {
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+}
+.tc-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 10px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.tc-badge {
+  padding: 2px 8px; border-radius: 3px;
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+}
+.tc-badge-guard { background: var(--gold-a); color: var(--gold); border: 1px solid var(--gold-d); }
+.tc-badge-special { background: var(--red-a); color: var(--red-l); border: 1px solid rgba(201,64,64,.3); }
+.tc-name { font-size: 14px; font-weight: 600; color: var(--txt1); }
+.tc-list { font-size: 12.5px; color: var(--txt2); line-height: 1.75; }
+.tc-list li { margin-left: 16px; margin-bottom: 2px; }
+
+.gallery-group {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+.gallery-title {
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--gold-l);
+  margin-bottom: 10px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+}
+.gallery-img {
+  width: 100%;
+  height: 95px;
+  object-fit: cover;
+  border: 1px solid var(--line2);
+  border-radius: 4px;
+  cursor: zoom-in;
+  transition: transform .15s ease, border-color .15s ease;
+}
+.gallery-img:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold-d);
+}
+.img-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 7, 14, .88);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 18px;
+}
+.img-lightbox.show { display: flex; }
+.img-lightbox img {
+  max-width: min(96vw, 1400px);
+  max-height: 92vh;
+  border: 1px solid var(--line2);
+  border-radius: 6px;
+  box-shadow: 0 25px 70px rgba(0,0,0,.6);
+}
+
+/* ═══════════════════════ FOOTER ═══════════════════════ */
+footer {
+  margin-left: var(--sidebar-w);
+  background: var(--bg2);
+  border-top: 1px solid var(--line);
+  padding: 16px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 11px; color: var(--txt3);
+  font-family: var(--mono);
+}
+
+/* ═══════════════════════ RESPONSIVE ═══════════════════════ */
+@media (max-width: 768px) {
+  #sidebar { transform: translateX(-100%); transition: transform .2s; }
+  #main, footer { margin-left: 0; }
+  #main { padding: calc(var(--top-h) + 16px) 16px 40px; }
+}
+
+/* ═══════════════════════ UTILITY ═══════════════════════ */
+.mb4 { margin-bottom: 4px; }
+.mb8 { margin-bottom: 8px; }
+.mb14{ margin-bottom: 14px; }
+.mb20{ margin-bottom: 20px; }
+.mt8 { margin-top: 8px; }
+.mt14{ margin-top: 14px; }
+.mt20{ margin-top: 20px; }
+.mono { font-family: var(--mono); }
+.gold  { color: var(--gold); }
+.txt2  { color: var(--txt2); }
+.txt3  { color: var(--txt3); }
+.txt-red   { color: var(--red-l); }
+.txt-green { color: var(--green-l); }
+
+/* Click-to-copy removed intentionally */
+
+/* subsection divider */
+.subsec-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--txt3);
+  padding: 6px 0; margin: 20px 0 12px;
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 8px;
+}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div id="progress"></div>
+
+<!-- TOP BAR -->
+<header id="topbar">
+  <div class="tb-emblem">
+    <span class="tb-star">⭐</span>
+    <div>
+      <div class="tb-brand">LSCSD</div>
+      <div class="tb-sub">Majestic RP · Phoenix</div>
+    </div>
+  </div>
+
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="globalSearch" placeholder="Поиск по статьям, процедурам, штрафам…" autocomplete="off" spellcheck="false">
+    <div id="search-results"></div>
+  </div>
+
+  <div class="tb-right">
+    <div class="tb-info">
+      <div class="tb-date" id="clock"></div>
+      <div class="tb-ver">v3.0 · 07.04.2026</div>
+    </div>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="nav-group-label">Начало работы</div>
+  <a class="nav-link" href="#home"><span class="nav-ico">🏠</span> Главная</a>
+  <a class="nav-link" href="#procedures"><span class="nav-ico">📋</span> Задержание</a>
+  <a class="nav-link" href="#miranda"><span class="nav-ico">🗣️</span> Правило Миранды</a>
+
+  <div class="nav-sep"></div>
+  <div class="nav-group-label">Кодексы</div>
+  <a class="nav-link" href="#criminal"><span class="nav-ico">⚖️</span> Уголовный кодекс<span class="nav-tag">УК</span></a>
+  <a class="nav-link" href="#admin"><span class="nav-ico">📃</span> Административный<span class="nav-tag">АК</span></a>
+  <a class="nav-link" href="#road"><span class="nav-ico">🚗</span> Дорожный кодекс<span class="nav-tag">ДК</span></a>
+  <a class="nav-link" href="#procedural"><span class="nav-ico">🔏</span> Процессуальный<span class="nav-tag">ПК</span></a>
+
+  <div class="nav-sep"></div>
+  <div class="nav-group-label">Специальные нормы</div>
+  <a class="nav-link" href="#immunity"><span class="nav-ico">🛡️</span> Неприкосновенность</a>
+  <a class="nav-link" href="#territories"><span class="nav-ico">🗺️</span> Охраняемые зоны</a>
+  <a class="nav-link" href="#jurisdiction"><span class="nav-ico">📍</span> Юрисдикция</a>
+
+  <div class="nav-sep"></div>
+  <div class="nav-group-label">Справочник</div>
+  <a class="nav-link" href="#bail"><span class="nav-ico">💰</span> Залог и сроки</a>
+  <a class="nav-link" href="#force"><span class="nav-ico">💪</span> Применение силы</a>
+  <a class="nav-link" href="#updates"><span class="nav-ico">🧾</span> Дополнения</a>
+</nav>
+
+<!-- MAIN -->
+<main id="main">
+
+<!-- ═══════════ HOME ═══════════ -->
+<section class="section" id="home">
+  <div class="hero">
+    <div class="hero-badge">⭐ Официальный документ · LSCSD</div>
+    <h1>Правовая памятка <em>сотрудника</em></h1>
+    <p>Универсальный справочник Департамента Шерифа округа Блейн. Все законы, процедуры и нормы законодательства штата Сан-Андреас в едином структурированном формате. Кликните по любой статье для просмотра полного текста.</p>
+    <div class="hero-stats">
+      <div class="hs-item"><div class="hs-label">Юрисдикция</div><div class="hs-val">Округ Блейн</div></div>
+      <div class="hs-item"><div class="hs-label">Обновлено</div><div class="hs-val">07.04.2026</div></div>
+      <div class="hs-item"><div class="hs-label">Автор</div><div class="hs-val">okuname</div></div>
+      <div class="hs-item"><div class="hs-label">Версия</div><div class="hs-val">v3.0</div></div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card card-gold">
+      <div class="card-title">⚖️ Принципы</div>
+      <div class="card-body">Законность, гуманизм, беспристрастность. Ты представитель государства — действуй строго в рамках закона. <strong>Незаконный приказ</strong> не является основанием для нарушения прав граждан.</div>
+    </div>
+    <div class="card card-blue">
+      <div class="card-title">🎖️ Подчинение</div>
+      <div class="card-body">Шериф LSCSD → Заместители → ДНБ → Вице-губернатор → Губернатор. Федеральные органы (FIB, Secret Service) имеют приоритет в своей юрисдикции.</div>
+    </div>
+    <div class="card card-red">
+      <div class="card-title">⚠️ Ключевые правила</div>
+      <div class="card-body">Зачитывай Миранду <strong>до</strong> получения показаний. Представляйся и предъявляй жетон. Без ордера — только в исключительных случаях. Не применяй оружие при скоплении людей.</div>
+    </div>
+  </div>
+
+  <div class="alert a-gold mt14">
+    <span class="alert-ico">⭐</span>
+    <div><strong>Залог:</strong> 1 год = $25,000 · только по статьям, не влекущим судимость (ст. 5.10 УК). &nbsp;<strong>★★★★★</strong> = ордер обязателен, дело преимущественно федеральное. Клик по строке статьи — полный текст нормы.</div>
+  </div>
+</section>
+
+<!-- ═══════════ PROCEDURES ═══════════ -->
+<section class="section" id="procedures">
+  <div class="section-head">
+    <span class="section-ico">📋</span>
+    <div class="section-titles">
+      <div class="section-title">Процедуры задержания</div>
+      <div class="section-sub">Обязательный порядок действий · Процессуальный кодекс</div>
+    </div>
+    <div class="section-meta">ст. 16–17 ПК</div>
+  </div>
+
+  <div class="alert a-info mb14">
+    <span class="alert-ico">ℹ️</span>
+    <div>Показания, полученные <strong>до зачитывания Миранды</strong>, являются недопустимыми доказательствами (ст. 12 ПК). Нарушение порядка задержания — основание для жалобы и дисциплинарной ответственности по ст. 15.1 УК.</div>
+  </div>
+
+  <div class="grid-2 mb20">
+    <div>
+      <div class="tbl-wrap">
+        <div class="tbl-head">📌 Порядок задержания (ст. 17 ПК)</div>
+        <div style="padding:16px">
+          <div class="steps">
+            <div class="step"><span class="step-n">1</span><div class="step-c"><strong>Наручники</strong><span>Надеть наручники на подозреваемого до любых других действий</span></div></div>
+            <div class="step"><span class="step-n">2</span><div class="step-c"><strong>Представиться</strong><span>Предъявить удостоверение / жетон / нашивку с личным номером</span></div></div>
+            <div class="step"><span class="step-n">3</span><div class="step-c"><strong>Первичный досмотр</strong><span>На усмотрение сотрудника — изъять оружие, наркотики, взрывчатку при угрозе безопасности</span></div></div>
+            <div class="step"><span class="step-n">4</span><div class="step-c"><strong>Зачитать Миранду</strong><span>Обязательно до любых показаний. Дважды при непонимании. Зафиксировать в отчёте.</span></div></div>
+            <div class="step"><span class="step-n">5</span><div class="step-c"><strong>Идентификация</strong><span>Документы, база федерального розыска, принадлежность к гос. органам</span></div></div>
+            <div class="step"><span class="step-n">6</span><div class="step-c"><strong>Доставка в департамент</strong><span>Для допроса, экспертизы или оформления</span></div></div>
+            <div class="step"><span class="step-n">7</span><div class="step-c"><strong>Права задержанного</strong><span>Телефонный звонок / вызов адвоката (3 мин). Уведомить уполномоченных лиц, если задержан гос. служащий.</span></div></div>
+            <div class="step"><span class="step-n">8</span><div class="step-c"><strong>Следственные действия</strong><span>Допрос, экспертиза — только после выполнения шагов 1–7</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="tbl-wrap mb14">
+        <div class="tbl-head">⚠️ Основания для задержания (ст. 16 ПК)</div>
+        <div style="padding:14px">
+          <div class="info-list">
+            <div class="info-row"><span class="ir-k">а) Застигнут на месте</span><span class="ir-v">При совершении или сразу после</span></div>
+            <div class="info-row"><span class="ir-k">б) Следы преступления</span><span class="ir-v">На одежде, при нём, в жилище</span></div>
+            <div class="info-row"><span class="ir-k">в) Фото/видео фиксация</span><span class="ir-v">Задокументированное правонарушение</span></div>
+            <div class="info-row"><span class="ir-k">г) Ордер</span><span class="ir-v">Изданный в установленном порядке</span></div>
+            <div class="info-row"><span class="ir-k">д) Ориентировка</span><span class="ir-v">На ТС или на лицо</span></div>
+            <div class="info-row"><span class="ir-k">е) БОЛО-розыск</span><span class="ir-v">Запись в базе розыска</span></div>
+            <div class="info-row"><span class="ir-k">ж) Скрывает личность</span><span class="ir-v">Намеренно, без законных оснований</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="tbl-wrap">
+        <div class="tbl-head">🕐 Важные тайминги</div>
+        <div style="padding:14px">
+          <div class="info-list">
+            <div class="info-row"><span class="ir-k">Макс. задержание</span><span class="ir-v mono">до 1 часа</span></div>
+            <div class="info-row"><span class="ir-k">Вызов адвоката</span><span class="ir-v mono">3 минуты</span></div>
+            <div class="info-row"><span class="ir-k">Ответ прокурора</span><span class="ir-v mono">15 минут</span></div>
+            <div class="info-row"><span class="ir-k">Уведомление рук-ва</span><span class="ir-v mono">3 минуты (тел.)</span></div>
+            <div class="info-row"><span class="ir-k">Срок давности АК</span><span class="ir-v mono">72 часа</span></div>
+            <div class="info-row"><span class="ir-k">Обжалование</span><span class="ir-v mono">48 часов</span></div>
+            <div class="info-row"><span class="ir-k">Приостановление неприкосн.</span><span class="ir-v mono">до 72 часов</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert a-warn">
+    <span class="alert-ico">⚠️</span>
+    <div><strong>Маска в публичном месте:</strong> Сотрудник вправе потребовать снять маску и предъявить документы. При отказе — процедура установки личности: наручники → объяснение причины → меры по идентификации → личный обыск.</div>
+  </div>
+</section>
+
+<!-- ═══════════ MIRANDA ═══════════ -->
+<section class="section" id="miranda">
+  <div class="section-head">
+    <span class="section-ico">🗣️</span>
+    <div class="section-titles">
+      <div class="section-title">Правило Миранды</div>
+      <div class="section-sub">Процессуальный кодекс · ст. 17 ч. 2</div>
+    </div>
+  </div>
+
+  <div class="miranda-box mb14">
+    <div class="miranda-label">📢 Обязательно зачитывается при каждом задержании</div>
+    <div class="miranda-text">
+      «Вы имеете право хранить молчание. Всё, что вы скажете, может и будет использовано против Вас в суде. Вы имеете право на один телефонный звонок. Также Вы имеете право на адвоката. Если вам необходим адвокат, он будет для Вас запрошен. Вы понимаете свои права?»
+    </div>
+    <div class="miranda-notes mt14">
+      <div class="miranda-note">Зачитывается дважды, если задержанный не понял. После второго раза — больше не повторяется.</div>
+      <div class="miranda-note">Если задержанный перебивает или оскорбляет сотрудника — право не зачитывать второй раз.</div>
+      <div class="miranda-note">Любые показания до зачтения Миранды являются <strong style="color:var(--red-l)">недопустимыми доказательствами</strong> (ст. 12 ПК).</div>
+      <div class="miranda-note">Факт зачитывания Миранды фиксируется в отчёте или рапорте.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CRIMINAL CODE ═══════════ -->
+<section class="section" id="criminal">
+  <div class="section-head">
+    <span class="section-ico">⚖️</span>
+    <div class="section-titles">
+      <div class="section-title">Уголовный кодекс</div>
+      <div class="section-sub">Особенная часть · ключевые статьи</div>
+    </div>
+    <div class="section-meta">Клик по строке = полный текст</div>
+  </div>
+
+  <div class="alert a-info mb14">
+    <span class="alert-ico">ℹ️</span>
+    <div><strong>Залог:</strong> 1 год = $25,000 · только по статьям без судимости (ст. 5.10 УК). &nbsp;<strong>Ф</strong> = федеральная, <strong>Р</strong> = региональная юрисдикция. Добровольная сдача запрещённых предметов <strong>до</strong> задержания освобождает от ответственности (ст. 5.9 УК).</div>
+  </div>
+
+  <!-- Против личности -->
+  <div class="tbl-wrap mb4">
+    <div class="tbl-head">🩸 Преступления против жизни и здоровья (гл. VI)</div>
+    <div class="tbl-scroll">
+      <table class="law-table">
+        <thead><tr><th>Статья</th><th>★</th><th>Описание</th><th>Наказание</th><th>Юрисд.</th></tr></thead>
+        <tbody>
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">6.1 ч.1</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Нанесение тяжких телесных повреждений — умышленные побои, физическая боль или повреждения лёгкой/средней тяжести</td>
+            <td class="art-pun">3 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.1 ч. 1 УК — Нанесение тяжких телесных повреждений</div><div class="art-panel-body">Умышленное нанесение побоев или совершение иных насильственных действий, причинивших физическую боль либо телесные повреждения лёгкой или средней тяжести.<br><br>Применяется при задокументированном факте причинения вреда: синяки, ссадины, травмы, не повлёкшие стойкой утраты трудоспособности.</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">6.1 ч.2</td><td class="art-stars">★★★★</td>
+            <td class="art-desc">Умышленное нанесение особо тяжких телесных повреждений</td>
+            <td class="art-pun">4 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.1 ч. 2 УК — Особо тяжкие телесные повреждения</div><div class="art-panel-body">Умышленное нанесение особо тяжких телесных повреждений — травмы, повлёкшие стойкую утрату трудоспособности, переломы, черепно-мозговые травмы и иные тяжкие последствия для здоровья.</div><div class="art-panel-pun">⛓️ Наказание: 4 года лишения свободы</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">6.1 ч.3</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Нанесение тяжких повреждений по неосторожности / в состоянии аффекта</td>
+            <td class="art-pun">3 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.1 ч. 3 УК — Повреждения по неосторожности</div><div class="art-panel-body">Нанесение особо тяжких телесных повреждений по неосторожности или в состоянии аффекта (сильного душевного волнения, вызванного противоправными действиями потерпевшего).</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">6.2 ч.1</td><td class="art-stars">★★★★</td>
+            <td class="art-desc">Убийство — умышленное причинение смерти другому человеку</td>
+            <td class="art-pun">4 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.2 ч. 1 УК — Убийство умышленное</div><div class="art-panel-body">Умышленное причинение смерти другому человеку. Требует доказательства умысла. При наличии смешанной юрисдикции (региональная/федеральная) федеральные органы назначают наказание по федеральным нормам.</div><div class="art-panel-pun">⛓️ Наказание: 4 года лишения свободы</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">6.2 ч.2</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Убийство по неосторожности / в состоянии аффекта</td>
+            <td class="art-pun">3 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.2 ч. 2 УК — Убийство по неосторожности</div><div class="art-panel-body">Причинение смерти другому человеку по неосторожности или в состоянии аффекта, вызванного противоправными действиями потерпевшего. Умысел на убийство отсутствует.</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">6.3</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Тяжкое убийство: двух и более лиц, с особой жестокостью, группой лиц, по найму, в связи со служебной деятельностью жертвы</td>
+            <td class="art-pun">5 лет л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.3 УК — Тяжкое убийство</div><div class="art-panel-body">Убийство двух или более лиц; лица или его близких в связи с осуществлением служебной деятельности; с особой жестокостью; общеопасным способом; группой лиц по предварительному сговору; из корыстных побуждений или по найму. Судимость возникает.</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы · СУДИМОСТЬ</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">6.4</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Угроза убийством или причинением тяжкого вреда здоровью (при наличии оснований опасаться)</td>
+            <td class="art-pun">3 года л/с или $30–50k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.4 УК — Угроза убийством</div><div class="art-panel-body">Угроза убийством или причинением тяжкого вреда здоровью, если имелись основания опасаться осуществления этой угрозы. Требуется документальное подтверждение: показания потерпевшего, запись разговора, переписка.</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы либо уголовный штраф $30,000–$50,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">6.5</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Воспрепятствование законной деятельности медицинского работника по оказанию медицинской помощи</td>
+            <td class="art-pun">3 года л/с или $5–20k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.5 УК — Воспрепятствование медработнику</div><div class="art-panel-body">Воспрепятствование в какой бы то ни было форме законной деятельности медицинского работника по оказанию медицинской помощи — физическое блокирование, угрозы, нападение на EMS при исполнении.</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы либо уголовный штраф $5,000–$20,000</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Глава VII - против свободы -->
+  <div class="tbl-wrap mb4">
+    <div class="tbl-head">🔒 Против свободы, чести и достоинства (гл. VII–VIII)</div>
+    <div class="tbl-scroll">
+      <table class="law-table">
+        <thead><tr><th>Статья</th><th>★</th><th>Описание</th><th>Наказание</th><th>Юрисд.</th></tr></thead>
+        <tbody>
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">7.1</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Похищение человека — незаконный захват, перемещение и удержание</td>
+            <td class="art-pun">5 лет л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 7.1 УК — Похищение человека</div><div class="art-panel-body">Похищение человека, то есть его незаконный захват, перемещение и последующее удержание, в том числе совершённый в целях понуждения государства, организации или гражданина совершить какое-либо действие как условия освобождения заложника. Судимость возникает.</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы · СУДИМОСТЬ · Только ФРБ</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">7.1.1</td><td class="art-stars">★★★★</td>
+            <td class="art-desc">Незаконное лишение свободы (не связанное с похищением)</td>
+            <td class="art-pun">4 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 7.1.1 УК — Незаконное лишение свободы</div><div class="art-panel-body">Незаконное лишение человека свободы, не связанное с его похищением. Применяется при удержании лица без законных оснований (привязывание, запирание в помещении и т.д.).</div><div class="art-panel-pun">⛓️ Наказание: 4 года лишения свободы</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">7.4</td><td class="art-stars">★★–★★★</td>
+            <td class="art-desc">Клевета — распространение заведомо ложных сведений, порочащих честь и репутацию</td>
+            <td class="art-pun">2–3 года л/с или $40–80k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 7.4 УК — Клевета</div><div class="art-panel-body">ч. 1: Простая клевета — $40,000–$50,000 или 2–3 года<br>ч. 2: В СМИ, публично, в интернете — $50,000–$60,000<br>ч. 3: С использованием служебного положения — $50,000–$60,000<br>ч. 4: Клевета о заболевании — $50,000–$70,000<br>ч. 5: Обвинение в тяжком/половом преступлении — $50,000–$80,000</div><div class="art-panel-pun">⛓️ Наказание: 2–3 года лишения свободы либо уголовный штраф $40,000–$80,000 (в зависимости от части)</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">8.3</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Сексуальное домогательство без согласия потерпевшего</td>
+            <td class="art-pun">3 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 8.3 УК — Сексуальное домогательство</div><div class="art-panel-body">Сексуальное домогательство, связанное с использованием явного или скрытого сексуального подтекста, включая нежелательные прикосновения, словесные предложения сексуального характера без согласия жертвы.</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Собственность -->
+  <div class="tbl-wrap mb4">
+    <div class="tbl-head">💰 Преступления против собственности (гл. X)</div>
+    <div class="tbl-scroll">
+      <table class="law-table">
+        <thead><tr><th>Статья</th><th>★</th><th>Описание</th><th>Наказание</th><th>Юрисд.</th></tr></thead>
+        <tbody>
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">10.1</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Кража — тайное хищение чужого имущества стоимостью свыше $15,000</td>
+            <td class="art-pun">3 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-r">Р</span><span class="tag tag-fin">Фин</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.1 УК — Кража</div><div class="art-panel-body">Кража, то есть тайное хищение чужого имущества стоимостью свыше $15,000. При стоимости ниже $15,000 может рассматриваться как административное правонарушение. Залог возможен (нет судимости).</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы</div><div class="art-panel-note">💰 Залог: $75,000 (3 года × $25,000)</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">10.1.1</td><td class="art-stars">★★★★</td>
+            <td class="art-desc">Кража со взломом — хищение с предварительным взломом хранилища, сейфа, замка</td>
+            <td class="art-pun">4 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-r">Р</span><span class="tag tag-f">Ф</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.1.1 УК — Кража со взломом</div><div class="art-panel-body">Тайное хищение чужого имущества, совершённое с предварительным взломом хранилища, помещения, сейфа или иного запирающего устройства.</div><div class="art-panel-pun">⛓️ Наказание: 4 года лишения свободы</div><div class="art-panel-note">💰 Залог: $100,000 (4 года × $25,000)</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">10.2</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Мошенничество — хищение или приобретение права на имущество путём обмана или злоупотребления доверием</td>
+            <td class="art-pun">3 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-r">Р</span><span class="tag tag-fin">Фин</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.2 УК — Мошенничество</div><div class="art-panel-body">Хищение чужого имущества или приобретение права на чужое имущество путём обмана или злоупотребления доверием. Финансовая юрисдикция подразумевает участие секретной службы при суммах свыше установленных порогов.</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">10.2.1</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Вымогательство — требование передачи имущества под угрозой насилия или распространения позорящих сведений</td>
+            <td class="art-pun">3 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.2.1 УК — Вымогательство</div><div class="art-panel-body">Требование передачи чужого имущества или права на имущество под угрозой применения насилия, уничтожения имущества или распространения порочащих сведений.</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">10.3</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Грабёж — открытое хищение чужого имущества</td>
+            <td class="art-pun">3 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.3 УК — Грабёж</div><div class="art-panel-body">Открытое хищение чужого имущества — в отличие от кражи, совершается в присутствии потерпевшего или иных лиц. Насилие не применяется (иначе — разбой по ст. 10.4).</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">10.4</td><td class="art-stars">★★★★</td>
+            <td class="art-desc">Разбой — нападение с применением насилия, опасного для жизни/здоровья, с целью хищения</td>
+            <td class="art-pun">4 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.4 УК — Разбой</div><div class="art-panel-body">Нападение в целях хищения чужого имущества, совершённое с применением насилия, опасного для жизни или здоровья, либо с угрозой применения такого насилия. Судимость возникает.</div><div class="art-panel-pun">⛓️ Наказание: 4 года лишения свободы · СУДИМОСТЬ</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">10.5</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Угон — неправомерное завладение автомобилем или иным ТС</td>
+            <td class="art-pun">до 3 лет л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.5 УК — Угон транспортного средства</div><div class="art-panel-body">Неправомерное завладение автомобилем или иным транспортным средством без цели хищения. Если цель — хищение ТС, дополнительно применяется ст. 10.1.</div><div class="art-panel-pun">⛓️ Наказание: до 3 лет лишения свободы</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">10.6–10.8</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Умышленное уничтожение или повреждение чужого / государственного имущества (в т.ч. из хулиганских побуждений)</td>
+            <td class="art-pun">3 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.6–10.8 УК — Уничтожение имущества</div><div class="art-panel-body">10.6: Умышленное уничтожение чужого имущества<br>10.7: Уничтожение из хулиганских побуждений<br>10.8: Уничтожение государственного имущества<br><br>Разграничение: если умысел — хулиганский, применяется ст. 10.7; если против государственных объектов — ст. 10.8.</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы по каждой статье</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Наркотики -->
+  <div class="tbl-wrap mb4">
+    <div class="tbl-head">💊 Наркотики и психотропные вещества (гл. XIII)</div>
+    <div class="tbl-scroll">
+      <table class="law-table">
+        <thead><tr><th>Статья</th><th>★</th><th>Описание</th><th>Наказание</th><th>Юрисд.</th></tr></thead>
+        <tbody>
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">13.1</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Незаконное кустарное производство и сбор наркотиков в любых размерах</td>
+            <td class="art-pun">3 года или $20–40k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 13.1 УК — Производство наркотиков</div><div class="art-panel-body">Незаконное кустарное производство и сбор наркотических веществ в любых размерах. Кустарным производством является удобрение, полив или рассада кустарников, в составе которых имеются каннабиноиды или иные наркотические вещества.<br><br>Добровольная сдача до задержания = освобождение от ответственности (ст. 5.9 УК).</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы или уголовный штраф $20,000–$40,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">13.2</td><td class="art-stars">★★★★</td>
+            <td class="art-desc">Хранение/перевозка наркотиков — от 3 граммов и выше</td>
+            <td class="art-pun">4 года или $40–60k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 13.2 УК — Хранение/перевозка наркотиков</div><div class="art-panel-body">Незаконные приобретение, хранение, перевозка наркотических средств в размере 3 грамм и выше.<br><br><strong>Примечание:</strong> Наличие лицензии KNN разрешает ношение и применение медицинских препаратов, содержащих каннабиноиды, не более 5 грамм. Проверяйте действительность лицензии.</div><div class="art-panel-pun">⛓️ Наказание: 4 года лишения свободы или уголовный штраф $40,000–$60,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">13.2.1</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Хранение/перевозка наркотиков свыше 25 грамм или с целью сбыта</td>
+            <td class="art-pun">5 лет л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 13.2.1 УК — Крупное хранение/сбыт</div><div class="art-panel-body">Незаконные приобретение, хранение, перевозка наркотических средств свыше 25 грамм, а равно совершённое с целью сбыта. Судимость возникает. Возможен приоритет ФРБ.</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы · СУДИМОСТЬ</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">13.4</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Наркотики для сотрудников гос. структур (любые действия за исключением служебных)</td>
+            <td class="art-pun">5 лет л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 13.4 УК — Наркотики для сотрудников</div><div class="art-panel-body">Приобретение, хранение, перевозка, изготовление, сбор, сбыт наркотических веществ сотрудниками гос. структур.<br><br><strong>Исключения:</strong> Сотрудники DEA, K-9, CID, DB при исполнении служебных обязанностей не подлежат ответственности за хранение, перевозку, изготовление, сбор (и за сбыт/приобретение при контрольной закупке).</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы · СУДИМОСТЬ · Увольнение</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Оружие/Терроризм -->
+  <div class="tbl-wrap mb4">
+    <div class="tbl-head">🔫 Оружие, терроризм, организованная преступность (гл. XII)</div>
+    <div class="tbl-scroll">
+      <table class="law-table">
+        <thead><tr><th>Статья</th><th>★</th><th>Описание</th><th>Наказание</th><th>Юрисд.</th></tr></thead>
+        <tbody>
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">12.1</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Терроризм — взрывы, поджоги, иные действия устрашающего характера в целях дестабилизации власти</td>
+            <td class="art-pun">5 лет л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.1 УК — Терроризм</div><div class="art-panel-body">Совершение взрыва, поджога или иных действий, устрашающих население и создающих опасность гибели человека или значительного ущерба, в целях дестабилизации деятельности органов власти или воздействия на принятие ими решений, а также угроза совершения указанных действий. Исключительная юрисдикция ФРБ.</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы · СУДИМОСТЬ · Только ФРБ</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">12.7 ч.1</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Незаконное проникновение на охраняемый объект (LSPD, LSCSD, Капитолий, Суд, EMS, WN)</td>
+            <td class="art-pun">3 года л/с или $20–50k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.7 ч. 1 УК — Проникновение на охраняемый объект</div><div class="art-panel-body">Незаконное проникновение и/или нахождение на охраняемом объекте в соответствии с законодательством штата. К охраняемым объектам относятся: участки LSPD/LSCSD и служебные парковки (кроме холла), Капитолий (кроме холла), здание суда, EMS, Weazel News, остров Кайо-Перико, авианосец.</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы или $20,000–$50,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">12.7 ч.2</td><td class="art-stars">★★★★</td>
+            <td class="art-desc">Незаконное проникновение на особо охраняемый объект (Форт-Занкудо, Офис FIB)</td>
+            <td class="art-pun">4–5 лет л/с или $60–80k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.7 ч. 2 УК — Особо охраняемый объект</div><div class="art-panel-body">Незаконное проникновение и/или нахождение на особо охраняемом объекте: Форт-Занкудо (военная база) и Офис FIB. Доступ строго ограничен перечнем лиц согласно Приложению к УК.</div><div class="art-panel-pun">⛓️ Наказание: от 4 до 5 лет лишения свободы или $60,000–$80,000 · СУДИМОСТЬ</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">12.7 ч.3</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Деяния ч.1 и ч.2, совершённые должностным лицом</td>
+            <td class="art-pun">5 лет л/с или $60–80k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.7 ч. 3 УК — Должностное лицо на охраняемом объекте</div><div class="art-panel-body">Деяния, предусмотренные частями 1 и 2 настоящей статьи, совершённые должностным лицом — наказываются строже в связи с наличием у виновного особого правового статуса.</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы или $60,000–$80,000 · СУДИМОСТЬ · Увольнение</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">12.8 ч.1</td><td class="art-stars">★★★★</td>
+            <td class="art-desc">Незаконные приобретение, передача, сбыт, перевозка оружия/спецсредств/боеприпасов</td>
+            <td class="art-pun">4 года л/с или $10–30k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.8 ч. 1 УК — Незаконный оборот оружия (транспортировка)</div><div class="art-panel-body">Незаконное приобретение, передача, сбыт, перевозка в автомобиле или ином ТС любых видов оружия, спецсредств и боеприпасов. Добровольная сдача до задержания = освобождение (ст. 5.9 УК).</div><div class="art-panel-pun">⛓️ Наказание: 4 года лишения свободы или штраф $10,000–$30,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">12.8 ч.2</td><td class="art-stars">★★★★</td>
+            <td class="art-desc">Незаконное хранение, ношение, использование оружия/спецсредств</td>
+            <td class="art-pun">4 года л/с или $10–30k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.8 ч. 2 УК — Незаконное ношение оружия</div><div class="art-panel-body">Незаконное хранение, ношение или использование любых видов оружия, спецсредств и боеприпасов. Применяется к лицам, у которых отсутствует лицензия CDWL.</div><div class="art-panel-pun">⛓️ Наказание: 4 года лишения свободы или штраф $10,000–$30,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">12.8.1</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Использование/ношение гражданскими лицами спецсредств государственного образца (бронежилет, тазер, дубинка, медоборудование)</td>
+            <td class="art-pun">5 лет л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.8.1 УК — Гос. спецсредства у гражданского</div><div class="art-panel-body">Использование, ношение, хранение гражданскими лицами спецсредств государственного образца: бронежилет, тазер, дубинка и прочее государственное имущество, включая медицинское оборудование с серийными номерами государственного образца.</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы · СУДИМОСТЬ</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">12.12</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Организация преступного сообщества или участие в нём</td>
+            <td class="art-pun">5 лет л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.12 УК — Преступное сообщество</div><div class="art-panel-body">Создание, руководство, координация преступного сообщества; участие в собрании его представителей; членство в нём. Использование служебного положения — отягчающее обстоятельство.<br><br>Лицо, добровольно прекратившее участие и активно способствовавшее раскрытию — освобождается от ответственности (при отсутствии иного состава).</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы · СУДИМОСТЬ · Только ФРБ</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Против правосудия и власти -->
+  <div class="tbl-wrap mb4">
+    <div class="tbl-head">🚔 Против порядка управления и правосудия (гл. XV–XVII)</div>
+    <div class="tbl-scroll">
+      <table class="law-table">
+        <thead><tr><th>Статья</th><th>★</th><th>Описание</th><th>Наказание</th><th>Юрисд.</th></tr></thead>
+        <tbody>
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">15.1 ч.1</td><td class="art-stars">★★★★</td>
+            <td class="art-desc">Превышение должностных полномочий — действия, явно выходящие за пределы полномочий с существенным нарушением прав граждан</td>
+            <td class="art-pun">4 года л/с или $40–100k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.1 ч. 1 УК — Превышение полномочий</div><div class="art-panel-body">Совершение должностным лицом действий, явно выходящих за пределы его полномочий и повлекших существенное нарушение прав и законных интересов граждан или организаций либо охраняемых законом интересов общества или государства.</div><div class="art-panel-pun">⛓️ Наказание: 4 года лишения свободы или уголовный штраф $40,000–$100,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">15.1 ч.2</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Превышение полномочий с применением насилия, оружия или причинением тяжких последствий</td>
+            <td class="art-pun">5 лет л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.1 ч. 2 УК — Квалифицированное превышение полномочий</div><div class="art-panel-body">Деяния ч. 1 если они совершены: с применением насилия или угрозой его применения; с применением оружия или специальных средств; с причинением тяжких последствий; группой лиц по предварительному сговору; из корыстной заинтересованности. Судимость. Увольнение.</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы · СУДИМОСТЬ · Увольнение</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">15.1.1</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Злоупотребление должностными полномочиями вопреки интересам службы</td>
+            <td class="art-pun">5 лет л/с или $50–100k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.1.1 УК — Злоупотребление полномочиями</div><div class="art-panel-body">ч. 1: Использование полномочий вопреки интересам службы с существенным нарушением прав граждан — $50,000–$100,000<br>ч. 2: Использование полномочий для вмешательства в процесс задержания или разбирательства — $40,000–$90,000<br>ч. 3: То же деяние сотрудником органа по расследованию должностных преступлений — 5 лет</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы · СУДИМОСТЬ · Увольнение</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">15.4</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Получение взятки должностным лицом</td>
+            <td class="art-pun">5 лет л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.4 УК — Получение взятки</div><div class="art-panel-body">Получение должностным лицом лично или через посредника взятки в виде денег, имущества или услуг за совершение действий (бездействие) в пользу взяткодателя. Является абсолютным запретом для всех сотрудников LSCSD.</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы · СУДИМОСТЬ · Увольнение</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">16.1.1</td><td class="art-stars">★★★★</td>
+            <td class="art-desc">Воспрепятствование деятельности адвоката (защитника) или представителя лица</td>
+            <td class="art-pun">от 4 лет л/с или $40–80k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 16.1.1 УК — Вмешательство в деятельность адвоката</div><div class="art-panel-body">ч. 1: Препятствия осуществлению правомерной деятельности защитника или представителя лица — $40,000–$80,000<br>ч. 2: То же деяние должностным лицом с использованием служебного положения — 4–5 лет<br><br>Обязанность: предоставить адвокату доступ к подзащитному в течение 3 минут после вызова.</div><div class="art-panel-pun">⛓️ Наказание: от 4 лет лишения свободы или $40,000–$80,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">16.3</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Привлечение заведомо невиновного к уголовной или административной ответственности</td>
+            <td class="art-pun">5 лет л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 16.3 УК — Незаконное привлечение к ответственности</div><div class="art-panel-body">Привлечение заведомо невиновного к уголовной или административной ответственности — одно из самых тяжких должностных преступлений. Предполагает знание сотрудника о невиновности лица.</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы · СУДИМОСТЬ · Увольнение</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">16.4</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Заведомо незаконное задержание, заключение под стражу или содержание под стражей</td>
+            <td class="art-pun">5 лет л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 16.4 УК — Незаконное задержание</div><div class="art-panel-body">Заведомо незаконное задержание, заключение под стражу или содержание под стражей. Применяется при отсутствии оснований, предусмотренных ст. 16 ПК, или при нарушении установленных сроков содержания.</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы · СУДИМОСТЬ · Увольнение</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">16.5</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Фальсификация доказательств</td>
+            <td class="art-pun">5 лет л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 16.5 УК — Фальсификация доказательств</div><div class="art-panel-body">Фальсификация доказательств по гражданскому, административному или уголовному делу любым лицом, участвующим в деле, или его представителем. Для следователей и прокуроров — ст. 16.6.</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы · СУДИМОСТЬ</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">16.11</td><td class="art-stars">★★★★</td>
+            <td class="art-desc">Сокрытие или уничтожение улик</td>
+            <td class="art-pun">4 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="art-tags"><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 16.11 УК — Сокрытие улик</div><div class="art-panel-body">Сокрытие или уничтожение улик. Применяется как к гражданским лицам, так и к сотрудникам правоохранительных органов. Все изъятые вещественные доказательства хранятся согласно внутреннему регламенту.</div><div class="art-panel-pun">⛓️ Наказание: 4 года лишения свободы</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">17.1</td><td class="art-stars">★★★★★</td>
+            <td class="art-desc">Посягательство на жизнь сотрудника правоохранительного органа / военнослужащего при исполнении или из мести</td>
+            <td class="art-pun">5 лет л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.1 УК — Посягательство на жизнь сотрудника</div><div class="art-panel-body">Посягательство на жизнь сотрудника правоохранительного органа, военнослужащего, а равно их близких в связи с исполнением должностных обязанностей либо из мести за такую деятельность. Судимость. Дело обязательно передаётся в ФРБ.</div><div class="art-panel-pun">⛓️ Наказание: 5 лет лишения свободы · СУДИМОСТЬ</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">17.2</td><td class="art-stars">★★★★</td>
+            <td class="art-desc">Применение насилия / угроза в отношении сотрудника правоохранительных органов при исполнении</td>
+            <td class="art-pun">4 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.2 УК — Насилие против сотрудника</div><div class="art-panel-body">Применение насилия, не опасного для жизни или здоровья, либо угроза применения насилия в отношении сотрудника правоохранительных органов или военнослужащего в связи с исполнением должностных обязанностей.</div><div class="art-panel-pun">⛓️ Наказание: 4 года лишения свободы</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">17.3</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Оскорбление представителя власти при исполнении — унижение чести и достоинства в неприличной форме</td>
+            <td class="art-pun">3 года л/с или $20–50k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.3 УК — Оскорбление представителя власти</div><div class="art-panel-body">Оскорбление представителя власти при исполнении или в связи с их исполнением.<br><br>Оскорбление — унижение чести и достоинства, выраженное в неприличной или противоречащей нормам морали форме: высказывание (устно, письменно), плевок, неприличный жест.</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы или уголовный штраф $20,000–$50,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">17.4</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Провокация / помеха гос. служащему при исполнении обязанностей</td>
+            <td class="art-pun">3 года л/с или $20–60k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.4 УК — Провокация гос. служащего</div><div class="art-panel-body">Провокация государственного служащего при исполнении, путём его отвлечения от выполнения служебных обязанностей, а равно помеха исполнению обязанностей государственного служащего.</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы или уголовный штраф $20,000–$60,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">17.6</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Неповиновение законному требованию / воспрепятствование исполнению служебных обязанностей</td>
+            <td class="art-pun">3 года л/с или $20–60k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.6 УК — Неповиновение законному требованию</div><div class="art-panel-body">Неповиновение законному распоряжению или требованию правомочного лица, либо воспрепятствование исполнению им служебных обязанностей. Требование должно быть законным — выполнение незаконных приказов не обязательно.</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы или уголовный штраф $20,000–$60,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">17.7</td><td class="art-stars">★★★</td>
+            <td class="art-desc">Отказ от оплаты штрафа, выписанного правомочным лицом</td>
+            <td class="art-pun">3 года л/с или $20–60k</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.7 УК — Отказ от оплаты штрафа</div><div class="art-panel-body">Отказ от оплаты штрафа, выписанного правомочным лицом, а равно отказ от возмещения ущерба согласно законодательству.<br><br>Отказом считается: передача тикета обратно; порча тикета; устный или письменный отказ; игнорирование тикета. Гражданину даётся 15 секунд на оплату.</div><div class="art-panel-pun">⛓️ Наказание: 3 года лишения свободы или уголовный штраф $20,000–$60,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">17.8</td><td class="art-stars">★★★★</td>
+            <td class="art-desc">Использование незарегистрированной лицензии / подделка удостоверения или официального документа</td>
+            <td class="art-pun">4 года л/с</td>
+            <td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.8 УК — Подделка документов</div><div class="art-panel-body">Использование незарегистрированной лицензии и/или подделка удостоверения или иного официального документа, предоставляющего права или освобождающего от обязанностей, в целях его использования либо сбыт такого документа.</div><div class="art-panel-pun">⛓️ Наказание: 4 года лишения свободы</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="alert a-success">
+    <span class="alert-ico">💡</span>
+    <div><strong>Ст. 5.9 УК — Добровольная сдача:</strong> Лицо, добровольно сдавшее запрещённые предметы (наркотики, оружие и др.) <strong>до задержания</strong> — освобождается от ответственности по соответствующей статье. Изъятие при задержании добровольной сдачей не является.</div>
+  </div>
+</section>
+
+<!-- ═══════════ ADMIN CODE ═══════════ -->
+<section class="section" id="admin">
+  <div class="section-head">
+    <span class="section-ico">📃</span>
+    <div class="section-titles">
+      <div class="section-title">Административный кодекс</div>
+      <div class="section-sub">Правонарушения и штрафы · срок давности 72 часа</div>
+    </div>
+    <div class="section-meta">ст. 1.11 АК — штраф за каждое отдельно</div>
+  </div>
+
+  <div class="tbl-wrap mb14">
+    <div class="tbl-head">📋 Административные правонарушения</div>
+    <div class="tbl-scroll">
+      <table class="law-table">
+        <thead><tr><th>Статья</th><th>Описание</th><th>Штраф</th></tr></thead>
+        <tbody>
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">2.1</td><td>Мелкое хулиганство — явное неуважение к обществу, нецензурная брань в общественном месте</td><td class="art-fine">$3,000–7,000</td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-title">Ст. 2.1 АК — Мелкое хулиганство</div><div class="art-panel-body">Мелкое хулиганство — нецензурная брань в общественных местах, оскорбительное приставание к гражданам, иные действия, демонстративно нарушающие общественный порядок и спокойствие граждан.</div><div class="art-panel-pun">💰 Штраф: $3,000–$7,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">2.2</td><td>Нахождение в общественном месте в непотребном виде / состоянии алкогольного или наркотического опьянения</td><td class="art-fine">$3,000–7,000</td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-title">Ст. 2.2 АК — Опьянение в публичном месте</div><div class="art-panel-body">Нахождение на улицах, стадионах, в скверах, парках, транспортных организациях и в других общественных местах в состоянии алкогольного или наркотического опьянения, оскорбляющем человеческое достоинство и общественную нравственность.</div><div class="art-panel-pun">💰 Штраф: $3,000–$7,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">2.3</td><td>Нарушение порядка проведения собрания / митинга / публичного мероприятия</td><td class="art-fine">$20,000</td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-title">Ст. 2.3 АК — Нарушение порядка митинга</div><div class="art-panel-body">Нарушение установленного порядка организации или проведения публичного мероприятия, митинга, демонстрации, пикета. При повторном нарушении или организации массовых беспорядков — уголовная ответственность по ст. 12.6 УК.</div><div class="art-panel-pun">💰 Штраф: $20,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">2.4</td><td>Использование не по назначению холодного оружия, инструментов в людном месте</td><td class="art-fine">$1,000–12,000</td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-title">Ст. 2.4 АК — Ненадлежащее использование холодного оружия</div><div class="art-panel-body">Использование не по назначению холодного оружия, хозяйственно-бытовых инструментов или иных предметов в людном месте — создание угрозы общественному порядку без фактического причинения вреда.</div><div class="art-panel-pun">💰 Штраф: $1,000–$12,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">2.5</td><td>Побои, не повлекшие вреда здоровью</td><td class="art-fine">$5,000–20,000</td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-title">Ст. 2.5 АК — Побои без вреда здоровью</div><div class="art-panel-body">Умышленное причинение боли или страдания другому лицу без значительного вреда здоровью. При наличии вреда здоровью — квалификация по УК (ст. 6.1).</div><div class="art-panel-pun">💰 Штраф: $5,000–$20,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">2.6</td><td>Неуважение к Сенату штата Сан-Андреас</td><td class="art-fine">$15,000–75,000 / до 20 суток</td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-title">Ст. 2.6 АК — Неуважение к Сенату</div><div class="art-panel-body">Действия, выражающие явное неуважение к Сенату штата Сан-Андреас как государственному органу. Выносится Спикером Сената в рамках своих полномочий.</div><div class="art-panel-pun">💰 Штраф: $15,000–$75,000 или до 20 суток административного задержания</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">3.1</td><td>Дискриминация по полу, расе, национальности, религии и иным признакам</td><td class="art-fine">$1,500–8,500</td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-title">Ст. 3.1 АК — Дискриминация</div><div class="art-panel-body">Нарушение равенства граждан в зависимости от пола, расы, национальности, языка, происхождения, имущественного положения, отношения к религии, убеждений.</div><div class="art-panel-pun">💰 Штраф: $1,500–$8,500</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">3.4</td><td>Нарушение неприкосновенности частной жизни / телефонный терроризм</td><td class="art-fine">$8,000</td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-title">Ст. 3.4 АК — Частная жизнь / телефонный терроризм</div><div class="art-panel-body">Нарушение неприкосновенности частной жизни — незаконный сбор или распространение сведений о частной жизни лица без его согласия. Телефонный терроризм — ложные звонки о чрезвычайных ситуациях.</div><div class="art-panel-pun">💰 Штраф: $8,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">3.5</td><td>Разжигание ненависти / вражды, унижение достоинства</td><td class="art-fine">$25,000–50,000</td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-title">Ст. 3.5 АК — Разжигание ненависти</div><div class="art-panel-body">Действия, направленные на возбуждение ненависти либо вражды, а также на унижение достоинства человека или группы лиц по признакам пола, расы, национальности, языка, происхождения, отношения к религии. При применении насилия или через СМИ — уголовная ответственность (ст. 12.4 УК).</div><div class="art-panel-pun">💰 Штраф: $25,000–$50,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">3.11</td><td>Незаконное проникновение в жилище против воли жильца</td><td class="art-fine">$12,000</td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-title">Ст. 3.11 АК — Проникновение в жилище</div><div class="art-panel-body">Незаконное проникновение в жилище против воли жильца без законных оснований. Для сотрудников — осмотр жилища возможен с согласия жильца или по судебному акту; обыск — только по ордеру (ст. 4 ПК).</div><div class="art-panel-pun">💰 Штраф: $12,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">5.1 ч.1</td><td>Заведомо ложный донос об уголовном преступлении</td><td class="art-fine">Штраф / возможна уголовная</td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-title">Ст. 5.1 ч. 1 АК — Ложный донос</div><div class="art-panel-body">Заведомо ложный донос о совершении преступления. При наличии тяжких последствий — возможна уголовная ответственность.</div><div class="art-panel-pun">💰 Штраф или уголовная ответственность в зависимости от тяжести последствий</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">5.2</td><td>Вмешательство / воспрепятствование задержанию или разбирательству (административный уровень)</td><td class="art-fine">$8,000</td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-title">Ст. 5.2 АК — Воспрепятствование задержанию</div><div class="art-panel-body">Вмешательство или воспрепятствование задержанию или административному разбирательству. При значительном вреде — уголовная ответственность.</div><div class="art-panel-pun">💰 Штраф: $8,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)">
+            <td class="art-num">6.4 ч.1</td><td>Оскорбление — негативная оценка личности в неприличной форме</td><td class="art-fine">Штраф</td>
+          </tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-title">Ст. 6.4 ч. 1 АК — Оскорбление (административное)</div><div class="art-panel-body">Оскорбление — унижение чести и достоинства другого лица, выраженное в неприличной форме. В отношении представителя власти при исполнении — уголовная ответственность (ст. 17.3 УК).</div><div class="art-panel-pun">💰 Штраф (размер определяется судом или ОГП)</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="alert a-warn">
+    <span class="alert-ico">⏱️</span>
+    <div><strong>Срок давности АК — 72 часа</strong> при условии, что лицо намеренно не скрывалось. При совершении нескольких нарушений штраф назначается за каждое отдельно (ст. 1.11 АК).</div>
+  </div>
+</section>
+
+<!-- ═══════════ ROAD CODE ═══════════ -->
+<section class="section" id="road">
+  <div class="section-head">
+    <span class="section-ico">🚗</span>
+    <div class="section-titles">
+      <div class="section-title">Дорожный кодекс</div>
+      <div class="section-sub">ПДД штата Сан-Андреас · ключевые нормы</div>
+    </div>
+  </div>
+
+  <div class="grid-2 mb14">
+    <div class="card card-blue">
+      <div class="card-title">🚦 Скоростные лимиты (ст. 28 ДК)</div>
+      <div class="card-body">
+        <div class="info-list">
+          <div class="info-row"><span class="ir-k">В населённых пунктах</span><span class="ir-v mono">100 км/ч</span></div>
+          <div class="info-row"><span class="ir-k">За городом</span><span class="ir-v mono">120 км/ч</span></div>
+          <div class="info-row"><span class="ir-k">Дорога с разделителем</span><span class="ir-v mono">160 км/ч</span></div>
+          <div class="info-row"><span class="ir-k">Автомагистраль</span><span class="ir-v mono">200 км/ч</span></div>
+          <div class="info-row"><span class="ir-k">Буксировка ТС</span><span class="ir-v mono red">50 км/ч</span></div>
+        </div>
+        <div style="margin-top:10px;font-size:12px;color:var(--txt3)">Штраф за превышение: до $15,000</div>
+      </div>
+    </div>
+    <div class="card card-gold">
+      <div class="card-title">🚨 Приоритет спецтранспорта (ст. 11–12 ДК)</div>
+      <div class="card-body">
+        <div style="display:flex;flex-direction:column;gap:6px;font-size:13px">
+          <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--red-l);font-weight:700">1.</span><span><strong>EMS (скорая)</strong> — абсолютный приоритет</span></div>
+          <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--gold);font-weight:700">2.</span><span>Полиция / Шериф / FIB — с маячками и сиреной</span></div>
+          <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--txt2);font-weight:700">3.</span><span>Остальные спецслужбы</span></div>
+        </div>
+        <div style="margin-top:10px;font-size:12px;color:var(--txt3)">Не уступил EMS — штраф до $10,000</div>
+        <div style="margin-top:4px;font-size:12px;color:var(--txt3)">Сотрудник со спецсигналами может отступать от разметки и знаков при обеспечении безопасности. Нарушение = штраф до $15,000.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap mb14">
+    <div class="tbl-head">📜 Ключевые статьи дорожного кодекса</div>
+    <div class="tbl-scroll">
+      <table class="law-table">
+        <thead><tr><th>Ст.</th><th>Описание нарушения</th><th>Штраф (макс.)</th></tr></thead>
+        <tbody>
+          <tr onclick="toggleArt(this)"><td class="art-num">1</td><td>Не предъявил водительскую лицензию и документы по требованию сотрудника</td><td class="art-fine">до $5,000</td></tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-pun">💰 Штраф: до $5,000</div><div class="art-panel-body">При отсутствии документов — идентификация личности по процедуре. При управлении ТС без лицензии — дополнительно ст. 64 ДК.</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)"><td class="art-num">2</td><td>Не остановился по требованию сотрудника / не покинул транспортное средство</td><td class="art-fine">до $5,000</td></tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-pun">💰 Штраф: до $5,000</div><div class="art-panel-body">Отказ остановиться при включённых маячках и сирене может быть квалифицирован как уклонение от задержания (ст. 16.12 УК) при наличии умысла.</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)"><td class="art-num">4</td><td>Покинул место ДТП / перемещал предметы с места происшествия</td><td class="art-fine">до $10,000</td></tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-pun">💰 Штраф: до $10,000</div><div class="art-panel-body">Обязанность участника ДТП: остановиться, включить аварийную сигнализацию, выставить знак, при необходимости вызвать EMS и сообщить в дежурную часть.</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)"><td class="art-num">5</td><td>Не оказал помощь при ДТП с пострадавшими / не вызвал EMS</td><td class="art-fine">до $20,000</td></tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-pun">💰 Штраф: до $20,000</div><div class="art-panel-body">Оставление пострадавшего без помощи при возможности её оказать. Если пострадавший скончался — возможна уголовная ответственность.</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)"><td class="art-num">6</td><td>Передача управления ТС лицу без лицензии / в состоянии опьянения</td><td class="art-fine">до $10,000</td></tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-pun">💰 Штраф: до $10,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)"><td class="art-num">7</td><td>Въезд в организованную колонну / кортеж</td><td class="art-fine">до $20,000</td></tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-pun">💰 Штраф: до $20,000</div><div class="art-panel-body">Кортеж лиц с иммунитетом не может быть остановлен, досмотрен или обыскан (ст. 5 ч. 3 Закона о неприкосновенности). Положения ДК к кортежу не применяются.</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)"><td class="art-num">8</td><td>Использование телефона за рулём без устройства hands-free</td><td class="art-fine">до $5,000</td></tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-pun">💰 Штраф: до $5,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)"><td class="art-num">9</td><td>Безрассудное / агрессивное вождение, создающее угрозу другим участникам</td><td class="art-fine">до $10,000</td></tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-pun">💰 Штраф: до $10,000</div><div class="art-panel-body">При ДТП с пострадавшими — совокупно с иными статьями ДК и возможной уголовной ответственностью.</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)"><td class="art-num">16</td><td>Движение пешехода по проезжей части (вне пешеходного перехода)</td><td class="art-fine">до $7,000</td></tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-pun">💰 Штраф: до $7,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)"><td class="art-num">23</td><td>Разворот в запрещённом месте</td><td class="art-fine">до $8,000</td></tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-pun">💰 Штраф: до $8,000</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)"><td class="art-num">24–25</td><td>Движение по встречной полосе / выезд на встречку на двусторонней дороге</td><td class="art-fine">до $15,000</td></tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-pun">💰 Штраф: до $8,000 (ст.24) / до $15,000 (ст.25)</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)"><td class="art-num">28</td><td>Превышение скоростного лимита</td><td class="art-fine">до $15,000</td></tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-pun">💰 Штраф: до $15,000 (размер варьируется от величины превышения)</div></div></td></tr>
+
+          <tr onclick="toggleArt(this)"><td class="art-num">64</td><td>Управление транспортным средством без водительской лицензии</td><td class="art-fine">Штраф + изъятие ТС</td></tr>
+          <tr class="art-panel-row"><td colspan="3"><div class="art-panel"><div class="art-panel-pun">💰 Штраф (размер определяется сотрудником)</div><div class="art-panel-body">ТС может быть задержано. При систематическом нарушении — административная ответственность с большей санкцией.</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROCEDURAL ═══════════ -->
+<section class="section" id="procedural">
+  <div class="section-head">
+    <span class="section-ico">🔏</span>
+    <div class="section-titles">
+      <div class="section-title">Процессуальный кодекс</div>
+      <div class="section-sub">Права и обязанности · доказательства · обыск</div>
+    </div>
+  </div>
+
+  <div class="grid-2 mb14">
+    <div>
+      <div class="tbl-wrap mb14">
+        <div class="tbl-head">🏠 Обыск и осмотр (ст. 4 ПК)</div>
+        <div style="padding:14px">
+          <div class="info-list">
+            <div class="info-row"><span class="ir-k">Осмотр жилища</span><span class="ir-v">С согласия жильца ИЛИ судебный акт</span></div>
+            <div class="info-row"><span class="ir-k">Обыск жилища</span><span class="ir-v">Ордер суда / ГП / зам. ГП. В исключит. случаях — без ордера</span></div>
+            <div class="info-row"><span class="ir-k">Обыск нежилого помещения</span><span class="ir-v">Только ордер (суд / ГП / зам. ГП)</span></div>
+            <div class="info-row"><span class="ir-k">Авто неприкосновенного лица</span><span class="ir-v">Только с его согласия (ст. 4 ч. 6 Закона о неприкосн.)</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="tbl-wrap">
+        <div class="tbl-head">🔒 Залог (ст. 5.10 УК)</div>
+        <div style="padding:14px">
+          <div class="info-list">
+            <div class="info-row"><span class="ir-k">1 год л/с</span><span class="ir-v mono">$25,000</span></div>
+            <div class="info-row"><span class="ir-k">2 года л/с</span><span class="ir-v mono">$50,000</span></div>
+            <div class="info-row"><span class="ir-k">3 года л/с</span><span class="ir-v mono">$75,000</span></div>
+            <div class="info-row"><span class="ir-k">4 года л/с</span><span class="ir-v mono">$100,000</span></div>
+            <div class="info-row"><span class="ir-k">5 лет л/с</span><span class="ir-v mono red">ЗАЛОГ НЕ ПРЕДУСМОТРЕН</span></div>
+          </div>
+          <div style="margin-top:10px;font-size:12px;color:var(--txt3)">Только по статьям без судимости. Залог устанавливается пропорционально: 1 год = $25,000.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="tbl-wrap mb14">
+        <div class="tbl-head">⚖️ Презумпция невиновности (ст. 6 ПК)</div>
+        <div style="padding:14px;font-size:13px;line-height:1.8;color:var(--txt2)">
+          Обвиняемый <strong style="color:var(--txt1)">считается невиновным</strong> до доказательства вины.<br><br>
+          Бремя доказывания — на <strong style="color:var(--txt1)">стороне обвинения</strong>.<br><br>
+          Все сомнения — <strong style="color:var(--txt1)">в пользу обвиняемого</strong>.<br>
+          Приговор не может основываться на предположениях.
+          <div class="alert a-warn mt8">
+            <span class="alert-ico">⚠️</span>
+            <div>БОЛО-розыск в полном объёме доказывает вину разыскиваемого — обвиняемому необходимо доказать свою невиновность.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tbl-wrap">
+        <div class="tbl-head">📝 Доказательства (ст. 11 ПК)</div>
+        <div style="padding:14px;font-size:13px;line-height:1.85;color:var(--txt1)">
+          ✅ Показания подозреваемого / обвиняемого<br>
+          ✅ Показания потерпевшего и свидетеля<br>
+          ✅ Заключение эксперта<br>
+          ✅ Вещественные доказательства<br>
+          ✅ Фото- и видеофиксация<br>
+          ✅ Запись в базе БОЛО-розыска<br>
+          ✅ Протоколы следственных действий<br>
+          <div style="margin-top:8px;color:var(--red-l)">
+          ❌ Показания до зачитывания Миранды<br>
+          ❌ Показания, основанные на слухах<br>
+          ❌ Улики, добытые незаконным путём
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap mb14">
+    <div class="tbl-head">🔗 Права задержанного и обязанности сотрудника</div>
+    <div style="padding:16px">
+      <div class="grid-3">
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--txt3);text-transform:uppercase;margin-bottom:8px">Адвокат вправе требовать</div>
+          <div style="font-size:13px;color:var(--txt2);line-height:1.9">
+            ✅ Причину задержания<br>
+            ✅ Видеофиксацию процедуры<br>
+            ✅ Встречу с задержанным<br>
+            ✅ Первичные документы и ордер<br>
+            ✅ Конфиденциальную беседу<br>
+            <span style="color:var(--red-l);font-size:12px">Противодействие — ст. 16.1.1 УК ★★★★</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--txt3);text-transform:uppercase;margin-bottom:8px">Права задержанного</div>
+          <div style="font-size:13px;color:var(--txt2);line-height:1.9">
+            ✅ Один телефонный звонок<br>
+            ✅ Вызов адвоката (3 мин.)<br>
+            ✅ Молчать без последствий<br>
+            ✅ Знать причину задержания<br>
+            ✅ Обжаловать действия сотрудника
+          </div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--txt3);text-transform:uppercase;margin-bottom:8px">Гражданин при встрече с сотрудником</div>
+          <div style="font-size:13px;color:var(--txt2);line-height:1.9">
+            ✅ Снимать видео действий полиции<br>
+            ✅ Требовать назвать имя / жетон<br>
+            ✅ Отказаться от добровольного досмотра<br>
+            ✅ Не отвечать на вопросы до адвоката<br>
+            <span style="color:var(--red-l);font-size:12px">❌ Нельзя препятствовать законным действиям</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ IMMUNITY ═══════════ -->
+<section class="section" id="immunity">
+  <div class="section-head">
+    <span class="section-ico">🛡️</span>
+    <div class="section-titles">
+      <div class="section-title">Неприкосновенность должностных лиц</div>
+      <div class="section-sub">Закон «Об обеспечении неприкосновенности государственных служащих»</div>
+    </div>
+  </div>
+
+  <div class="alert a-gold mb14">
+    <span class="alert-ico">🛡️</span>
+    <div><strong>Лицо с иммунитетом НЕ МОЖЕТ</strong> быть досмотрено, обыскано или задержано — за исключением случаев, когда незаконные действия несут непосредственную угрозу жизни и здоровью окружающих (ст. 7 ч. 1 Закона).</div>
+  </div>
+
+  <div class="grid-2 mb14">
+    <div class="tbl-wrap">
+      <div class="tbl-head">🏛️ Лица, обладающие иммунитетом (ст. 2)</div>
+      <div class="imm-list">
+        <div class="imm-row"><span class="imm-dot"></span><span class="imm-role">Губернатор штата Сан-Андреас</span></div>
+        <div class="imm-row"><span class="imm-dot"></span><span class="imm-role">Вице-Губернатор штата Сан-Андреас</span></div>
+        <div class="imm-row"><span class="imm-dot"></span><span class="imm-role">Советники Губернатора</span></div>
+        <div class="imm-row"><span class="imm-dot"></span><span class="imm-role">Главы департаментов Правительства и их заместители</span></div>
+        <div class="imm-row"><span class="imm-dot"></span><span class="imm-role">Судьи всех категорий</span></div>
+        <div class="imm-row"><span class="imm-dot"></span><span class="imm-role">Генеральный Прокурор штата и его заместители</span></div>
+        <div class="imm-row"><span class="imm-dot"></span><span class="imm-role">Руководители органов гос. власти и их заместители</span></div>
+        <div class="imm-row"><span class="imm-dot"></span><span class="imm-role">Руководитель Weazel News и его заместители</span></div>
+        <div class="imm-row"><span class="imm-dot"></span><span class="imm-role">Спикер Сената</span></div>
+        <div class="imm-row"><span class="imm-dot"></span><span class="imm-role">Сенаторы</span><span class="imm-note">только в период Собрания Сената</span></div>
+        <div class="imm-row"><span class="imm-dot"></span><span class="imm-role">Служащие Офиса Генерального Прокурора</span><span class="imm-note">при исполнении обязанностей</span></div>
+        <div class="imm-row"><span class="imm-dot"></span><span class="imm-role">Адвокаты штата</span><span class="imm-note">только в период судопроизводства</span></div>
+        <div class="imm-row"><span class="imm-dot"></span><span class="imm-role">Сотрудники Секретной Службы</span><span class="imm-note">при сопровождении неприкосновенного</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="tbl-wrap mb14">
+        <div class="tbl-head">⚡ Основания для приостановления иммунитета (ст. 6)</div>
+        <div style="padding:14px">
+          <div class="info-list">
+            <div class="info-row"><span class="ir-k">а) Судебное заседание</span><span class="ir-v">С начала и до оглашения решения</span></div>
+            <div class="info-row"><span class="ir-k">б) Отстранение от обязанностей</span><span class="ir-v">До 72 часов, решением руководителя / ГП / суда</span></div>
+            <div class="info-row"><span class="ir-k">в) Ордер на арест (RI)</span><span class="ir-v">С момента авторизации ордера</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tbl-wrap mb14">
+        <div class="tbl-head">🚔 Порядок задержания при угрозе жизни (ст. 7 ч. 2)</div>
+        <div style="padding:14px">
+          <div class="steps">
+            <div class="step"><span class="step-n">1</span><div class="step-c"><strong>Задержание</strong><span>Только при посягательстве на чью-либо жизнь. Незамедлительно доставить в правоохранительный орган.</span></div></div>
+            <div class="step"><span class="step-n">2</span><div class="step-c"><strong>Уведомление</strong><span>Немедленно уведомить лиц, уполномоченных выдавать ордер на арест задержанного.</span></div></div>
+            <div class="step"><span class="step-n">3</span><div class="step-c"><strong>Ордер</strong><span>Уполномоченные лица изучают материалы и принимают решение о выдаче ордера RI.</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tbl-wrap">
+        <div class="tbl-head">🚗 Кортеж и транспорт неприкосновенного (ст. 4 ч. 6, ст. 5 ч. 3)</div>
+        <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.8">
+          Служебный и личный автотранспорт неприкосновенного лица, а также автотранспорт сопровождения <strong style="color:var(--txt1)">НЕ МОЖЕТ быть досмотрен и/или обыскан</strong> без его согласия.<br><br>
+          Организованный кортеж с неприкосновенным лицом вне зависимости от состава <strong style="color:var(--txt1)">НЕ МОЖЕТ быть остановлен, досмотрен и/или обыскан</strong> при любых обстоятельствах.<br><br>
+          Положения Дорожного кодекса к кортежу <strong style="color:var(--red-l)">не применяются</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap mb14">
+    <div class="tbl-head">📋 Что может и не может быть применено к неприкосновенному лицу (ст. 4)</div>
+    <div style="padding:16px">
+      <div class="grid-2">
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--green);text-transform:uppercase;margin-bottom:8px">✅ ПРИМЕНЯЕТСЯ</div>
+          <div style="font-size:13px;color:var(--txt2);line-height:1.9">
+            ✅ Дисциплинарная ответственность руководством (ТК)<br>
+            ✅ Ответственность по решению суда<br>
+            ✅ Ответственность нормативным актом ГП или зам. ГП<br>
+            ✅ Гражданско-правовая ответственность (по суду)<br>
+            ✅ Иск или жалоба в рамках гражданского судопроизводства
+          </div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:8px">❌ НЕ ПРИМЕНЯЕТСЯ</div>
+          <div style="font-size:13px;color:var(--txt2);line-height:1.9">
+            ❌ Уголовная ответственность без приостановления иммунитета<br>
+            ❌ Административная ответственность без акта ГП/суда<br>
+            ❌ Дорожные штрафы без акта ГП/суда<br>
+            ❌ Задержание без угрозы жизни / ордера RI<br>
+            ❌ Досмотр транспорта без согласия
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert a-info">
+    <span class="alert-ico">⚖️</span>
+    <div><strong>Независимость судей (ст. 9):</strong> Ни одно лицо не может привлечь судью к ответственности, кроме случаев, предусмотренных законом. Ни одно лицо не может оказывать давление на судей. Судебная власть действует независимо от исполнительной.</div>
+  </div>
+</section>
+
+<!-- ═══════════ TERRITORIES ═══════════ -->
+<section class="section" id="territories">
+  <div class="section-head">
+    <span class="section-ico">🗺️</span>
+    <div class="section-titles">
+      <div class="section-title">Охраняемые территории</div>
+      <div class="section-sub">Приложение к УК · Закрытые и охраняемые объекты</div>
+    </div>
+    <div class="section-meta">ст. 12.7 УК</div>
+  </div>
+
+  <div class="alert a-danger mb14">
+    <span class="alert-ico">🚫</span>
+    <div><strong>Незаконное проникновение:</strong> Охраняемый объект — ★★★ (3 года / $20–50k) · Особо охраняемый объект — ★★★★ (4–5 лет / $60–80k) · Должностное лицо — ★★★★★ (5 лет · судимость)</div>
+  </div>
+
+  <div class="subsec-title">🟡 Охраняемые объекты (ст. 1)</div>
+  <div class="territory-card">
+    <div class="tc-head">
+      <span class="tc-badge tc-badge-guard">Охраняемый</span>
+      <span class="tc-name">Участки LSPD и LSCSD (Sheriff Department) + служебные парковки</span>
+    </div>
+    <div class="tc-list">Доступ в холл открыт для граждан. За пределами холла — только:
+      <ul>
+        <li>Губернатор, Вице-губернатор, Глава ДНБ и заместители</li>
+        <li>ГП, заместители ГП, сотрудники ОГП</li>
+        <li>Судьи (с целью Хабеас Корпус или служебной необходимости)</li>
+        <li>Адвокаты — только на территорию КПЗ и направляясь в/из КПЗ (5 мин. после окончания)</li>
+        <li>EMS — при оказании мед. помощи и плановых проверках</li>
+        <li>Руководство сотрудников при задержании подчинённых — по вызову</li>
+        <li>Сотрудники IB — только в КПЗ с целью надзора</li>
+        <li>Пропуск от Шерифа / Шефа или пропуск Губернатора / ГП (действует до 30 суток)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="territory-card">
+    <div class="tc-head">
+      <span class="tc-badge tc-badge-guard">Охраняемый</span>
+      <span class="tc-name">Капитолий штата Сан-Андреас и Здание суда (кроме холла)</span>
+    </div>
+    <div class="tc-list">
+      <ul>
+        <li>Сотрудники Правительства штата, участники судебного процесса (по повестке)</li>
+        <li>Сенаторы и приглашённые ими лица — для работы Сената</li>
+        <li>EMS при оказании помощи или проверках</li>
+        <li>Иные лица в сопровождении сотрудников Правительства или с пропуском Губернатора / ГП / ДНБ</li>
+      </ul>
+      <br>⚠️ Посетители в суде: обязательно предъявить документ, удостоверяющий личность. Запрещены: алкоголь/наркотики, животные, спортивная одежда, закрывающая лицо одежда.
+    </div>
+  </div>
+
+  <div class="territory-card">
+    <div class="tc-head">
+      <span class="tc-badge tc-badge-guard">Охраняемый</span>
+      <span class="tc-name">EMS · Weazel News · Остров Кайо-Перико (1 миля воды) · Авианосец (1 миля воды)</span>
+    </div>
+    <div class="tc-list">Доступ ограничен сотрудниками соответствующих ведомств, Губернатором, Вице-Губернатором, ГП, сотрудниками ОГП, ДНБ. Для WN посетители допускаются в холл.</div>
+  </div>
+
+  <div class="subsec-title">🔴 Особо охраняемые объекты (ст. 2)</div>
+
+  <div class="territory-card">
+    <div class="tc-head">
+      <span class="tc-badge tc-badge-special">Особо охраняемый</span>
+      <span class="tc-name">Форт-Занкудо (военная база)</span>
+    </div>
+    <div class="tc-list">Имеют доступ:
+      <ul>
+        <li>Военнослужащие Национальной Гвардии штата</li>
+        <li>Губернатор, Вице-Губернатор, Глава ДНБ и заместители</li>
+        <li>Глава Администрации Губернатора и заместители</li>
+        <li>Сотрудники Правительства в сопровождении с Губернатором</li>
+        <li>ГП, заместители ГП, сотрудники ОГП</li>
+        <li>Судьи и секретари суда — с целью реализации Хабеас Корпус</li>
+        <li>EMS — плановые проверки и экстренная помощь</li>
+        <li>Другие граждане в сопровождении генералитета NG или с пропуском Генерала NG и Губернатора (письменно)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="territory-card">
+    <div class="tc-head">
+      <span class="tc-badge tc-badge-special">Особо охраняемый</span>
+      <span class="tc-name">Офис FIB</span>
+    </div>
+    <div class="tc-list">Имеют доступ:
+      <ul>
+        <li>Губернатор, Вице-Губернатор, Глава ДА Губернатора</li>
+        <li>Сотрудники Правительства в сопровождении Губернатора</li>
+        <li>ГП, заместители ГП, сотрудники ОГП</li>
+        <li>Глава ДНБ и заместители; Директора FIB</li>
+        <li>Адвокаты — только в КПЗ и направляясь в/из (только по вызову через телефон)</li>
+        <li>EMS — экстренная помощь и плановые проверки</li>
+        <li>Руководство сотрудников при задержании подчинённых — по вызову</li>
+        <li>Сотрудники правоохранительных органов в сопровождении руководства ФРБ</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert a-info mt14">
+    <span class="alert-ico">ℹ️</span>
+    <div><strong>Законные цели визита в LSPD/LSCSD (холл):</strong> оформление лицензии CDWL, трудоустройство, заявление о правонарушении, явка с повинной, запись на КМБ, добровольная сдача нелегальных предметов.</div>
+  </div>
+
+  <div class="tbl-wrap mt14">
+    <div class="tbl-head">🖼️ Визуализация территорий и особых объектов штата San Andreas (клик для увеличения)</div>
+    <div style="padding:14px">
+      <div class="gallery-group">
+        <div class="gallery-title">Government of San-Andreas State</div>
+        <div class="gallery-grid">
+          <img class="gallery-img" src="gov1.png" alt="Government 1"><img class="gallery-img" src="gov2.png" alt="Government 2"><img class="gallery-img" src="gov3.png" alt="Government 3"><img class="gallery-img" src="gov4.png" alt="Government 4"><img class="gallery-img" src="gov5.png" alt="Government 5"><img class="gallery-img" src="gov6.png" alt="Government 6"><img class="gallery-img" src="gov7.png" alt="Government 7"><img class="gallery-img" src="gov8.png" alt="Government 8">
+        </div>
+      </div>
+      <div class="gallery-group">
+        <div class="gallery-title">Federal Investigation Bureau</div>
+        <div class="gallery-grid">
+          <img class="gallery-img" src="fib1.png" alt="FIB 1"><img class="gallery-img" src="fib2.png" alt="FIB 2"><img class="gallery-img" src="fib3.png" alt="FIB 3">
+        </div>
+      </div>
+      <div class="gallery-group">
+        <div class="gallery-title">EMS LS</div>
+        <div class="gallery-grid">
+          <img class="gallery-img" src="ems1.png" alt="EMS LS 1"><img class="gallery-img" src="ems2.png" alt="EMS LS 2"><img class="gallery-img" src="ems3.png" alt="EMS LS 3"><img class="gallery-img" src="ems4.png" alt="EMS LS 4"><img class="gallery-img" src="ems5.png" alt="EMS LS 5"><img class="gallery-img" src="ems6.png" alt="EMS LS 6"><img class="gallery-img" src="ems7.png" alt="EMS LS 7"><img class="gallery-img" src="ems8.png" alt="EMS LS 8"><img class="gallery-img" src="ems9.png" alt="EMS LS 9">
+        </div>
+      </div>
+      <div class="gallery-group">
+        <div class="gallery-title">EMS Paleto Bay</div>
+        <div class="gallery-grid">
+          <img class="gallery-img" src="ems paleto1.png" alt="EMS Paleto 1"><img class="gallery-img" src="ems paleto2.png" alt="EMS Paleto 2"><img class="gallery-img" src="ems paleto3.png" alt="EMS Paleto 3"><img class="gallery-img" src="ems paleto4.png" alt="EMS Paleto 4">
+        </div>
+      </div>
+      <div class="gallery-group">
+        <div class="gallery-title">EMS Sendi Shors and LSCSD</div>
+        <div class="gallery-grid">
+          <img class="gallery-img" src="ems sendik1.png" alt="EMS Sendik 1"><img class="gallery-img" src="ems sendik2.png" alt="EMS Sendik 2"><img class="gallery-img" src="ems sendik3.png" alt="EMS Sendik 3"><img class="gallery-img" src="ems sendik4.png" alt="EMS Sendik 4"><img class="gallery-img" src="ems sendik5.png" alt="EMS Sendik 5"><img class="gallery-img" src="ems sendik6.png" alt="EMS Sendik 6"><img class="gallery-img" src="ems sendik7.png" alt="EMS Sendik 7"><img class="gallery-img" src="ems sendik8.png" alt="EMS Sendik 8"><img class="gallery-img" src="ems sendik9.png" alt="EMS Sendik 9">
+        </div>
+      </div>
+      <div class="gallery-group">
+        <div class="gallery-title">LSCSD Paleto Bay</div>
+        <div class="gallery-grid">
+          <img class="gallery-img" src="lscsd paleto1.png" alt="LSCSD Paleto 1"><img class="gallery-img" src="lscsd paleto2.png" alt="LSCSD Paleto 2"><img class="gallery-img" src="lscsd paleto3.png" alt="LSCSD Paleto 3"><img class="gallery-img" src="lscsd paleto4.png" alt="LSCSD Paleto 4"><img class="gallery-img" src="lscsd paleto5.png" alt="LSCSD Paleto 5">
+        </div>
+      </div>
+      <div class="gallery-group">
+        <div class="gallery-title">Police Department</div>
+        <div class="gallery-grid">
+          <img class="gallery-img" src="pd1.png" alt="PD 1"><img class="gallery-img" src="pd2.png" alt="PD 2"><img class="gallery-img" src="pd3.png" alt="PD 3"><img class="gallery-img" src="pd4.png" alt="PD 4"><img class="gallery-img" src="pd5.png" alt="PD 5"><img class="gallery-img" src="pd6.png" alt="PD 6"><img class="gallery-img" src="pd7.png" alt="PD 7"><img class="gallery-img" src="pd8.png" alt="PD 8"><img class="gallery-img" src="pd9.png" alt="PD 9">
+        </div>
+      </div>
+      <div class="gallery-group">
+        <div class="gallery-title">SANG</div>
+        <div class="gallery-grid">
+          <img class="gallery-img" src="ng1.png" alt="SANG 1"><img class="gallery-img" src="ng2.png" alt="SANG 2"><img class="gallery-img" src="ng3.png" alt="SANG 3"><img class="gallery-img" src="ng4.png" alt="SANG 4">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ JURISDICTION ═══════════ -->
+<section class="section" id="jurisdiction">
+  <div class="section-head">
+    <span class="section-ico">📍</span>
+    <div class="section-titles">
+      <div class="section-title">Территориальная юрисдикция</div>
+      <div class="section-sub">Закон «О деятельности региональных правоохранительных органов»</div>
+    </div>
+  </div>
+
+  <div class="grid-2 mb14">
+    <div class="card card-gold">
+      <div class="card-title">⭐ LSCSD — Департамент Шерифа</div>
+      <div class="card-body">
+        <strong>Основная юрисдикция:</strong><br>
+        Округ Блейн, Округ Лос-Сантос (за исключением города), остров Кайо-Перико<br><br>
+        <strong>Разрешено выйти за пределы:</strong><br>
+        — Преследование нарушителя (ст. 5 ч. 1а)<br>
+        — По приглашению руководства LSPD (консультация, взаимодействие)<br>
+        — С 22:00 по 12:00 — в любой точке штата<br>
+        — Оказание помощи другим органам по запросу<br>
+        — Шериф и заместители — без ограничений
+      </div>
+    </div>
+    <div class="card card-blue">
+      <div class="card-title">🏙️ LSPD — Полицейский Департамент</div>
+      <div class="card-body">
+        <strong>Основная юрисдикция:</strong><br>
+        Город Лос-Сантос, Чумаш, остров Кайо-Перико<br><br>
+        <strong>Разрешено выйти за пределы:</strong><br>
+        — Преследование нарушителя<br>
+        — Приграничная территория (1,5 км от города)<br>
+        — По приглашению руководства LSCSD<br>
+        — С 22:00 по 12:00 — в любой точке штата<br>
+        — Оказание помощи другим органам по запросу
+      </div>
+    </div>
+  </div>
+
+  <div class="alert a-warn mb14">
+    <span class="alert-ico">💸</span>
+    <div><strong>Нарушение юрисдикции без оснований (ст. 6):</strong> Административный штраф $20,000–$50,000 от ОГП, суда или органа административного надзора внутри структуры.</div>
+  </div>
+
+  <div class="tbl-wrap mb14">
+    <div class="tbl-head">🤝 Взаимодействие ведомств</div>
+    <div style="padding:16px">
+      <div class="info-list">
+        <div class="info-row"><span class="ir-k">ФРБ (FIB)</span><span class="ir-v">Вправе изъять любые дела федеральной юрисдикции. LSCSD обязан передать материалы и прекратить производство (ст. 15)</span></div>
+        <div class="info-row"><span class="ir-k">Секретная Служба (SS)</span><span class="ir-v">Изымает дела о посягательстве на жизнь членов правительства, экон. преступлениях, должностных преступлениях (ст. 16)</span></div>
+        <div class="info-row"><span class="ir-k">Нацгвардия</span><span class="ir-v">Кооперация при совместных следственных мероприятиях (ст. 17)</span></div>
+        <div class="info-row"><span class="ir-k">Договор о нарушении юрисдикции</span><span class="ir-v">Согласован устно с ГП или Главой ДНБ; при фед. юрисдикции — письменное распоряжение ГП</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert a-info">
+    <span class="alert-ico">🔹</span>
+    <div><strong>Подчинение (ст. 1 ч. 2–3):</strong> Сотрудники LSCSD напрямую подчинены Шерифу LSCSD, его заместителям, а также Департаменту Национальной Безопасности, его заместителям, Вице-губернатору и Губернатору.</div>
+  </div>
+</section>
+
+<!-- ═══════════ BAIL & TIMINGS ═══════════ -->
+<section class="section" id="bail">
+  <div class="section-head">
+    <span class="section-ico">💰</span>
+    <div class="section-titles">
+      <div class="section-title">Залог и ключевые сроки</div>
+      <div class="section-sub">Процессуальный кодекс · Уголовный кодекс</div>
+    </div>
+  </div>
+
+  <div class="grid-3 mb14">
+    <div class="tbl-wrap">
+      <div class="tbl-head">💰 Таблица залога (ст. 5.10 УК)</div>
+      <div style="padding:14px">
+        <div class="info-list">
+          <div class="info-row"><span class="ir-k">1 год л/с</span><span class="ir-v mono">$25,000</span></div>
+          <div class="info-row"><span class="ir-k">2 года л/с</span><span class="ir-v mono">$50,000</span></div>
+          <div class="info-row"><span class="ir-k">3 года л/с</span><span class="ir-v mono">$75,000</span></div>
+          <div class="info-row"><span class="ir-k">4 года л/с</span><span class="ir-v mono">$100,000</span></div>
+          <div class="info-row"><span class="ir-k">5 лет л/с (судимость)</span><span class="ir-v mono red">Недоступно</span></div>
+        </div>
+        <div style="margin-top:10px;font-size:12px;color:var(--txt3)">Только по статьям, не влекущим судимость. Формула: лет × $25,000.</div>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <div class="tbl-head">⏱️ Процессуальные сроки</div>
+      <div style="padding:14px">
+        <div class="info-list">
+          <div class="info-row"><span class="ir-k">Макс. задержание без ордера</span><span class="ir-v mono">≈1 час</span></div>
+          <div class="info-row"><span class="ir-k">Звонок / вызов адвоката</span><span class="ir-v mono">3 мин.</span></div>
+          <div class="info-row"><span class="ir-k">Ответ прокурора</span><span class="ir-v mono">15 мин.</span></div>
+          <div class="info-row"><span class="ir-k">Уведомление рук-ва</span><span class="ir-v mono">3 мин. (тел.)</span></div>
+          <div class="info-row"><span class="ir-k">Срок давности АК</span><span class="ir-v mono">72 часа</span></div>
+          <div class="info-row"><span class="ir-k">Обжалование</span><span class="ir-v mono">48 часов</span></div>
+          <div class="info-row"><span class="ir-k">Приостановление иммунитета</span><span class="ir-v mono">до 72 часов</span></div>
+          <div class="info-row"><span class="ir-k">Пропуск ГП / Губернатора</span><span class="ir-v mono">до 30 суток</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <div class="tbl-head">📋 Смягчающие обстоятельства (ст. 5.3 УК)</div>
+      <div style="padding:14px;font-size:12.5px;color:var(--txt2);line-height:1.9">
+        ✅ Явка с повинной<br>
+        ✅ Активное содействие следствию<br>
+        ✅ Возмещение ущерба потерпевшему<br>
+        ✅ Несовершеннолетний возраст<br>
+        ✅ Беременность / малолетний ребёнок<br>
+        ✅ Совершение под принуждением<br>
+        ✅ Аффект (вызванный незакон. действиями жертвы)<br>
+        <br>
+        <div style="font-size:11px;color:var(--txt3)">Явка с повинной по ст. 16.15 УК = ½ наказания</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FORCE ═══════════ -->
+<section class="section" id="force">
+  <div class="section-head">
+    <span class="section-ico">💪</span>
+    <div class="section-titles">
+      <div class="section-title">Применение силы</div>
+      <div class="section-sub">Уровни физического воздействия</div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <div class="tbl-head">🔺 Шкала применения силы</div>
+    <div style="padding:16px">
+      <div class="force-bar">
+        <div class="force-level">
+          <span class="fn fn1">1</span>
+          <div>
+            <div class="f-title">Вербальный контроль</div>
+            <div class="f-desc">Словесные команды, объяснения. Требование остановиться, предъявить документы, подчиниться.</div>
+          </div>
+        </div>
+        <div class="force-level">
+          <span class="fn fn2">2</span>
+          <div>
+            <div class="f-title">Физическое удержание</div>
+            <div class="f-desc">Наручники, физическое сопровождение, удержание без причинения боли. При пассивном сопротивлении.</div>
+          </div>
+        </div>
+        <div class="force-level">
+          <span class="fn fn3">3</span>
+          <div>
+            <div class="f-title">Несмертоносные спецсредства</div>
+            <div class="f-desc">Тазер, дубинка, перцовый баллон. При активном физическом сопротивлении. НЕ применять при скоплении людей.</div>
+          </div>
+        </div>
+        <div class="force-level">
+          <span class="fn fn4">4</span>
+          <div>
+            <div class="f-title">Огнестрельное оружие — предупреждение</div>
+            <div class="f-desc">Оружие обнажено, предупреждение. При непосредственной угрозе жизни сотрудника или третьих лиц.</div>
+          </div>
+        </div>
+        <div class="force-level">
+          <span class="fn fn5">5</span>
+          <div>
+            <div class="f-title">Огнестрельное оружие — применение</div>
+            <div class="f-desc">Применение только при угрозе жизни и невозможности нейтрализации иными способами. Обязателен последующий рапорт.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert a-warn mt14">
+    <span class="alert-ico">⚠️</span>
+    <div><strong>Помни:</strong> Применение силы должно быть соразмерно угрозе. Превышение необходимой самообороны или полномочий = ст. 15.1 УК. Всегда фиксируй применение силы в рапорте.</div>
+  </div>
+</section>
+
+<!-- ═══════════ USER UPDATES ═══════════ -->
+<section class="section" id="updates">
+  <div class="section-head">
+    <span class="section-ico">🧾</span>
+    <div class="section-titles">
+      <div class="section-title">Дополнения к памятке</div>
+      <div class="section-sub">Сводка по запросу: лицензии, задержание, адвокат, ОПЗ, оружие, ПК</div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap mb14">
+    <div class="tbl-head">🔗 Важные лицензии</div>
+    <div style="padding:14px">
+      <div class="info-list">
+        <div class="info-row"><span class="ir-k">CDWL</span><span class="ir-v">Лицензия на оружие</span></div>
+        <div class="info-row"><span class="ir-k">FH</span><span class="ir-v">Лицензия на рыбалку</span></div>
+        <div class="info-row"><span class="ir-k">CDL A</span><span class="ir-v">Тягачи и моногрузовики</span></div>
+        <div class="info-row"><span class="ir-k">CDL B</span><span class="ir-v">Пикапы и грузовики</span></div>
+        <div class="info-row"><span class="ir-k">CDL D</span><span class="ir-v">Легковой транспорт</span></div>
+        <div class="info-row"><span class="ir-k">CDL M</span><span class="ir-v">Мотоциклы</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2 mb14">
+    <div class="tbl-wrap">
+      <div class="tbl-head">⚠️ Основания задержания (ст. 16 ч.2 ПК)</div>
+      <div style="padding:14px">
+        <div class="info-list">
+          <div class="info-row"><span class="ir-k">1</span><span class="ir-v">Застигнут госслужащим при преступлении или сразу после</span></div>
+          <div class="info-row"><span class="ir-k">2</span><span class="ir-v">Явные следы правонарушения на лице, одежде, в жилище</span></div>
+          <div class="info-row"><span class="ir-k">3</span><span class="ir-v">Три и более свидетелей указывают на лицо</span></div>
+          <div class="info-row"><span class="ir-k">4</span><span class="ir-v">Есть фото- или видеофиксация правонарушения</span></div>
+          <div class="info-row"><span class="ir-k">5</span><span class="ir-v">Имеется ордер на задержание</span></div>
+          <div class="info-row"><span class="ir-k">6</span><span class="ir-v">Есть требование губернатора/генпрокурора/заместителей</span></div>
+          <div class="info-row"><span class="ir-k">7</span><span class="ir-v">Имеется ориентировка на лицо или ТС</span></div>
+          <div class="info-row"><span class="ir-k">8</span><span class="ir-v">Лицо находится в боло-розыске</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tbl-wrap">
+      <div class="tbl-head">✅ Основания освобождения</div>
+      <div style="padding:14px">
+        <div class="info-list">
+          <div class="info-row"><span class="ir-k">1</span><span class="ir-v">Подозрение не подтвердилось</span></div>
+          <div class="info-row"><span class="ir-k">2</span><span class="ir-v">Нарушение не предусматривает лишение свободы</span></div>
+          <div class="info-row"><span class="ir-k">3</span><span class="ir-v">Задержание произведено с нарушением ч.2 ст.16 ПК</span></div>
+          <div class="info-row"><span class="ir-k">4</span><span class="ir-v">Прошел 1 час и наказание не избрано</span></div>
+          <div class="info-row"><span class="ir-k">5</span><span class="ir-v">Есть неприкосновенность (кроме угрозы жизни/здоровью)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap mb14">
+    <div class="tbl-head">👥 Субъекты задержания</div>
+    <div style="padding:14px">
+      <div class="info-list">
+        <div class="info-row"><span class="ir-k">1</span><span class="ir-v">Сотрудники правоохранительных органов, осуществляющие задержание</span></div>
+        <div class="info-row"><span class="ir-k">2</span><span class="ir-v">Задержанный</span></div>
+        <div class="info-row"><span class="ir-k">3</span><span class="ir-v">Один прокурор</span></div>
+        <div class="info-row"><span class="ir-k">4</span><span class="ir-v">Один адвокат при необходимости</span></div>
+        <div class="info-row"><span class="ir-k">5</span><span class="ir-v">Руководство задержанного государственного служащего</span></div>
+        <div class="info-row"><span class="ir-k">6</span><span class="ir-v">До двух сотрудников USSS/FIB при неприкосновенности</span></div>
+        <div class="info-row"><span class="ir-k">7</span><span class="ir-v">Один сотрудник IB для надзора</span></div>
+        <div class="info-row"><span class="ir-k">8</span><span class="ir-v">Сотрудники Detective Bureau/CID с согласия</span></div>
+        <div class="info-row"><span class="ir-k">9</span><span class="ir-v">Представитель руководства задерживающих сотрудников</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap mb14">
+    <div class="tbl-head">🗺️ Охраняемые территории (общие правила)</div>
+    <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
+      <strong style="color:var(--txt1)">1.1</strong> На охраняемых территориях могут находиться граждане при наличии законного основания пребывания.<br>
+      <strong style="color:var(--txt1)">Примечание:</strong> основания включают получение госуслуг, обращение к госорганам в рабочее время, необходимость неотложной защиты при угрозе жизни/здоровью, ожидание вызова адвоката (для аккредитованных членов коллегии адвокатов).<br>
+      <strong style="color:var(--txt1)">Часть 2:</strong> сотрудник организации или правоохранительного органа вправе потребовать покинуть территорию, если сочтет основание пребывания недостаточным.
+    </div>
+  </div>
+
+  <div class="grid-2 mb14">
+    <div class="tbl-wrap">
+      <div class="tbl-head">🚨 Работа по похищению</div>
+      <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
+        1) Максимальная цена за похищенного: <strong style="color:var(--txt1)">25.000$</strong>, максимум 6 заложников.<br>
+        2) Время на выполнение: <strong style="color:var(--txt1)">15 минут</strong>.<br>
+        3) Зеленый коридор: <strong style="color:var(--txt1)">до 45 сек или до 750м</strong>.<br>
+        4) При контакте с заложниками уточнить их состояние.<br><br>
+        <strong style="color:var(--gold-l)">/dep шаблоны:</strong><br>
+        /dep to ALL: Агент FIB работает по похищению<br>
+        /dep to ALL: Похитители на [цвет] машинах запросили цену за заложников и 45 секунд зеленого коридора. На выполнение 15 минут.<br>
+        /dep to ALL: Заложники спасены, похитители уехали на [цвет] машинах в сторону [место], у них есть 45 секунд зеленого коридора.<br>
+        /dep to ALL: Похитители запросили неадекватные требования. Всем госструктурам прибыть на код 10-20 для пуша.
+      </div>
+    </div>
+
+    <div class="tbl-wrap">
+      <div class="tbl-head">🏦 Работа по ограблению</div>
+      <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
+        1) Допускается только <strong style="color:var(--txt1)">1 заложник</strong>, если он уже был внутри.<br>
+        2) Убедиться, что похищенный реально есть (возможен RP-отыгрыш со стороны грабителей).<br>
+        3) Выкуп деньгами не допускается, только зеленый коридор <strong style="color:var(--txt1)">750м</strong>.<br>
+        4) При выделении коридора грабители обязаны быстро покинуть место.<br>
+        5) Запрос любых требований кроме коридора — пуш-ограбление.
+      </div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap mb14">
+    <div class="tbl-head">🪪 ОПЗ и идентификация сотрудника</div>
+    <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
+      Закон о деятельности региональных правоохранительных органов — ст. 9: сотрудник обязан представиться и показать удостоверение и значок; спецподразделения могут ограничиться значком.<br>
+      ПК — ст. 17 п. б: при задержании предъявить документ/нашивку/жетон/иной знак. ПК ст. 16.3: порядок установки личности при отказе предъявить документы.<br><br>
+      <strong style="color:var(--txt1)">Достаточно ли жетона?</strong> В общем случае нет. Требуются удостоверение и значок. Исключение — спецподразделения по ст. 9. При споре фиксируйте событие, требуйте должность и ФИО; при отказе запускается процедура установления личности по ст. 16.3 ПК.
+    </div>
+  </div>
+
+  <div class="grid-2 mb14">
+    <div class="tbl-wrap">
+      <div class="tbl-head">🔫 По поводу оружия и спецсредств</div>
+      <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
+        Ст. 5: гражданское оружие предназначено для самообороны, спорта, охоты и иных законных целей; обычно имеет префикс <strong style="color:var(--txt1)">A</strong> в серийном номере (или иной допустимый гражданский формат).<br><br>
+        Ст. 6 (спецсредства): бронежилеты, тайзер, резиновая дубинка, наручники, медпрепараты и инструменты (дефибриллятор, эпинефрин, стимуляторы), электрическая дубинка.<br><br>
+        Если у гражданина есть лицензия и оружие в инвентаре с серийником на A — само хранение не нарушение; нарушение возможно при незаконном ношении/демонстрации.
+      </div>
+    </div>
+
+    <div class="tbl-wrap">
+      <div class="tbl-head">⚖️ Ответы на вопросы адвоката (шаблон)</div>
+      <div style="padding:14px">
+        <div class="info-list">
+          <div class="info-row"><span class="ir-k">16.13</span><span class="ir-v">Да, статья известна (уточнить содержание по ситуации)</span></div>
+          <div class="info-row"><span class="ir-k">Основание задержания</span><span class="ir-v">Лицо застигнуто при совершении правонарушения (ст. 16 ч.2 ПК)</span></div>
+          <div class="info-row"><span class="ir-k">Следственные действия</span><span class="ir-v">Допрос / осмотр / выемка / задержание / возбуждение дела</span></div>
+          <div class="info-row"><span class="ir-k">Исключающие обстоятельства</span><span class="ir-v">Да/Нет (ст. 4, 4.1, 4.2, 4.3, 4.5 УК)</span></div>
+          <div class="info-row"><span class="ir-k">Вид состава</span><span class="ir-v">Материальный / Формальный / Усеченный</span></div>
+          <div class="info-row"><span class="ir-k">Субъективная сторона</span><span class="ir-v">Доказана / не доказана</span></div>
+          <div class="info-row"><span class="ir-k">Стадии силы</span><span class="ir-v">Перечислить примененные этапы</span></div>
+          <div class="info-row"><span class="ir-k">Форма вины</span><span class="ir-v">Умысел / Неосторожность</span></div>
+          <div class="info-row"><span class="ir-k">Объект/субъект</span><span class="ir-v">Смотреть блок по субъектам и объектам задержания</span></div>
+          <div class="info-row"><span class="ir-k">Принципы ареста</span><span class="ir-v">Адекватность и безотлагательность</span></div>
+          <div class="info-row"><span class="ir-k">Доказательство вины</span><span class="ir-v">Видеофиксация и допустимые доказательства</span></div>
+          <div class="info-row"><span class="ir-k">НПА</span><span class="ir-v">Процессуальный кодекс + профильные нормы</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap mb14">
+    <div class="tbl-head">🧠 Субъекты, объекты, признаки, мнения</div>
+    <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
+      <strong style="color:var(--txt1)">Объект преступления:</strong> то, на что посягает преступление (жертва, цель, мотив).<br>
+      <strong style="color:var(--txt1)">Субъективная сторона:</strong> внутреннее психическое отношение лица к содеянному.<br>
+      <strong style="color:var(--txt1)">Объективная сторона:</strong> внешнее проявление деяния (действия, обстоятельства, последствия).<br><br>
+      <strong style="color:var(--txt1)">Объективное мнение:</strong> проверяемые факты, подлежат доказыванию; при ложности возможна ответственность (в т.ч. АК 5.1).<br>
+      <strong style="color:var(--txt1)">Субъективное мнение:</strong> оценочное суждение, но может стать нарушением при оскорблении/дискредитации (АК 6.4, УК 14.1 при существенном вреде).<br>
+      Намерение и контекст (умысел ввести в заблуждение) усиливают ответственность. В публичной речи учитывается проверяемость и общественная опасность.<br><br>
+      <strong style="color:var(--txt1)">Обязательные признаки:</strong> присутствуют всегда и определяют состав.<br>
+      <strong style="color:var(--txt1)">Факультативные признаки:</strong> присутствуют не всегда, уточняют состав и влияют на тяжесть наказания.
+    </div>
+  </div>
+
+  <div class="tbl-wrap mb14">
+    <div class="tbl-head">👨‍⚖️ Что может требовать/делать адвокат</div>
+    <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
+      Причина задержания, видеофиксация, встреча с задержанным, нахождение в КПЗ LSPD/SHPD/FIB, устный договор с задержанным.<br>
+      <strong style="color:var(--red-l)">Не препятствуйте законной деятельности адвоката.</strong>
+    </div>
+  </div>
+
+  <div class="tbl-wrap mb14">
+    <div class="tbl-head">🧍 Если человек пришел с розыском сдаваться</div>
+    <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
+      Обязательно: запросить документы, снять маску (если есть), сделать фоторобот, только потом проверять причину розыска в планшете.<br>
+      Если розыск автоматический — проводить задержание по процедуре (обычно ст. 6.2 ч.1), без излишнего давления, с соблюдением процессуальных действий.<br>
+      Если розыск выдан вручную — через /dep вызвать инициатора розыска к месту удержания. Если ответа нет и инициатор офлайн — отпустить гражданина.<br>
+      Проверяйте первые буквы серийных номеров оружия: FIB, SHPD, LSPD, SANG у гражданского лица — признак нелегала.
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <div class="tbl-head">📚 Процессуальный кодекс: ключевые положения (выжимка)</div>
+    <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
+      <strong style="color:var(--txt1)">Законность производства:</strong> нельзя применять нормы, противоречащие ПК; решения суда/следствия/прокуратуры должны быть законными, обоснованными и мотивированными.<br>
+      <strong style="color:var(--txt1)">Честь и достоинство:</strong> осмотр жилья — по согласию или судебному акту; обыск — по ордеру/решению суда/ГП, в исключениях с уведомлением прокурора в срок до 1 часа.<br>
+      <strong style="color:var(--txt1)">Тайна переписки:</strong> ограничивается только судебным актом.<br>
+      <strong style="color:var(--txt1)">Презумпция невиновности:</strong> обвинение доказывает вину; сомнения трактуются в пользу обвиняемого; обвинительный приговор не строится на предположениях.<br>
+      <strong style="color:var(--txt1)">Свобода оценки доказательств:</strong> оцениваются по внутреннему убеждению в совокупности; заранее установленной силы нет.<br>
+      <strong style="color:var(--txt1)">Охрана прав человека:</strong> незаконно задержанный подлежит немедленному освобождению; условия содержания должны исключать угрозу жизни/здоровью.<br>
+      <strong style="color:var(--txt1)">Недопустимые доказательства:</strong> материалы, полученные с нарушением ПК, юридической силы не имеют (в т.ч. допрос до разъяснения прав).<br>
+      <strong style="color:var(--txt1)">Базовый порядок задержания:</strong> основания по ст. 16 ч.2; при отказе идентифицироваться — процедура установления личности и дальнейшие процессуальные действия по ст. 17.
+      <br><br>
+      Ф — работают FIB. Р — работают шерифы и PD.<br>
+      Вызов адвоката/прокурора/начальства: телефон → правительство → адвокат/прокурор; /dep to (фракция задержанного): начальство в КПЗ (место).
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div>LSCSD · Majestic RP · Phoenix · 2026</div>
+  <div>by okuname · v3.0</div>
+</footer>
+<div id="imgLightbox" class="img-lightbox"><img id="imgLightboxPic" src="" alt="Просмотр"></div>
+
+<script>
+// ── CLOCK ──
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clock').textContent =
+    now.toLocaleDateString('ru-RU') + ' · ' +
+    now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+}
+updateClock();
+setInterval(updateClock, 30000);
+
+// ── SCROLL PROGRESS ──
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  document.getElementById('progress').style.transform = `scaleX(${Math.min(pct, 1)})`;
+}, { passive: true });
+
+// ── SIDEBAR SCROLL SPY ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link[href]');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}, { passive: true });
+
+navLinks.forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) window.scrollTo({ top: el.offsetTop - 60, behavior: 'smooth' });
+  });
+});
+
+// ── ARTICLE EXPAND / COLLAPSE ──
+function toggleArt(row) {
+  const next = row.nextElementSibling;
+  if (!next || !next.classList.contains('art-panel-row')) return;
+  const panel = next.querySelector('.art-panel');
+  const isOpen = panel.classList.contains('open');
+
+  // close all others
+  document.querySelectorAll('.art-panel.open').forEach(p => p.classList.remove('open'));
+  document.querySelectorAll('.law-table tbody tr.art-expanded').forEach(r => r.classList.remove('art-expanded'));
+
+  if (!isOpen) {
+    panel.classList.add('open');
+    row.classList.add('art-expanded');
+    row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+// Click-to-copy intentionally disabled.
+
+// ── IMAGE LIGHTBOX ──
+const imgLightbox = document.getElementById('imgLightbox');
+const imgLightboxPic = document.getElementById('imgLightboxPic');
+document.querySelectorAll('.gallery-img').forEach(img => {
+  img.addEventListener('click', () => {
+    imgLightboxPic.src = img.getAttribute('src');
+    imgLightboxPic.alt = img.alt || 'Изображение';
+    imgLightbox.classList.add('show');
+  });
+});
+imgLightbox.addEventListener('click', () => {
+  imgLightbox.classList.remove('show');
+  imgLightboxPic.src = '';
+});
+
+// ── GLOBAL SEARCH ──
+const searchDB = [];
+const sectionTitleMap = {};
+
+document.querySelectorAll('section[id]').forEach(sec => {
+  const title =
+    sec.querySelector('.section-title')?.textContent?.trim() ||
+    sec.querySelector('.tbl-head')?.textContent?.trim() ||
+    sec.id;
+  sectionTitleMap[sec.id] = title;
+});
+
+// Collect from law tables
+document.querySelectorAll('.law-table tbody tr:not(.art-panel-row)').forEach(row => {
+  const artNum = row.querySelector('.art-num')?.textContent?.trim();
+  const desc = row.querySelector('.art-desc, td:nth-child(2)')?.textContent?.trim();
+  const pun = row.querySelector('.art-pun, .art-fine')?.textContent?.trim();
+  const panelBody = row.nextElementSibling?.querySelector('.art-panel-body')?.textContent?.trim();
+  const section = row.closest('section')?.id;
+  const tableTitle = row.closest('.tbl-wrap')?.querySelector('.tbl-head')?.textContent?.trim();
+  if (artNum && desc) {
+    searchDB.push({
+      key: artNum,
+      desc: desc,
+      full: panelBody || desc,
+      pun: pun || '',
+      section,
+      tbl: tableTitle || '',
+      type: 'article'
+    });
+  }
+});
+
+// Collect from cards
+document.querySelectorAll('.card').forEach(card => {
+  const title = card.querySelector('.card-title')?.textContent?.trim();
+  const body = card.querySelector('.card-body')?.textContent?.trim();
+  const section = card.closest('section')?.id;
+  if (title && body) searchDB.push({ key: title, desc: body.substring(0, 120), full: body, section, tbl: 'Карточка', type: 'card' });
+});
+
+// Collect from info-rows
+document.querySelectorAll('.info-row').forEach(row => {
+  const k = row.querySelector('.ir-k, .info-row-key')?.textContent?.trim();
+  const v = row.querySelector('.ir-v, .info-row-val')?.textContent?.trim();
+  const section = row.closest('section')?.id;
+  if (k && v) searchDB.push({ key: k, desc: v, full: k + ': ' + v, section, tbl: 'Справочник', type: 'info' });
+});
+
+// Collect from every section to enable full-site search
+document.querySelectorAll('section[id]').forEach(sec => {
+  const section = sec.id;
+  const title = sectionTitleMap[section] || section;
+  const full = sec.textContent?.replace(/\s+/g, ' ').trim() || '';
+  if (!full) return;
+  searchDB.push({
+    key: title,
+    desc: full.substring(0, 220),
+    full,
+    pun: '',
+    section,
+    tbl: 'Раздел сайта',
+    type: 'section'
+  });
+});
+
+const input = document.getElementById('globalSearch');
+const results = document.getElementById('search-results');
+
+input.addEventListener('input', () => {
+  const q = input.value.trim().toLowerCase();
+  if (q.length < 2) { results.style.display = 'none'; return; }
+
+  const hl = str => str.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'), '<mark>$1</mark>');
+
+  const scored = searchDB.map(item => {
+    const haystack = (item.key + ' ' + item.desc + ' ' + item.full + ' ' + item.pun).toLowerCase();
+    if (!haystack.includes(q)) return null;
+    const score = item.key.toLowerCase().includes(q) ? 2 : 1;
+    return { item, score };
+  }).filter(Boolean).sort((a, b) => b.score - a.score).slice(0, 20);
+
+  if (!scored.length) {
+    results.innerHTML = '<div class="sr-empty">Ничего не найдено по запросу «' + q + '»</div>';
+  } else {
+    const articles = scored.filter(x => x.item.type === 'article');
+    const sectionsOnly = scored.filter(x => x.item.type === 'section');
+    const other = scored.filter(x => x.item.type !== 'article' && x.item.type !== 'section');
+    let html = '';
+    if (articles.length) {
+      html += '<div class="sr-header">Статьи законов</div>';
+      html += articles.map(({ item: m }) => `
+        <div class="sr-item" onclick="goToSection('${m.section}')">
+          <div style="display:flex;gap:8px;align-items:baseline">
+            <span class="sr-art">${hl(m.key)}</span>
+            <span style="font-size:10px;color:var(--txt3)">${m.pun}</span>
+          </div>
+          <div class="sr-desc">${hl(m.desc.substring(0, 90))}${m.desc.length > 90 ? '…' : ''}</div>
+          <div class="sr-tag">${m.tbl}</div>
+        </div>`).join('');
+    }
+    if (sectionsOnly.length) {
+      html += '<div class="sr-header">Разделы сайта</div>';
+      html += sectionsOnly.map(({ item: m }) => `
+        <div class="sr-item" onclick="goToSection('${m.section}')">
+          <div class="sr-art">${hl(m.key.substring(0, 80))}</div>
+          <div class="sr-desc">${hl(m.desc.substring(0, 110))}${m.desc.length > 110 ? '…' : ''}</div>
+          <div class="sr-tag">${m.tbl}</div>
+        </div>`).join('');
+    }
+    if (other.length) {
+      html += '<div class="sr-header">Прочее</div>';
+      html += other.map(({ item: m }) => `
+        <div class="sr-item" onclick="goToSection('${m.section}')">
+          <div class="sr-art">${hl(m.key.substring(0, 60))}</div>
+          <div class="sr-desc">${hl(m.desc.substring(0, 90))}${m.desc.length > 90 ? '…' : ''}</div>
+        </div>`).join('');
+    }
+    results.innerHTML = html;
+  }
+  results.style.display = 'block';
+});
+
+function goToSection(id) {
+  const el = document.getElementById(id);
+  if (el) window.scrollTo({ top: el.offsetTop - 62, behavior: 'smooth' });
+  setTimeout(() => { results.style.display = 'none'; input.value = ''; }, 150);
+}
+
+document.addEventListener('click', e => {
+  if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+});
+
+input.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { results.style.display = 'none'; input.blur(); }
+});
+</script>
+</body>
+</html>
