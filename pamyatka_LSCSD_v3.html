@@ -3,679 +3,814 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LSCSD — Правовая памятка сотрудника | Majestic RP Phoenix</title>
+<title>LSCSD — Правовая памятка сотрудника</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Serif:wght@600;700&display=swap');
+/* ══════════ TOKENS ══════════ */
+:root{
+  /* Chrome (dark green) */
+  --chrome:       #0a1f14;
+  --chrome-2:     #0f2a1c;
+  --chrome-3:     #163522;
+  --chrome-4:     #1d4229;
+  --chrome-5:     #254f32;
+  --chrome-border:#2c5e3a;
+  --chrome-txt:   #d8e8da;
+  --chrome-txt2:  #8aaa90;
+  --chrome-txt3:  #5a7a60;
 
-:root {
-  --bg:        #070a12;
-  --bg2:       #0d1420;
-  --bg3:       #121b29;
-  --bg4:       #172336;
-  --bg5:       #1f2f46;
-  --line:      #263650;
-  --line2:     #324867;
-  --gold:      #d7a84f;
-  --gold-l:    #f1c979;
-  --gold-d:    #8f6b2b;
-  --gold-a:    rgba(196,151,62,.10);
-  --gold-b:    rgba(196,151,62,.18);
-  --blue:      #4a8df7;
-  --blue-l:    #83b4ff;
-  --blue-a:    rgba(74,141,247,.12);
-  --red:       #c94040;
-  --red-l:     #e07070;
-  --red-a:     rgba(201,64,64,.10);
-  --green:     #2e9e64;
-  --green-l:   #5cc98c;
-  --green-a:   rgba(46,158,100,.10);
-  --orange:    #d4702a;
-  --orange-a:  rgba(212,112,42,.10);
-  --purple:    #7056d4;
-  --purple-a:  rgba(112,86,212,.10);
-  --txt1:      #e8eefc;
-  --txt2:      #a7b4d2;
-  --txt3:      #617497;
-  --txt4:      #415577;
-  --mono:      'IBM Plex Mono', monospace;
-  --sans:      'IBM Plex Sans', sans-serif;
-  --serif:     'IBM Plex Serif', serif;
-  --sidebar-w: 230px;
-  --top-h:     52px;
+  /* Page */
+  --page:         #f0f3ef;
+  --surface:      #ffffff;
+  --surface-2:    #f7faf7;
+  --surface-3:    #eef2ee;
+  --border:       #d0d8d0;
+  --border-2:     #bccabc;
+
+  /* Accent */
+  --gold:         #b8860b;
+  --gold-2:       #d4a820;
+  --gold-3:       #7a5800;
+  --gold-bg:      rgba(184,134,11,.08);
+  --gold-border:  rgba(184,134,11,.25);
+
+  /* Status */
+  --red:          #a82020;
+  --red-l:        #c83030;
+  --red-bg:       rgba(168,32,32,.07);
+  --blue:         #1a559a;
+  --blue-l:       #2d6cb8;
+  --blue-bg:      rgba(26,85,154,.07);
+  --green:        #145a2c;
+  --green-l:      #1e7840;
+  --green-bg:     rgba(20,90,44,.07);
+  --orange:       #9a3c10;
+  --orange-bg:    rgba(154,60,16,.07);
+  --purple:       #3e2e9a;
+  --purple-bg:    rgba(62,46,154,.07);
+
+  /* Text */
+  --txt:          #0e1810;
+  --txt-2:        #2e4030;
+  --txt-3:        #5a7060;
+  --txt-4:        #8a9e8c;
+
+  /* Layout */
+  --sidebar:      240px;
+  --topbar:       58px;
+
+  /* Type */
+  --f-display:    'Oswald', sans-serif;
+  --f-body:       'Roboto Condensed', sans-serif;
+  --f-serif:      'Libre Baskerville', serif;
+  --f-mono:       'IBM Plex Mono', monospace;
+
+  /* Aliases for inline compatibility */
+  --green-l: #1e7840;
+  --blue-l:  #2d6cb8;
+
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--txt1);
-  font-family: var(--sans);
-  font-size: 14px;
-  line-height: 1.65;
-  overflow-x: hidden;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--page);
+  color:var(--txt);
+  font-family:var(--f-body);
+  font-size:14px;
+  line-height:1.6;
+  overflow-x:hidden;
 }
 
-/* ═══════════════════════ TOPBAR ═══════════════════════ */
-#topbar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 800;
-  height: var(--top-h);
-  background: rgba(8,10,13,.97);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(10px);
-  display: flex; align-items: center;
-  padding: 0 20px; gap: 16px;
+/* ══════════ TOPBAR ══════════ */
+#topbar{
+  position:fixed;top:0;left:0;right:0;z-index:800;
+  height:var(--topbar);
+  background:var(--chrome);
+  border-bottom:2px solid var(--gold);
+  display:flex;align-items:center;
+  padding:0 0 0 20px;
+  gap:0;
 }
-.tb-emblem {
-  display: flex; align-items: center; gap: 10px;
-  padding-right: 16px;
-  border-right: 1px solid var(--line2);
+
+/* Badge block */
+.tb-badge-block{
+  display:flex;align-items:center;gap:12px;
+  padding:0 20px 0 0;
+  border-right:1px solid var(--chrome-border);
+  height:100%;
 }
-.tb-star { font-size: 20px; color: var(--gold); text-shadow: 0 0 12px var(--gold-d); }
-.tb-brand {
-  font-family: var(--mono);
-  font-size: 15px; font-weight: 600;
-  color: var(--gold); letter-spacing: 2px;
-  text-shadow: 0 0 20px rgba(196,151,62,.3);
+.tb-star{
+  font-size:28px;
+  filter:drop-shadow(0 0 8px rgba(184,134,11,.6));
+  flex-shrink:0;
 }
-.tb-sub { font-size: 10px; color: var(--txt3); letter-spacing: 1.5px; text-transform: uppercase; }
-.tb-divider { width: 1px; height: 28px; background: var(--line); flex-shrink: 0; }
+.tb-names{display:flex;flex-direction:column;gap:1px}
+.tb-dept{
+  font-family:var(--f-display);
+  font-size:18px;font-weight:700;
+  color:var(--gold-2);letter-spacing:3px;
+  text-transform:uppercase;line-height:1;
+}
+.tb-sub{
+  font-size:9.5px;color:var(--chrome-txt3);
+  letter-spacing:2px;text-transform:uppercase;
+  font-family:var(--f-display);font-weight:400;
+}
+
+/* Section pill */
+.tb-section-pill{
+  display:flex;align-items:center;gap:8px;
+  padding:0 20px;
+  height:100%;
+  border-right:1px solid var(--chrome-border);
+}
+.tb-pill-label{
+  font-size:9px;color:var(--chrome-txt3);letter-spacing:2px;
+  text-transform:uppercase;font-family:var(--f-display);
+}
+.tb-pill-val{
+  font-family:var(--f-display);font-size:11px;font-weight:600;
+  color:var(--gold-2);letter-spacing:1px;
+  background:rgba(184,134,11,.12);
+  border:1px solid rgba(184,134,11,.22);
+  border-radius:2px;padding:1px 8px;
+}
 
 /* Search */
-.search-wrap {
-  position: relative; flex: 1; max-width: 420px;
+.tb-search{
+  flex:1;max-width:400px;
+  position:relative;padding:0 20px;
 }
-.search-icon {
-  position: absolute; left: 11px; top: 50%; transform: translateY(-50%);
-  color: var(--txt3); font-size: 13px; pointer-events: none;
+.search-icon{
+  position:absolute;left:32px;top:50%;transform:translateY(-50%);
+  color:var(--chrome-txt3);font-size:13px;pointer-events:none;
 }
-#globalSearch {
-  width: 100%;
-  background: var(--bg3);
-  border: 1px solid var(--line2);
-  border-radius: 4px;
-  padding: 7px 12px 7px 34px;
-  color: var(--txt1);
-  font-family: var(--sans);
-  font-size: 13px;
-  outline: none;
-  transition: border-color .15s, box-shadow .15s;
+#globalSearch{
+  width:100%;
+  background:var(--chrome-3);
+  border:1px solid var(--chrome-border);
+  border-radius:2px;
+  padding:7px 12px 7px 32px;
+  color:var(--chrome-txt);
+  font-family:var(--f-body);font-size:13px;
+  outline:none;
+  transition:border-color .15s,box-shadow .15s;
 }
-#globalSearch::placeholder { color: var(--txt3); }
-#globalSearch:focus {
-  border-color: var(--gold-d);
-  box-shadow: 0 0 0 2px var(--gold-a);
+#globalSearch::placeholder{color:var(--chrome-txt3)}
+#globalSearch:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 2px rgba(184,134,11,.15);
 }
-#search-results {
-  display: none;
-  position: absolute; top: 38px; left: 0; right: 0;
-  background: var(--bg3);
-  border: 1px solid var(--line2);
-  border-radius: 4px;
-  max-height: 420px; overflow-y: auto;
-  box-shadow: 0 12px 40px rgba(0,0,0,.7);
-  z-index: 1200;
+#search-results{
+  display:none;
+  position:absolute;top:46px;left:20px;right:20px;
+  background:var(--surface);
+  border:1px solid var(--border-2);
+  border-radius:2px;
+  max-height:420px;overflow-y:auto;
+  box-shadow:0 16px 48px rgba(0,0,0,.18);
+  z-index:1200;
 }
-#search-results::-webkit-scrollbar { width: 4px; }
-#search-results::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 2px; }
-.sr-item {
-  padding: 10px 14px;
-  cursor: pointer;
-  border-bottom: 1px solid var(--line);
-  transition: background .1s;
-}
-.sr-item:hover { background: var(--bg4); }
-.sr-item:last-child { border-bottom: none; }
-.sr-art { font-family: var(--mono); font-size: 11px; color: var(--gold); font-weight: 600; }
-.sr-desc { font-size: 12px; color: var(--txt2); margin-top: 1px; }
-.sr-tag { font-size: 10px; color: var(--txt3); margin-top: 1px; }
-.sr-item mark { background: rgba(196,151,62,.25); color: var(--gold-l); border-radius: 2px; padding: 0 1px; }
-.sr-empty { padding: 16px; text-align: center; color: var(--txt3); font-size: 13px; }
-.sr-header { padding: 8px 14px 4px; font-size: 10px; color: var(--txt3); letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid var(--line); }
-
-.tb-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
-.tb-info { text-align: right; }
-.tb-date { font-family: var(--mono); font-size: 11px; color: var(--txt3); }
-.tb-ver { font-size: 10px; color: var(--gold-d); letter-spacing: 1px; }
-
-/* Progress bar */
-#progress {
-  position: fixed; top: var(--top-h); left: 0; right: 0; height: 2px; z-index: 900;
-  background: var(--gold); transform: scaleX(0); transform-origin: left;
-  transition: transform .05s linear;
+#search-results::-webkit-scrollbar{width:4px}
+#search-results::-webkit-scrollbar-thumb{background:var(--border-2)}
+.sr-item{padding:10px 14px;cursor:pointer;border-bottom:1px solid var(--border);transition:background .1s}
+.sr-item:hover{background:var(--surface-3)}
+.sr-item:last-child{border-bottom:none}
+.sr-art{font-family:var(--f-mono);font-size:11px;color:var(--chrome-4);font-weight:600}
+.sr-desc{font-size:12px;color:var(--txt-2);margin-top:1px}
+.sr-tag{font-size:10px;color:var(--txt-3);margin-top:1px}
+.sr-item mark{background:rgba(184,134,11,.18);color:var(--gold-3);border-radius:1px;padding:0 1px}
+.sr-empty{padding:16px;text-align:center;color:var(--txt-3);font-size:13px}
+.sr-header{
+  padding:6px 14px 5px;
+  font-family:var(--f-display);font-size:9px;font-weight:600;
+  color:var(--txt-3);letter-spacing:2px;text-transform:uppercase;
+  background:var(--surface-3);border-bottom:1px solid var(--border);
 }
 
-/* ═══════════════════════ SIDEBAR ═══════════════════════ */
-#sidebar {
-  position: fixed; left: 0; top: var(--top-h); bottom: 0;
-  width: var(--sidebar-w);
-  background: var(--bg2);
-  border-right: 1px solid var(--line);
-  overflow-y: auto; overflow-x: hidden;
-  z-index: 700;
-  padding-bottom: 24px;
+/* Right cluster */
+.tb-right{
+  margin-left:auto;
+  display:flex;align-items:center;gap:0;
+  height:100%;
 }
-#sidebar::-webkit-scrollbar { width: 3px; }
-#sidebar::-webkit-scrollbar-thumb { background: var(--line2); }
+.tb-meta-block{
+  display:flex;flex-direction:column;align-items:flex-end;
+  padding:0 20px;
+  border-left:1px solid var(--chrome-border);
+  height:100%;justify-content:center;
+}
+.tb-date{font-family:var(--f-mono);font-size:11px;color:var(--chrome-txt2)}
+.tb-ver{font-size:9px;color:var(--gold);letter-spacing:1.5px;font-family:var(--f-display);font-weight:600;margin-top:2px}
 
-.nav-group-label {
-  padding: 16px 16px 4px;
-  font-size: 9px; font-weight: 700; letter-spacing: 3px;
-  color: var(--txt4); text-transform: uppercase;
-  margin-top: 8px;
-}
-.nav-group-label:first-child { margin-top: 0; }
-
-.nav-link {
-  display: flex; align-items: center; gap: 9px;
-  padding: 7px 16px;
-  color: var(--txt2);
-  text-decoration: none;
-  font-size: 12.5px; font-weight: 500;
-  cursor: pointer;
-  transition: background .1s, color .1s;
-  border-left: 2px solid transparent;
-  user-select: none;
-}
-.nav-link:hover { background: var(--bg3); color: var(--txt1); }
-.nav-link.active {
-  background: var(--bg4);
-  color: var(--txt1);
-  border-left-color: var(--gold);
-}
-.nav-ico { width: 16px; text-align: center; font-size: 14px; flex-shrink: 0; }
-.nav-tag {
-  margin-left: auto;
-  font-size: 9px; font-weight: 700; letter-spacing: 1px;
-  padding: 1px 5px; border-radius: 2px;
-  background: var(--gold-a); color: var(--gold-d);
-}
-.nav-sep { height: 1px; background: var(--line); margin: 8px 0; }
-
-/* ═══════════════════════ MAIN ═══════════════════════ */
-#main {
-  margin-left: var(--sidebar-w);
-  padding: calc(var(--top-h) + 28px) 32px 60px 32px;
-  min-height: 100vh;
-  max-width: 1200px;
+/* Progress */
+#progress{
+  position:fixed;top:var(--topbar);left:0;right:0;
+  height:3px;z-index:900;
+  background:var(--gold-2);transform:scaleX(0);transform-origin:left;
+  transition:transform .04s linear;
 }
 
-/* ═══════════════════════ SECTIONS ═══════════════════════ */
-.section {
-  margin-bottom: 60px;
-  background: linear-gradient(180deg, rgba(255,255,255,.015), transparent 70%);
-  border: 1px solid var(--line);
-  border-left: 3px solid rgba(215,168,79,.45);
-  border-radius: 8px;
-  padding: 18px;
+/* ══════════ SIDEBAR ══════════ */
+#sidebar{
+  position:fixed;left:0;top:var(--topbar);bottom:0;
+  width:var(--sidebar);
+  background:var(--chrome-2);
+  border-right:1px solid var(--chrome-border);
+  overflow-y:auto;overflow-x:hidden;
+  z-index:700;
+  display:flex;flex-direction:column;
+}
+#sidebar::-webkit-scrollbar{width:3px}
+#sidebar::-webkit-scrollbar-thumb{background:var(--chrome-border)}
+
+/* Sidebar brand strip */
+.sidebar-brand{
+  padding:14px 16px 12px;
+  background:var(--chrome);
+  border-bottom:1px solid var(--chrome-border);
+}
+.sidebar-brand-title{
+  font-family:var(--f-display);font-size:11px;font-weight:700;
+  color:var(--gold-2);letter-spacing:3px;text-transform:uppercase;
+}
+.sidebar-brand-sub{
+  font-size:9px;color:var(--chrome-txt3);
+  letter-spacing:1.5px;text-transform:uppercase;
+  margin-top:2px;
 }
 
-.section-head {
-  display: flex; align-items: flex-end; gap: 14px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 24px;
+/* Nav groups */
+.nav-group-label{
+  padding:14px 14px 5px;
+  font-family:var(--f-display);
+  font-size:9px;font-weight:700;letter-spacing:3px;
+  color:var(--chrome-txt3);text-transform:uppercase;
+  margin-top:4px;
 }
-.section-ico { font-size: 24px; flex-shrink: 0; }
-.section-title {
-  font-family: var(--serif);
-  font-size: 22px; font-weight: 700;
-  color: var(--txt1); letter-spacing: .5px;
+.nav-group-label:first-of-type{margin-top:2px}
+
+.nav-link{
+  display:flex;align-items:center;gap:9px;
+  padding:9px 14px;
+  color:var(--chrome-txt2);
+  text-decoration:none;
+  font-family:var(--f-display);
+  font-size:13px;font-weight:500;
+  cursor:pointer;
+  transition:background .12s,color .12s,border-color .12s;
+  border-left:3px solid transparent;
+  user-select:none;
+  letter-spacing:.3px;
 }
-.section-sub {
-  font-size: 11px; color: var(--txt3);
-  letter-spacing: 2px; text-transform: uppercase; margin-top: 2px;
+.nav-link:hover{background:var(--chrome-3);color:var(--chrome-txt)}
+.nav-link.active{
+  background:var(--chrome-4);
+  color:var(--chrome-txt);
+  border-left-color:var(--gold-2);
 }
-.section-meta {
-  margin-left: auto;
-  font-family: var(--mono);
-  font-size: 10px; color: var(--txt4);
-  text-align: right; white-space: nowrap;
+.nav-ico{width:18px;text-align:center;font-size:14px;flex-shrink:0;opacity:.9}
+.nav-tag{
+  margin-left:auto;
+  font-family:var(--f-display);
+  font-size:9px;font-weight:700;letter-spacing:1px;
+  padding:1px 6px;border-radius:1px;
+  background:rgba(184,134,11,.14);color:var(--gold);
+  border:1px solid rgba(184,134,11,.28);
+}
+.nav-sep{height:1px;background:var(--chrome-border);margin:6px 0;opacity:.4}
+
+/* Sidebar footer */
+.sidebar-footer{
+  margin-top:auto;
+  padding:12px 16px;
+  border-top:1px solid var(--chrome-border);
+  font-family:var(--f-mono);
+  font-size:10px;color:var(--chrome-txt3);
+  line-height:1.6;
 }
 
-/* ═══════════════════════ HERO ═══════════════════════ */
-.hero {
-  background: var(--bg3);
-  border: 1px solid var(--line2);
-  border-radius: 6px;
-  padding: 32px 36px;
-  margin-bottom: 28px;
-  position: relative; overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute; top: 0; right: 0; bottom: 0; width: 240px;
-  background: linear-gradient(to left, rgba(196,151,62,.05), transparent);
-}
-.hero::after {
-  content: 'LSCSD';
-  position: absolute; right: 24px; bottom: -10px;
-  font-family: var(--serif);
-  font-size: 80px; font-weight: 700;
-  color: rgba(196,151,62,.04);
-  pointer-events: none; user-select: none;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: var(--gold-a); border: 1px solid var(--gold-d);
-  padding: 3px 10px; border-radius: 3px;
-  font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--gold);
-  text-transform: uppercase; margin-bottom: 14px;
-}
-.hero h1 {
-  font-family: var(--serif);
-  font-size: 36px; font-weight: 700;
-  color: var(--txt1); line-height: 1.15;
-  margin-bottom: 10px;
-}
-.hero h1 em { color: var(--gold); font-style: normal; }
-.hero p { font-size: 14px; color: var(--txt2); max-width: 580px; line-height: 1.7; }
-.hero-stats {
-  display: flex; gap: 32px; margin-top: 24px; flex-wrap: wrap;
-}
-.hs-label { font-size: 10px; color: var(--txt3); letter-spacing: 2px; text-transform: uppercase; }
-.hs-val { font-family: var(--mono); font-size: 15px; font-weight: 600; color: var(--gold); }
-
-/* ═══════════════════════ GRID ═══════════════════════ */
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-@media (max-width: 960px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 700px)  { .grid-3, .grid-2 { grid-template-columns: 1fr; } }
-
-/* ═══════════════════════ CARD ═══════════════════════ */
-.card {
-  background: var(--bg3);
-  border: 1px solid var(--line);
-  border-radius: 6px; padding: 18px 20px;
-  transition: border-color .15s;
-}
-.card:hover { border-color: var(--line2); }
-.card-gold  { border-left: 3px solid var(--gold); }
-.card-blue  { border-left: 3px solid var(--blue); }
-.card-red   { border-left: 3px solid var(--red); }
-.card-green { border-left: 3px solid var(--green); }
-.card-orange{ border-left: 3px solid var(--orange); }
-.card-purple{ border-left: 3px solid var(--purple); }
-.card-title {
-  font-size: 11px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--txt3);
-  margin-bottom: 10px;
-  display: flex; align-items: center; gap: 7px;
-}
-.card-body { font-size: 13px; color: var(--txt2); line-height: 1.75; }
-.card-body strong { color: var(--txt1); font-weight: 600; }
-
-/* ═══════════════════════ TABLE WRAP ═══════════════════════ */
-.tbl-wrap {
-  background: var(--bg3);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  overflow: hidden;
-  margin-bottom: 18px;
-}
-.tbl-head {
-  background: var(--bg4);
-  padding: 10px 16px;
-  font-size: 10px; font-weight: 700; letter-spacing: 2px;
-  color: var(--txt2); text-transform: uppercase;
-  border-bottom: 1px solid var(--line2);
-  display: flex; align-items: center; gap: 8px;
-}
-.tbl-scroll { overflow-x: auto; }
-.tbl-scroll::-webkit-scrollbar { height: 4px; }
-.tbl-scroll::-webkit-scrollbar-thumb { background: var(--line2); }
-
-/* Law Table */
-.law-table {
-  width: 100%; border-collapse: collapse;
-  font-size: 12.5px;
-}
-.law-table th {
-  background: var(--bg5);
-  color: var(--txt3); font-size: 9.5px; font-weight: 700;
-  letter-spacing: 2px; text-transform: uppercase;
-  padding: 8px 14px; text-align: left;
-  border-bottom: 1px solid var(--line2);
-  white-space: nowrap;
-  position: sticky; top: 0; z-index: 10;
-}
-.law-table td {
-  padding: 9px 14px;
-  border-bottom: 1px solid var(--line);
-  vertical-align: top;
-  color: var(--txt1);
-}
-.law-table tbody tr:last-child td { border-bottom: none; }
-.law-table tbody tr {
-  cursor: pointer;
-  transition: background .1s;
-}
-.law-table tbody tr:hover td { background: var(--bg4); }
-.law-table tbody tr.art-expanded td { background: var(--bg4); }
-
-.art-num {
-  font-family: var(--mono);
-  font-size: 11.5px; color: var(--gold); font-weight: 600;
-  white-space: nowrap; user-select: none;
-}
-.art-desc { max-width: 480px; color: var(--txt2); font-size: 12.5px; }
-.art-desc strong { color: var(--txt1); }
-.art-stars { color: var(--gold); font-size: 11px; white-space: nowrap; letter-spacing: -1px; }
-.art-fine {
-  font-family: var(--mono); font-size: 11.5px;
-  color: var(--green); white-space: nowrap;
-}
-.art-pun {
-  font-family: var(--mono); font-size: 11px;
-  color: var(--red-l); white-space: nowrap;
-}
-.art-tags { display: flex; gap: 4px; flex-wrap: wrap; }
-.tag {
-  display: inline-flex; align-items: center;
-  font-size: 9px; font-weight: 700; letter-spacing: 1px;
-  padding: 1px 6px; border-radius: 2px;
-  white-space: nowrap;
-}
-.tag-f  { background: rgba(201,64,64,.12);   color: var(--red-l);   border: 1px solid rgba(201,64,64,.25); }
-.tag-r  { background: rgba(59,125,216,.12);  color: var(--blue-l);  border: 1px solid rgba(59,125,216,.25); }
-.tag-fin{ background: rgba(196,151,62,.12);  color: var(--gold);    border: 1px solid rgba(196,151,62,.25); }
-.tag-mil{ background: rgba(112,86,212,.12);  color: #a080ff;        border: 1px solid rgba(112,86,212,.25); }
-.tag-reg{ background: rgba(46,158,100,.12);  color: var(--green-l); border: 1px solid rgba(46,158,100,.25); }
-
-/* ═══════════════════════ ARTICLE EXPAND PANEL ═══════════════════════ */
-.art-panel {
-  display: none;
-  background: var(--bg5);
-  padding: 14px 18px;
-  border-top: 1px dashed var(--line2);
-  font-size: 12.5px; color: var(--txt2);
-  line-height: 1.75;
-}
-.art-panel.open { display: block; }
-.art-panel-title {
-  font-family: var(--mono);
-  font-size: 11px; font-weight: 600;
-  color: var(--gold); margin-bottom: 8px;
-}
-.art-panel-body { color: var(--txt2); }
-.art-panel-body strong { color: var(--txt1); }
-.art-panel-pun {
-  margin-top: 10px;
-  padding: 8px 12px;
-  background: rgba(201,64,64,.08);
-  border: 1px solid rgba(201,64,64,.2);
-  border-radius: 4px;
-  font-family: var(--mono);
-  font-size: 12px; color: var(--red-l);
-}
-.art-panel-note {
-  margin-top: 8px;
-  padding: 8px 12px;
-  background: var(--gold-a);
-  border: 1px solid var(--gold-d);
-  border-radius: 4px;
-  font-size: 12px; color: var(--txt2);
+/* ══════════ MAIN ══════════ */
+#main{
+  margin-left:var(--sidebar);
+  padding:calc(var(--topbar) + 30px) 36px 70px 36px;
+  min-height:100vh;
+  max-width:1180px;
 }
 
-/* ═══════════════════════ ALERTS ═══════════════════════ */
-.alert {
-  display: flex; gap: 12px;
-  padding: 13px 16px;
-  border-radius: 4px;
-  margin-bottom: 14px;
-  font-size: 13px; line-height: 1.65;
-}
-.alert-ico { flex-shrink: 0; margin-top: 1px; font-size: 16px; }
-.a-info    { background: var(--blue-a);   border: 1px solid rgba(59,125,216,.25);  color: #9fc4f8; }
-.a-warn    { background: var(--orange-a); border: 1px solid rgba(212,112,42,.25);  color: #f0c09a; }
-.a-danger  { background: var(--red-a);    border: 1px solid rgba(201,64,64,.25);   color: #f0a0a0; }
-.a-success { background: var(--green-a);  border: 1px solid rgba(46,158,100,.25);  color: #90e0b0; }
-.a-gold    { background: var(--gold-a);   border: 1px solid var(--gold-d);          color: var(--gold-l); }
-
-/* ═══════════════════════ STEPS ═══════════════════════ */
-.steps { display: flex; flex-direction: column; gap: 8px; }
-.step {
-  display: flex; gap: 14px; align-items: flex-start;
-  padding: 12px 16px;
-  background: var(--bg3); border: 1px solid var(--line);
-  border-radius: 4px;
-}
-.step-n {
-  width: 26px; height: 26px; border-radius: 50%;
-  background: var(--gold); color: #0a0b0e;
-  font-weight: 700; font-size: 12px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; margin-top: 1px;
-}
-.step-c strong { display: block; font-size: 13px; font-weight: 700; margin-bottom: 2px; }
-.step-c span { font-size: 12.5px; color: var(--txt2); }
-
-/* ═══════════════════════ MIRANDA ═══════════════════════ */
-.miranda-box {
-  background: linear-gradient(135deg, #090e18, #0e1626);
-  border: 1px solid rgba(59,125,216,.3);
-  border-radius: 6px; padding: 24px 28px;
-  position: relative; overflow: hidden;
-}
-.miranda-box::before {
-  content: '§';
-  position: absolute; right: 16px; top: 4px;
-  font-family: var(--serif);
-  font-size: 90px; color: rgba(59,125,216,.05);
-  pointer-events: none;
-}
-.miranda-label {
-  font-size: 10px; font-weight: 700; letter-spacing: 3px;
-  color: var(--blue-l); text-transform: uppercase; margin-bottom: 12px;
-}
-.miranda-text {
-  font-size: 15px; line-height: 1.85; color: var(--txt1);
-  font-weight: 500; border-left: 3px solid var(--blue);
-  padding-left: 18px; font-style: italic;
-}
-.miranda-notes { margin-top: 14px; display: flex; flex-direction: column; gap: 5px; }
-.miranda-note {
-  font-size: 12px; color: var(--txt2);
-  display: flex; gap: 8px;
-}
-.miranda-note::before { content: '—'; color: var(--blue-l); flex-shrink: 0; }
-
-/* ═══════════════════════ INFO LIST ═══════════════════════ */
-.info-list { display: flex; flex-direction: column; }
-.info-row {
-  display: flex; align-items: baseline;
-  justify-content: space-between; gap: 12px;
-  padding: 6px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 12.5px;
-}
-.info-row:last-child { border-bottom: none; }
-.ir-k { color: var(--txt2); flex-shrink: 0; }
-.ir-v { color: var(--txt1); font-weight: 500; text-align: right; }
-.ir-v.mono { font-family: var(--mono); font-size: 12px; color: var(--gold); }
-.ir-v.red  { color: var(--red-l); }
-.ir-v.green{ color: var(--green-l); }
-
-/* ═══════════════════════ FORCE LEVELS ═══════════════════════ */
-.force-bar { display: flex; flex-direction: column; gap: 7px; }
-.force-level {
-  display: flex; align-items: center; gap: 14px;
-  padding: 11px 16px; border-radius: 4px;
-  background: var(--bg3); border: 1px solid var(--line);
-}
-.fn {
-  width: 24px; height: 24px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 12px; flex-shrink: 0;
-}
-.fn1 { background: var(--green-a); color: var(--green-l); border: 1px solid var(--green); }
-.fn2 { background: var(--gold-a);  color: var(--gold-l);  border: 1px solid var(--gold); }
-.fn3 { background: var(--orange-a);color: #f0b060;        border: 1px solid var(--orange); }
-.fn4 { background: var(--red-a);   color: var(--red-l);   border: 1px solid var(--red); }
-.fn5 { background: rgba(201,64,64,.2); color: #ff6060;    border: 1px solid rgba(201,64,64,.6); }
-.f-title { font-weight: 600; font-size: 13px; }
-.f-desc  { font-size: 12px; color: var(--txt2); }
-
-/* ═══════════════════════ IMMUNITY BLOCK ═══════════════════════ */
-.imm-list { display: flex; flex-direction: column; gap: 0; }
-.imm-row {
-  display: flex; align-items: center; gap: 12px;
-  padding: 9px 14px;
-  border-bottom: 1px solid var(--line);
-  font-size: 13px;
-}
-.imm-row:last-child { border-bottom: none; }
-.imm-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-.imm-role { color: var(--txt1); font-weight: 500; flex: 1; }
-.imm-note { font-size: 11px; color: var(--txt3); font-style: italic; }
-
-/* ═══════════════════════ TERRITORY BLOCK ═══════════════════════ */
-.territory-card {
-  background: var(--bg3);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 16px 20px;
-  margin-bottom: 14px;
-}
-.tc-head {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 10px; padding-bottom: 10px;
-  border-bottom: 1px solid var(--line);
-}
-.tc-badge {
-  padding: 2px 8px; border-radius: 3px;
-  font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-}
-.tc-badge-guard { background: var(--gold-a); color: var(--gold); border: 1px solid var(--gold-d); }
-.tc-badge-special { background: var(--red-a); color: var(--red-l); border: 1px solid rgba(201,64,64,.3); }
-.tc-name { font-size: 14px; font-weight: 600; color: var(--txt1); }
-.tc-list { font-size: 12.5px; color: var(--txt2); line-height: 1.75; }
-.tc-list li { margin-left: 16px; margin-bottom: 2px; }
-
-.gallery-group {
-  margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px dashed var(--line);
-}
-.gallery-title {
-  font-size: 12px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: var(--gold-l);
-  margin-bottom: 10px;
-}
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 8px;
-}
-.gallery-img {
-  width: 100%;
-  height: 95px;
-  object-fit: cover;
-  border: 1px solid var(--line2);
-  border-radius: 4px;
-  cursor: zoom-in;
-  transition: transform .15s ease, border-color .15s ease;
-}
-.gallery-img:hover {
-  transform: translateY(-2px);
-  border-color: var(--gold-d);
-}
-.img-lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(4, 7, 14, .88);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  padding: 18px;
-}
-.img-lightbox.show { display: flex; }
-.img-lightbox img {
-  max-width: min(96vw, 1400px);
-  max-height: 92vh;
-  border: 1px solid var(--line2);
-  border-radius: 6px;
-  box-shadow: 0 25px 70px rgba(0,0,0,.6);
+/* ══════════ SECTION ══════════ */
+.section{
+  margin-bottom:64px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:3px;
+  box-shadow:0 1px 6px rgba(0,0,0,.05);
+  overflow:hidden;
 }
 
-/* ═══════════════════════ FOOTER ═══════════════════════ */
-footer {
-  margin-left: var(--sidebar-w);
-  background: var(--bg2);
-  border-top: 1px solid var(--line);
-  padding: 16px 32px;
-  display: flex; align-items: center; justify-content: space-between;
-  font-size: 11px; color: var(--txt3);
-  font-family: var(--mono);
+.section-head{
+  background:var(--chrome-3);
+  padding:16px 24px;
+  display:flex;align-items:center;gap:14px;
+  border-bottom:1px solid var(--chrome-border);
+}
+.section-ico{font-size:22px;flex-shrink:0}
+.section-title{
+  font-family:var(--f-display);
+  font-size:20px;font-weight:700;
+  color:var(--chrome-txt);
+  text-transform:uppercase;letter-spacing:1px;
+}
+.section-sub{
+  font-size:10px;color:var(--chrome-txt3);
+  letter-spacing:2px;text-transform:uppercase;
+  margin-top:3px;font-family:var(--f-display);font-weight:400;
+}
+.section-meta{
+  margin-left:auto;
+  font-family:var(--f-mono);
+  font-size:10px;color:var(--chrome-txt3);
+  white-space:nowrap;
+}
+.section-body{padding:22px 24px}
+
+/* ══════════ HERO ══════════ */
+.hero{
+  background:var(--chrome);
+  padding:36px 40px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;top:0;right:0;bottom:0;width:320px;
+  background:linear-gradient(to left,rgba(184,134,11,.06),transparent);
+  pointer-events:none;
+}
+.hero::after{
+  content:'☆ LSCSD ☆';
+  position:absolute;right:20px;bottom:-20px;
+  font-family:var(--f-display);
+  font-size:96px;font-weight:700;
+  color:rgba(184,134,11,.04);
+  pointer-events:none;user-select:none;
+  letter-spacing:8px;white-space:nowrap;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--f-display);font-weight:600;
+  font-size:10px;letter-spacing:3px;
+  color:var(--gold-2);text-transform:uppercase;
+  border-bottom:1px solid rgba(184,134,11,.3);
+  padding-bottom:4px;margin-bottom:16px;
+}
+.hero h1{
+  font-family:var(--f-display);
+  font-size:42px;font-weight:700;
+  color:var(--chrome-txt);
+  text-transform:uppercase;letter-spacing:2px;
+  line-height:1.05;margin-bottom:12px;
+}
+.hero h1 em{color:var(--gold-2);font-style:normal}
+.hero-badge{
+  color:#ffffff;
+}
+.hero p{
+  color:#ffffff;
+}
+.hero-desc{
+  font-size:14px;color:var(--chrome-txt2);
+  max-width:560px;line-height:1.7;
+}
+.hero-stats{
+  display:flex;gap:0;margin-top:28px;
+  border-top:1px solid var(--chrome-border);
+  padding-top:20px;
+}
+.hs-item{
+  padding-right:28px;margin-right:28px;
+  border-right:1px solid var(--chrome-border);
+}
+.hs-item:last-child{border-right:none}
+.hs-label{
+  font-family:var(--f-display);font-size:9px;font-weight:600;
+  letter-spacing:2.5px;color:var(--chrome-txt3);
+  text-transform:uppercase;margin-bottom:4px;
+}
+.hs-val{
+  font-family:var(--f-mono);font-size:14px;font-weight:600;
+  color:var(--gold-2);
 }
 
-/* ═══════════════════════ RESPONSIVE ═══════════════════════ */
-@media (max-width: 768px) {
-  #sidebar { transform: translateX(-100%); transition: transform .2s; }
-  #main, footer { margin-left: 0; }
-  #main { padding: calc(var(--top-h) + 16px) 16px 40px; }
+/* ══════════ GRID ══════════ */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:960px){.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.grid-3,.grid-2{grid-template-columns:1fr}}
+
+/* ══════════ CARD ══════════ */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:2px;padding:18px 20px;
+  transition:border-color .15s,box-shadow .15s;
+}
+.card:hover{border-color:var(--border-2);box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.card-gold  {border-top:3px solid var(--gold)}
+.card-blue  {border-top:3px solid var(--blue)}
+.card-red   {border-top:3px solid var(--red)}
+.card-green {border-top:3px solid var(--green)}
+.card-orange{border-top:3px solid var(--orange)}
+.card-purple{border-top:3px solid var(--purple)}
+.card-title{
+  font-family:var(--f-display);
+  font-size:11px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--txt-3);
+  margin-bottom:10px;
+  display:flex;align-items:center;gap:7px;
+  border-bottom:1px solid var(--border);
+  padding-bottom:8px;
+}
+.card-body{font-size:13px;color:var(--txt-2);line-height:1.75}
+.card-body strong{color:var(--txt);font-weight:700}
+
+/* ══════════ TABLE WRAP ══════════ */
+.tbl-wrap{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:2px;overflow:hidden;
+  margin-bottom:18px;
+}
+.tbl-head{
+  background:var(--chrome-3);
+  padding:10px 16px;
+  font-family:var(--f-display);
+  font-size:11px;font-weight:700;letter-spacing:2px;
+  color:var(--chrome-txt);text-transform:uppercase;
+  border-bottom:1px solid var(--chrome-border);
+  display:flex;align-items:center;gap:8px;
+}
+.tbl-scroll{overflow-x:auto}
+.tbl-scroll::-webkit-scrollbar{height:4px}
+.tbl-scroll::-webkit-scrollbar-thumb{background:var(--border-2)}
+
+.law-table{width:100%;border-collapse:collapse;font-size:13px}
+.law-table th{
+  background:var(--surface-3);
+  color:var(--txt-3);
+  font-family:var(--f-display);font-size:10px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:9px 14px;text-align:left;
+  border-bottom:2px solid var(--border-2);
+  white-space:nowrap;
+  position:sticky;top:0;z-index:10;
+}
+.law-table td{
+  padding:10px 14px;
+  border-bottom:1px solid var(--border);
+  vertical-align:top;color:var(--txt);
+}
+.law-table tbody tr:last-child td{border-bottom:none}
+.law-table tbody tr{cursor:pointer;transition:background .1s}
+.law-table tbody tr:hover td{background:var(--surface-3)}
+.law-table tbody tr.art-expanded td{background:var(--surface-3)}
+
+.art-num{
+  font-family:var(--f-mono);
+  font-size:12px;color:var(--chrome-4);font-weight:600;
+  white-space:nowrap;user-select:none;
+}
+.art-desc{max-width:480px;color:var(--txt-2);font-size:13px}
+.art-desc strong{color:var(--txt)}
+.art-stars{color:var(--gold);font-size:11px;white-space:nowrap;letter-spacing:-1px}
+.art-fine{font-family:var(--f-mono);font-size:12px;color:var(--green);white-space:nowrap;font-weight:600}
+.art-pun{font-family:var(--f-mono);font-size:12px;color:var(--red);white-space:nowrap}
+.art-tags{display:flex;gap:4px;flex-wrap:wrap}
+.tag{
+  display:inline-flex;align-items:center;
+  font-family:var(--f-display);
+  font-size:9px;font-weight:700;letter-spacing:1px;
+  padding:1px 6px;border-radius:1px;white-space:nowrap;
+}
+.tag-f{background:rgba(168,32,32,.10);color:var(--red);border:1px solid rgba(168,32,32,.25)}
+.tag-r{background:rgba(26,85,154,.10);color:var(--blue);border:1px solid rgba(26,85,154,.22)}
+.tag-fin{background:var(--gold-bg);color:var(--gold-3);border:1px solid var(--gold-border)}
+.tag-mil{background:rgba(62,46,154,.10);color:var(--purple);border:1px solid rgba(62,46,154,.22)}
+.tag-reg{background:rgba(20,90,44,.10);color:var(--green);border:1px solid rgba(20,90,44,.22)}
+
+/* ══════════ EXPAND PANEL ══════════ */
+.art-panel{
+  display:none;
+  background:var(--surface-2);
+  padding:14px 18px;
+  border-top:2px dashed var(--border-2);
+  font-size:13px;color:var(--txt-2);
+  line-height:1.75;
+}
+.art-panel.open{display:block}
+.art-panel-title{
+  font-family:var(--f-display);
+  font-size:12px;font-weight:700;letter-spacing:1.5px;
+  color:var(--chrome-4);margin-bottom:8px;text-transform:uppercase;
+}
+.art-panel-body{color:var(--txt-2)}
+.art-panel-body strong{color:var(--txt)}
+.art-panel-pun{
+  margin-top:10px;padding:8px 14px;
+  background:rgba(168,32,32,.06);
+  border-left:3px solid var(--red);
+  border-radius:0 2px 2px 0;
+  font-family:var(--f-mono);font-size:12px;color:var(--red);
+}
+.art-panel-note{
+  margin-top:8px;padding:8px 14px;
+  background:var(--gold-bg);
+  border-left:3px solid var(--gold);
+  border-radius:0 2px 2px 0;
+  font-size:12px;color:var(--txt-2);
 }
 
-/* ═══════════════════════ UTILITY ═══════════════════════ */
-.mb4 { margin-bottom: 4px; }
-.mb8 { margin-bottom: 8px; }
-.mb14{ margin-bottom: 14px; }
-.mb20{ margin-bottom: 20px; }
-.mt8 { margin-top: 8px; }
-.mt14{ margin-top: 14px; }
-.mt20{ margin-top: 20px; }
-.mono { font-family: var(--mono); }
-.gold  { color: var(--gold); }
-.txt2  { color: var(--txt2); }
-.txt3  { color: var(--txt3); }
-.txt-red   { color: var(--red-l); }
-.txt-green { color: var(--green-l); }
+/* ══════════ ALERTS ══════════ */
+.alert{
+  display:flex;gap:12px;
+  padding:12px 16px;
+  border-radius:2px;
+  margin-bottom:14px;
+  font-size:13px;line-height:1.65;
+  border-left:4px solid transparent;
+}
+.alert-ico{flex-shrink:0;margin-top:1px;font-size:16px}
+.a-info{background:var(--blue-bg);border-left-color:var(--blue);color:var(--blue)}
+.a-info .alert-ico,.a-info div{color:#1a409a}
+.a-warn{background:var(--orange-bg);border-left-color:var(--orange);color:var(--orange)}
+.a-warn .alert-ico,.a-warn div{color:#7a2c08}
+.a-danger{background:var(--red-bg);border-left-color:var(--red);color:var(--red)}
+.a-danger .alert-ico,.a-danger div{color:var(--red)}
+.a-success{background:var(--green-bg);border-left-color:var(--green);color:var(--green)}
+.a-success .alert-ico,.a-success div{color:var(--green)}
+.a-gold{background:var(--gold-bg);border-left-color:var(--gold);color:var(--gold-3)}
 
-/* Click-to-copy removed intentionally */
+/* ══════════ STEPS ══════════ */
+.steps{display:flex;flex-direction:column;gap:6px}
+.step{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:12px 16px;
+  background:var(--surface-2);border:1px solid var(--border);
+  border-radius:2px;
+  border-left:3px solid var(--chrome-3);
+}
+.step-n{
+  min-width:28px;height:28px;border-radius:50%;
+  background:var(--chrome-3);color:var(--chrome-txt);
+  font-family:var(--f-display);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+  border:2px solid var(--chrome-border);
+}
+.step-c strong{display:block;font-size:13px;font-weight:700;margin-bottom:2px;color:var(--txt);font-family:var(--f-display);letter-spacing:.3px}
+.step-c span{font-size:12.5px;color:var(--txt-2)}
 
-/* subsection divider */
-.subsec-title {
-  font-size: 11px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--txt3);
-  padding: 6px 0; margin: 20px 0 12px;
-  border-bottom: 1px solid var(--line);
-  display: flex; align-items: center; gap: 8px;
+/* ══════════ MIRANDA ══════════ */
+.miranda-box{
+  background:var(--chrome);
+  border:1px solid var(--chrome-border);
+  border-radius:3px;
+  padding:24px 28px;
+  margin-bottom:14px;
+}
+.miranda-label{
+  font-family:var(--f-display);font-size:10px;font-weight:700;
+  letter-spacing:3px;color:var(--gold-2);text-transform:uppercase;
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:16px;padding-bottom:10px;
+  border-bottom:1px solid var(--chrome-border);
+}
+.miranda-text{
+  font-family:var(--f-serif);
+  font-size:17px;font-weight:400;
+  color:var(--chrome-txt);
+  line-height:1.65;
+  padding:18px 22px;
+  background:rgba(255,255,255,.04);
+  border-left:4px solid var(--gold);
+  border-radius:0 3px 3px 0;
+  font-style:italic;
+  margin-bottom:16px;
+}
+.miranda-notes{display:flex;flex-direction:column;gap:8px}
+.miranda-note{
+  font-size:12.5px;color:var(--chrome-txt2);
+  display:flex;gap:10px;align-items:flex-start;
+}
+.miranda-note::before{
+  content:'▸';color:var(--gold);flex-shrink:0;
+  margin-top:1px;font-size:10px;
+}
+
+/* ══════════ INFO LIST ══════════ */
+.info-list{display:flex;flex-direction:column}
+.info-row{
+  display:flex;align-items:baseline;
+  justify-content:space-between;gap:12px;
+  padding:7px 0;
+  border-bottom:1px solid var(--border);
+  font-size:13px;
+}
+.info-row:last-child{border-bottom:none}
+.ir-k{color:var(--txt-2);flex-shrink:0}
+.ir-v{color:var(--txt);font-weight:600;text-align:right}
+.ir-v.mono{font-family:var(--f-mono);font-size:12px;color:var(--chrome-4)}
+.ir-v.red{color:var(--red)}
+.ir-v.green{color:var(--green)}
+
+/* ══════════ FORCE LEVELS ══════════ */
+.force-bar{display:flex;flex-direction:column;gap:7px}
+.force-level{
+  display:flex;align-items:center;gap:14px;
+  padding:11px 16px;border-radius:2px;
+  background:var(--surface-2);border:1px solid var(--border);
+  border-left:3px solid transparent;
+}
+.fn{
+  width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-display);font-weight:700;font-size:13px;flex-shrink:0;
+}
+.fn1{background:var(--green-bg);color:var(--green);border:1px solid rgba(20,90,44,.3)}
+.fn2{background:var(--gold-bg);color:var(--gold-3);border:1px solid var(--gold-border)}
+.fn3{background:var(--orange-bg);color:var(--orange);border:1px solid rgba(154,60,16,.28)}
+.fn4{background:var(--red-bg);color:var(--red);border:1px solid rgba(168,32,32,.28)}
+.fn5{background:rgba(168,32,32,.16);color:#8a0000;border:1px solid rgba(168,32,32,.5)}
+.f-title{font-family:var(--f-display);font-weight:700;font-size:13px;letter-spacing:.3px;color:var(--txt)}
+.f-desc{font-size:12px;color:var(--txt-2)}
+
+/* ══════════ IMMUNITY ══════════ */
+.imm-list{display:flex;flex-direction:column}
+.imm-row{
+  display:flex;align-items:center;gap:12px;
+  padding:9px 14px;
+  border-bottom:1px solid var(--border);
+  font-size:13px;
+}
+.imm-row:last-child{border-bottom:none}
+.imm-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--chrome-4);flex-shrink:0;
+}
+.imm-role{color:var(--txt);font-weight:600;flex:1;font-family:var(--f-display);font-size:13px;letter-spacing:.2px}
+.imm-note{font-size:11px;color:var(--txt-3);font-style:italic}
+
+/* ══════════ TERRITORY ══════════ */
+.territory-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:2px;
+  padding:16px 20px;margin-bottom:14px;
+}
+.tc-head{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:10px;padding-bottom:10px;
+  border-bottom:1px solid var(--border);
+}
+.tc-badge{
+  padding:2px 8px;border-radius:2px;
+  font-family:var(--f-display);
+  font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+}
+.tc-badge-guard{background:var(--gold-bg);color:var(--gold-3);border:1px solid var(--gold-border)}
+.tc-badge-special{background:var(--red-bg);color:var(--red);border:1px solid rgba(168,32,32,.22)}
+.tc-name{font-size:14px;font-weight:700;color:var(--txt);font-family:var(--f-display);letter-spacing:.3px}
+.tc-list{font-size:13px;color:var(--txt-2);line-height:1.8}
+.tc-list li{margin-left:18px;margin-bottom:3px}
+
+/* Gallery */
+.gallery-group{margin-top:16px;padding-top:14px;border-top:1px dashed var(--border-2)}
+.gallery-title{
+  font-family:var(--f-display);font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--chrome-4);margin-bottom:10px;
+}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.gallery-img{
+  width:100%;height:95px;object-fit:cover;
+  border:1px solid var(--border-2);border-radius:2px;
+  cursor:zoom-in;transition:transform .15s,border-color .15s;
+}
+.gallery-img:hover{transform:translateY(-2px);border-color:var(--chrome-4)}
+.img-lightbox{
+  position:fixed;inset:0;
+  background:rgba(8,20,12,.92);
+  display:none;align-items:center;justify-content:center;
+  z-index:2000;padding:18px;
+}
+.img-lightbox.show{display:flex}
+.img-lightbox img{
+  max-width:min(96vw,1400px);max-height:92vh;
+  border:1px solid var(--chrome-border);border-radius:3px;
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+}
+
+/* ══════════ FOOTER ══════════ */
+footer{
+  margin-left:var(--sidebar);
+  background:var(--chrome);
+  border-top:2px solid var(--gold);
+  padding:14px 36px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:11px;color:var(--chrome-txt3);
+  font-family:var(--f-mono);
+}
+.footer-left{display:flex;align-items:center;gap:16px}
+.footer-star{font-size:16px;color:var(--gold);opacity:.7}
+.footer-right{font-size:10px;color:var(--chrome-txt3)}
+
+/* ══════════ SUBSECTION ══════════ */
+.subsec-title{
+  font-family:var(--f-display);
+  font-size:12px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--chrome-4);
+  padding:8px 0;margin:22px 0 14px;
+  border-bottom:2px solid var(--border-2);
+  display:flex;align-items:center;gap:8px;
+}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media(max-width:768px){
+  #sidebar{transform:translateX(-100%);transition:transform .2s}
+  #main,footer{margin-left:0}
+  #main{padding:calc(var(--topbar)+16px) 16px 40px}
+}
+
+/* ══════════ UTILITY ══════════ */
+.mb4{margin-bottom:4px}.mb8{margin-bottom:8px}
+.mb14{margin-bottom:14px}.mb20{margin-bottom:20px}
+.mt8{margin-top:8px}.mt14{margin-top:14px}.mt20{margin-top:20px}
+.mono{font-family:var(--f-mono)}
+.gold{color:var(--gold)}
+.txt2{color:var(--txt-2)}.txt3{color:var(--txt-3)}
+.txt-red{color:var(--red)}.txt-green{color:var(--green)}
+
+.section-body{
+  padding:22px 24px;
+}
+/* section-body wrapper for new structure */
+.section > .hero,
+.section > .alert,
+.section > .grid-2,
+.section > .grid-3,
+.section > .tbl-wrap,
+.section > .miranda-box,
+.section > .tbl-wrap,
+.section > .steps,
+.section > .info-list,
+.section > .territory-card,
+.section > .subsec-title,
+.section > div:not(.section-head) {
+  /* Sections use inline padding from content */
 }
 </style>
 </head>
 <body>
 
-<!-- PROGRESS BAR -->
 <div id="progress"></div>
 
-<!-- TOP BAR -->
+<!-- ══════ TOPBAR ══════ -->
 <header id="topbar">
-  <div class="tb-emblem">
+  <div class="tb-badge-block">
     <span class="tb-star">⭐</span>
-    <div>
-      <div class="tb-brand">LSCSD</div>
+    <div class="tb-names">
+      <div class="tb-dept">LSCSD</div>
       <div class="tb-sub">Majestic RP · Phoenix</div>
     </div>
   </div>
 
-  <div class="search-wrap">
+  <div class="tb-section-pill">
+    <span class="tb-pill-label">Раздел</span>
+    <span class="tb-pill-val">Правовая памятка</span>
+  </div>
+
+  <div class="tb-search">
     <span class="search-icon">🔍</span>
     <input type="text" id="globalSearch" placeholder="Поиск по статьям, процедурам, штрафам…" autocomplete="off" spellcheck="false">
     <div id="search-results"></div>
   </div>
 
   <div class="tb-right">
-    <div class="tb-info">
+    <div class="tb-meta-block">
       <div class="tb-date" id="clock"></div>
       <div class="tb-ver">v3.0 · 07.04.2026</div>
     </div>
   </div>
 </header>
 
-<!-- SIDEBAR -->
+<!-- ══════ SIDEBAR ══════ -->
 <nav id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-brand-title">LSCSD</div>
+    <div class="sidebar-brand-sub">Департамент Шерифа округа Блейн</div>
+  </div>
+
   <div class="nav-group-label">Начало работы</div>
   <a class="nav-link" href="#home"><span class="nav-ico">🏠</span> Главная</a>
   <a class="nav-link" href="#procedures"><span class="nav-ico">📋</span> Задержание</a>
@@ -699,10 +834,16 @@ footer {
   <a class="nav-link" href="#bail"><span class="nav-ico">💰</span> Залог и сроки</a>
   <a class="nav-link" href="#force"><span class="nav-ico">💪</span> Применение силы</a>
   <a class="nav-link" href="#updates"><span class="nav-ico">🧾</span> Дополнения</a>
+
+  <div class="sidebar-footer">
+    LSCSD · Majestic RP · Phoenix<br>
+    Версия v3.0 · 2026
+  </div>
 </nav>
 
-<!-- MAIN -->
+<!-- ══════ MAIN ══════ -->
 <main id="main">
+
 
 <!-- ═══════════ HOME ═══════════ -->
 <section class="section" id="home">
@@ -728,6 +869,7 @@ footer {
     </div>
     <div class="section-meta">ст. 16–17 ПК</div>
   </div>
+<div class="section-body">
 
   <div class="alert a-info mb14">
     <span class="alert-ico">ℹ️</span>
@@ -792,6 +934,7 @@ footer {
     <span class="alert-ico">⚠️</span>
     <div><strong>Маска в публичном месте:</strong> Сотрудник вправе потребовать снять маску и предъявить документы. При отказе — процедура установки личности: наручники → объяснение причины → меры по идентификации → личный обыск.</div>
   </div>
+</div>
 </section>
 
 <!-- ═══════════ MIRANDA ═══════════ -->
@@ -803,6 +946,7 @@ footer {
       <div class="section-sub">Процессуальный кодекс · ст. 17 ч. 2</div>
     </div>
   </div>
+<div class="section-body">
 
   <div class="miranda-box mb14">
     <div class="miranda-label">📢 Обязательно зачитывается при каждом задержании</div>
@@ -812,10 +956,11 @@ footer {
     <div class="miranda-notes mt14">
       <div class="miranda-note">Зачитывается дважды, если задержанный не понял. После второго раза — больше не повторяется.</div>
       <div class="miranda-note">Если задержанный перебивает или оскорбляет сотрудника — право не зачитывать второй раз.</div>
-      <div class="miranda-note">Любые показания до зачтения Миранды являются <strong style="color:var(--red-l)">недопустимыми доказательствами</strong> (ст. 12 ПК).</div>
+      <div class="miranda-note">Любые показания до зачтения Миранды являются <strong style="color:var(--red)">недопустимыми доказательствами</strong> (ст. 12 ПК).</div>
       <div class="miranda-note">Факт зачитывания Миранды фиксируется в на боди-камере.</div>
     </div>
   </div>
+</div>
 </section>
 
 <!-- ═══════════ CRIMINAL CODE ═══════════ -->
@@ -828,6 +973,7 @@ footer {
     </div>
     <div class="section-meta">Клик по строке = полный текст</div>
   </div>
+<div class="section-body">
 
   <div class="alert a-info mb14">
     <span class="alert-ico">ℹ️</span>
@@ -1288,6 +1434,7 @@ footer {
     <span class="alert-ico">💡</span>
     <div><strong>Ст. 5.9 УК — Добровольная сдача:</strong> Лицо, добровольно сдавшее запрещённые предметы (наркотики, оружие и др.) <strong>до задержания</strong> — освобождается от ответственности по соответствующей статье. Изъятие при задержании добровольной сдачей не является.</div>
   </div>
+</div>
 </section>
 
 <!-- ═══════════ ADMIN CODE ═══════════ -->
@@ -1300,6 +1447,7 @@ footer {
     </div>
     <div class="section-meta">ст. 1.11 АК — штраф за каждое отдельно</div>
   </div>
+<div class="section-body">
 
   <div class="tbl-wrap mb14">
     <div class="tbl-head">📋 Административные правонарушения</div>
@@ -1380,6 +1528,7 @@ footer {
     <span class="alert-ico">⏱️</span>
     <div><strong>Срок давности АК — 72 часа</strong> при условии, что лицо намеренно не скрывалось. При совершении нескольких нарушений штраф назначается за каждое отдельно (ст. 1.11 АК).</div>
   </div>
+</div>
 </section>
 
 <!-- ═══════════ ROAD CODE ═══════════ -->
@@ -1391,6 +1540,7 @@ footer {
       <div class="section-sub">ПДД штата Сан-Андреас · ключевые нормы</div>
     </div>
   </div>
+<div class="section-body">
 
   <div class="grid-2 mb14">
     <div class="card card-blue">
@@ -1403,19 +1553,19 @@ footer {
           <div class="info-row"><span class="ir-k">Автомагистраль</span><span class="ir-v mono">200 км/ч</span></div>
           <div class="info-row"><span class="ir-k">Буксировка ТС</span><span class="ir-v mono red">50 км/ч</span></div>
         </div>
-        <div style="margin-top:10px;font-size:12px;color:var(--txt3)">Штраф за превышение: до $15,000</div>
+        <div style="margin-top:10px;font-size:12px;color:var(--txt-3)">Штраф за превышение: до $15,000</div>
       </div>
     </div>
     <div class="card card-gold">
       <div class="card-title">🚨 Приоритет спецтранспорта (ст. 11–12 ДК)</div>
       <div class="card-body">
         <div style="display:flex;flex-direction:column;gap:6px;font-size:13px">
-          <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--red-l);font-weight:700">1.</span><span><strong>EMS (скорая)</strong> — абсолютный приоритет</span></div>
+          <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--red);font-weight:700">1.</span><span><strong>EMS (скорая)</strong> — абсолютный приоритет</span></div>
           <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--gold);font-weight:700">2.</span><span>Полиция / Шериф / FIB — с маячками и сиреной</span></div>
-          <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--txt2);font-weight:700">3.</span><span>Остальные спецслужбы</span></div>
+          <div style="display:flex;gap:8px;align-items:center"><span style="color:var(--txt-2);font-weight:700">3.</span><span>Остальные спецслужбы</span></div>
         </div>
-        <div style="margin-top:10px;font-size:12px;color:var(--txt3)">Не уступил EMS — штраф до $10,000</div>
-        <div style="margin-top:4px;font-size:12px;color:var(--txt3)">Сотрудник со спецсигналами может отступать от разметки и знаков при обеспечении безопасности. Нарушение = штраф до $15,000.</div>
+        <div style="margin-top:10px;font-size:12px;color:var(--txt-3)">Не уступил EMS — штраф до $10,000</div>
+        <div style="margin-top:4px;font-size:12px;color:var(--txt-3)">Сотрудник со спецсигналами может отступать от разметки и знаков при обеспечении безопасности. Нарушение = штраф до $15,000.</div>
       </div>
     </div>
   </div>
@@ -1468,6 +1618,7 @@ footer {
       </table>
     </div>
   </div>
+</div>
 </section>
 
 <!-- ═══════════ PROCEDURAL ═══════════ -->
@@ -1479,6 +1630,7 @@ footer {
       <div class="section-sub">Права и обязанности · доказательства · обыск</div>
     </div>
   </div>
+<div class="section-body">
 
   <div class="grid-2 mb14">
     <div>
@@ -1503,17 +1655,17 @@ footer {
             <div class="info-row"><span class="ir-k">4 года л/с</span><span class="ir-v mono">$100,000</span></div>
             <div class="info-row"><span class="ir-k">5 лет л/с</span><span class="ir-v mono red">ЗАЛОГ НЕ ПРЕДУСМОТРЕН</span></div>
           </div>
-          <div style="margin-top:10px;font-size:12px;color:var(--txt3)">Только по статьям без судимости. Залог устанавливается пропорционально: 1 год = $25,000.</div>
+          <div style="margin-top:10px;font-size:12px;color:var(--txt-3)">Только по статьям без судимости. Залог устанавливается пропорционально: 1 год = $25,000.</div>
         </div>
       </div>
     </div>
     <div>
       <div class="tbl-wrap mb14">
         <div class="tbl-head">⚖️ Презумпция невиновности (ст. 6 ПК)</div>
-        <div style="padding:14px;font-size:13px;line-height:1.8;color:var(--txt2)">
-          Обвиняемый <strong style="color:var(--txt1)">считается невиновным</strong> до доказательства вины.<br><br>
-          Бремя доказывания — на <strong style="color:var(--txt1)">стороне обвинения</strong>.<br><br>
-          Все сомнения — <strong style="color:var(--txt1)">в пользу обвиняемого</strong>.<br>
+        <div style="padding:14px;font-size:13px;line-height:1.8;color:var(--txt-2)">
+          Обвиняемый <strong style="color:var(--txt)">считается невиновным</strong> до доказательства вины.<br><br>
+          Бремя доказывания — на <strong style="color:var(--txt)">стороне обвинения</strong>.<br><br>
+          Все сомнения — <strong style="color:var(--txt)">в пользу обвиняемого</strong>.<br>
           Приговор не может основываться на предположениях.
           <div class="alert a-warn mt8">
             <span class="alert-ico">⚠️</span>
@@ -1523,7 +1675,7 @@ footer {
       </div>
       <div class="tbl-wrap">
         <div class="tbl-head">📝 Доказательства (ст. 11 ПК)</div>
-        <div style="padding:14px;font-size:13px;line-height:1.85;color:var(--txt1)">
+        <div style="padding:14px;font-size:13px;line-height:1.85;color:var(--txt)">
           ✅ Показания подозреваемого / обвиняемого<br>
           ✅ Показания потерпевшего и свидетеля<br>
           ✅ Заключение эксперта<br>
@@ -1531,7 +1683,7 @@ footer {
           ✅ Фото- и видеофиксация<br>
           ✅ Запись в базе БОЛО-розыска<br>
           ✅ Протоколы следственных действий<br>
-          <div style="margin-top:8px;color:var(--red-l)">
+          <div style="margin-top:8px;color:var(--red)">
           ❌ Показания до зачитывания Миранды<br>
           ❌ Показания, основанные на слухах<br>
           ❌ Улики, добытые незаконным путём
@@ -1546,19 +1698,19 @@ footer {
     <div style="padding:16px">
       <div class="grid-3">
         <div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--txt3);text-transform:uppercase;margin-bottom:8px">Адвокат вправе требовать</div>
-          <div style="font-size:13px;color:var(--txt2);line-height:1.9">
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--txt-3);text-transform:uppercase;margin-bottom:8px">Адвокат вправе требовать</div>
+          <div style="font-size:13px;color:var(--txt-2);line-height:1.9">
             ✅ Причину задержания<br>
             ✅ Видеофиксацию процедуры<br>
             ✅ Встречу с задержанным<br>
             ✅ Первичные документы и ордер<br>
             ✅ Конфиденциальную беседу<br>
-            <span style="color:var(--red-l);font-size:12px">Противодействие — ст. 16.1.1 УК ★★★★</span>
+            <span style="color:var(--red);font-size:12px">Противодействие — ст. 16.1.1 УК ★★★★</span>
           </div>
         </div>
         <div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--txt3);text-transform:uppercase;margin-bottom:8px">Права задержанного</div>
-          <div style="font-size:13px;color:var(--txt2);line-height:1.9">
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--txt-3);text-transform:uppercase;margin-bottom:8px">Права задержанного</div>
+          <div style="font-size:13px;color:var(--txt-2);line-height:1.9">
             ✅ Один телефонный звонок<br>
             ✅ Вызов адвоката (3 мин.)<br>
             ✅ Молчать без последствий<br>
@@ -1567,18 +1719,19 @@ footer {
           </div>
         </div>
         <div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--txt3);text-transform:uppercase;margin-bottom:8px">Гражданин при встрече с сотрудником</div>
-          <div style="font-size:13px;color:var(--txt2);line-height:1.9">
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--txt-3);text-transform:uppercase;margin-bottom:8px">Гражданин при встрече с сотрудником</div>
+          <div style="font-size:13px;color:var(--txt-2);line-height:1.9">
             ✅ Снимать видео действий полиции<br>
             ✅ Требовать назвать имя / жетон<br>
             ✅ Отказаться от добровольного досмотра<br>
             ✅ Не отвечать на вопросы до адвоката<br>
-            <span style="color:var(--red-l);font-size:12px">❌ Нельзя препятствовать законным действиям</span>
+            <span style="color:var(--red);font-size:12px">❌ Нельзя препятствовать законным действиям</span>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </section>
 
 <!-- ═══════════ IMMUNITY ═══════════ -->
@@ -1590,6 +1743,7 @@ footer {
       <div class="section-sub">Закон «Об обеспечении неприкосновенности государственных служащих»</div>
     </div>
   </div>
+<div class="section-body">
 
   <div class="alert a-gold mb14">
     <span class="alert-ico">🛡️</span>
@@ -1641,10 +1795,10 @@ footer {
 
       <div class="tbl-wrap">
         <div class="tbl-head">🚗 Кортеж и транспорт неприкосновенного (ст. 4 ч. 6, ст. 5 ч. 3)</div>
-        <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.8">
-          Служебный и личный автотранспорт неприкосновенного лица, а также автотранспорт сопровождения <strong style="color:var(--txt1)">НЕ МОЖЕТ быть досмотрен и/или обыскан</strong> без его согласия.<br><br>
-          Организованный кортеж с неприкосновенным лицом вне зависимости от состава <strong style="color:var(--txt1)">НЕ МОЖЕТ быть остановлен, досмотрен и/или обыскан</strong> при любых обстоятельствах.<br><br>
-          Положения Дорожного кодекса к кортежу <strong style="color:var(--red-l)">не применяются</strong>.
+        <div style="padding:14px;font-size:13px;color:var(--txt-2);line-height:1.8">
+          Служебный и личный автотранспорт неприкосновенного лица, а также автотранспорт сопровождения <strong style="color:var(--txt)">НЕ МОЖЕТ быть досмотрен и/или обыскан</strong> без его согласия.<br><br>
+          Организованный кортеж с неприкосновенным лицом вне зависимости от состава <strong style="color:var(--txt)">НЕ МОЖЕТ быть остановлен, досмотрен и/или обыскан</strong> при любых обстоятельствах.<br><br>
+          Положения Дорожного кодекса к кортежу <strong style="color:var(--red)">не применяются</strong>.
         </div>
       </div>
     </div>
@@ -1656,7 +1810,7 @@ footer {
       <div class="grid-2">
         <div>
           <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--green);text-transform:uppercase;margin-bottom:8px">✅ ПРИМЕНЯЕТСЯ</div>
-          <div style="font-size:13px;color:var(--txt2);line-height:1.9">
+          <div style="font-size:13px;color:var(--txt-2);line-height:1.9">
             ✅ Дисциплинарная ответственность руководством (ТК)<br>
             ✅ Ответственность по решению суда<br>
             ✅ Ответственность нормативным актом ГП или зам. ГП<br>
@@ -1666,7 +1820,7 @@ footer {
         </div>
         <div>
           <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:8px">❌ НЕ ПРИМЕНЯЕТСЯ</div>
-          <div style="font-size:13px;color:var(--txt2);line-height:1.9">
+          <div style="font-size:13px;color:var(--txt-2);line-height:1.9">
             ❌ Уголовная ответственность без приостановления иммунитета<br>
             ❌ Административная ответственность без акта ГП/суда<br>
             ❌ Дорожные штрафы без акта ГП/суда<br>
@@ -1682,6 +1836,7 @@ footer {
     <span class="alert-ico">⚖️</span>
     <div><strong>Независимость судей (ст. 9):</strong> Ни одно лицо не может привлечь судью к ответственности, кроме случаев, предусмотренных законом. Ни одно лицо не может оказывать давление на судей. Судебная власть действует независимо от исполнительной.</div>
   </div>
+</div>
 </section>
 
 <!-- ═══════════ TERRITORIES ═══════════ -->
@@ -1694,6 +1849,7 @@ footer {
     </div>
     <div class="section-meta">ст. 12.7 УК</div>
   </div>
+<div class="section-body">
 
   <div class="alert a-danger mb14">
     <span class="alert-ico">🚫</span>
@@ -1842,6 +1998,7 @@ footer {
       </div>
     </div>
   </div>
+</div>
 </section>
 
 <!-- ═══════════ JURISDICTION ═══════════ -->
@@ -1853,6 +2010,7 @@ footer {
       <div class="section-sub">Закон «О деятельности региональных правоохранительных органов»</div>
     </div>
   </div>
+<div class="section-body">
 
   <div class="grid-2 mb14">
     <div class="card card-gold">
@@ -1904,6 +2062,7 @@ footer {
     <span class="alert-ico">🔹</span>
     <div><strong>Подчинение (ст. 1 ч. 2–3):</strong> Сотрудники LSCSD напрямую подчинены Шерифу LSCSD, его заместителям, а также Департаменту Национальной Безопасности, его заместителям, Вице-губернатору и Губернатору.</div>
   </div>
+</div>
 </section>
 
 <!-- ═══════════ BAIL & TIMINGS ═══════════ -->
@@ -1915,6 +2074,7 @@ footer {
       <div class="section-sub">Процессуальный кодекс · Уголовный кодекс</div>
     </div>
   </div>
+<div class="section-body">
 
   <div class="grid-3 mb14">
     <div class="tbl-wrap">
@@ -1924,10 +2084,10 @@ footer {
           <div class="info-row"><span class="ir-k">1 год л/с</span><span class="ir-v mono">$25,000</span></div>
           <div class="info-row"><span class="ir-k">2 года л/с</span><span class="ir-v mono">$50,000</span></div>
           <div class="info-row"><span class="ir-k">3 года л/с</span><span class="ir-v mono">$75,000</span></div>
-          <div class="info-row"><span class="ir-k">4 года л/с</span><span class="ir-v mono">$100,000</span></div>
+          <div class="info-row"><span class="ir-k">4 года л/с (судимость)</span><span class="ir-v mono red">Недоступно</span></div>
           <div class="info-row"><span class="ir-k">5 лет л/с (судимость)</span><span class="ir-v mono red">Недоступно</span></div>
         </div>
-        <div style="margin-top:10px;font-size:12px;color:var(--txt3)">Только по статьям, не влекущим судимость. Формула: лет × $25,000.</div>
+        <div style="margin-top:10px;font-size:12px;color:var(--txt-3)">Только по статьям, не влекущим судимость. Формула: лет × $25,000.</div>
       </div>
     </div>
     <div class="tbl-wrap">
@@ -1951,7 +2111,7 @@ footer {
     </div>
     <div class="tbl-wrap">
       <div class="tbl-head">📋 Смягчающие обстоятельства (ст. 5.3 УК)</div>
-      <div style="padding:14px;font-size:12.5px;color:var(--txt2);line-height:1.9">
+      <div style="padding:14px;font-size:12.5px;color:var(--txt-2);line-height:1.9">
         ✅ Явка с повинной<br>
         ✅ Активное содействие следствию<br>
         ✅ Возмещение ущерба потерпевшему<br>
@@ -1960,10 +2120,11 @@ footer {
         ✅ Совершение под принуждением<br>
         ✅ Аффект (вызванный незакон. действиями жертвы)<br>
         <br>
-        <div style="font-size:11px;color:var(--txt3)">Явка с повинной по ст. 16.15 УК = ½ наказания</div>
+        <div style="font-size:11px;color:var(--txt-3)">Явка с повинной по ст. 16.15 УК = ½ наказания</div>
       </div>
     </div>
   </div>
+</div>
 </section>
 
 <!-- ═══════════ FORCE ═══════════ -->
@@ -1975,6 +2136,7 @@ footer {
       <div class="section-sub">Уровни физического воздействия</div>
     </div>
   </div>
+<div class="section-body">
 
   <div class="tbl-wrap">
     <div class="tbl-head">🔺 Шкала применения силы</div>
@@ -2023,6 +2185,7 @@ footer {
     <span class="alert-ico">⚠️</span>
     <div><strong>Помни:</strong> Применение силы должно быть соразмерно угрозе. Превышение необходимой самообороны или полномочий = ст. 15.1 УК. Всегда фиксируй применение силы в рапорте.</div>
   </div>
+</div>
 </section>
 
 <!-- ═══════════ USER UPDATES ═══════════ -->
@@ -2034,6 +2197,7 @@ footer {
       <div class="section-sub">Сводка по запросу: лицензии, задержание, адвокат, ОПЗ, оружие, ПК</div>
     </div>
   </div>
+<div class="section-body">
 
   <div class="tbl-wrap mb14">
     <div class="tbl-head">🔗 Важные лицензии</div>
@@ -2099,22 +2263,22 @@ footer {
 
   <div class="tbl-wrap mb14">
     <div class="tbl-head">🗺️ Охраняемые территории (общие правила)</div>
-    <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
-      <strong style="color:var(--txt1)">1.1</strong> На охраняемых территориях могут находиться граждане при наличии законного основания пребывания.<br>
-      <strong style="color:var(--txt1)">Примечание:</strong> основания включают получение госуслуг, обращение к госорганам в рабочее время, необходимость неотложной защиты при угрозе жизни/здоровью, ожидание вызова адвоката (для аккредитованных членов коллегии адвокатов).<br>
-      <strong style="color:var(--txt1)">Часть 2:</strong> сотрудник организации или правоохранительного органа вправе потребовать покинуть территорию, если сочтет основание пребывания недостаточным.
+    <div style="padding:14px;font-size:13px;color:var(--txt-2);line-height:1.85">
+      <strong style="color:var(--txt)">1.1</strong> На охраняемых территориях могут находиться граждане при наличии законного основания пребывания.<br>
+      <strong style="color:var(--txt)">Примечание:</strong> основания включают получение госуслуг, обращение к госорганам в рабочее время, необходимость неотложной защиты при угрозе жизни/здоровью, ожидание вызова адвоката (для аккредитованных членов коллегии адвокатов).<br>
+      <strong style="color:var(--txt)">Часть 2:</strong> сотрудник организации или правоохранительного органа вправе потребовать покинуть территорию, если сочтет основание пребывания недостаточным.
     </div>
   </div>
 
   <div class="grid-2 mb14">
     <div class="tbl-wrap">
       <div class="tbl-head">🚨 Работа по похищению</div>
-      <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
-        1) Максимальная цена за похищенного: <strong style="color:var(--txt1)">25.000$</strong>, максимум 6 заложников.<br>
-        2) Время на выполнение: <strong style="color:var(--txt1)">15 минут</strong>.<br>
-        3) Зеленый коридор: <strong style="color:var(--txt1)">до 45 сек или до 750м</strong>.<br>
+      <div style="padding:14px;font-size:13px;color:var(--txt-2);line-height:1.85">
+        1) Максимальная цена за похищенного: <strong style="color:var(--txt)">25.000$</strong>, максимум 6 заложников.<br>
+        2) Время на выполнение: <strong style="color:var(--txt)">15 минут</strong>.<br>
+        3) Зеленый коридор: <strong style="color:var(--txt)">до 45 сек или до 750м</strong>.<br>
         4) При контакте с заложниками уточнить их состояние.<br><br>
-        <strong style="color:var(--gold-l)">/dep шаблоны:</strong><br>
+        <strong style="color:var(--gold-2)">/dep шаблоны:</strong><br>
         /dep to ALL: Агент FIB работает по похищению<br>
         /dep to ALL: Похитители на [цвет] машинах запросили цену за заложников и 45 секунд зеленого коридора. На выполнение 15 минут.<br>
         /dep to ALL: Заложники спасены, похитители уехали на [цвет] машинах в сторону [место], у них есть 45 секунд зеленого коридора.<br>
@@ -2124,10 +2288,10 @@ footer {
 
     <div class="tbl-wrap">
       <div class="tbl-head">🏦 Работа по ограблению</div>
-      <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
-        1) Допускается только <strong style="color:var(--txt1)">1 заложник</strong>, если он уже был внутри.<br>
+      <div style="padding:14px;font-size:13px;color:var(--txt-2);line-height:1.85">
+        1) Допускается только <strong style="color:var(--txt)">1 заложник</strong>, если он уже был внутри.<br>
         2) Убедиться, что похищенный реально есть (возможен RP-отыгрыш со стороны грабителей).<br>
-        3) Выкуп деньгами не допускается, только зеленый коридор <strong style="color:var(--txt1)">750м</strong>.<br>
+        3) Выкуп деньгами не допускается, только зеленый коридор <strong style="color:var(--txt)">750м</strong>.<br>
         4) При выделении коридора грабители обязаны быстро покинуть место.<br>
         5) Запрос любых требований кроме коридора — пуш-ограбление.
       </div>
@@ -2136,18 +2300,18 @@ footer {
 
   <div class="tbl-wrap mb14">
     <div class="tbl-head">🪪 ОПЗ и идентификация сотрудника</div>
-    <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
+    <div style="padding:14px;font-size:13px;color:var(--txt-2);line-height:1.85">
       Закон о деятельности региональных правоохранительных органов — ст. 9: сотрудник обязан представиться и показать удостоверение и значок; спецподразделения могут ограничиться значком.<br>
       ПК — ст. 17 п. б: при задержании предъявить документ/нашивку/жетон/иной знак. ПК ст. 16.3: порядок установки личности при отказе предъявить документы.<br><br>
-      <strong style="color:var(--txt1)">Достаточно ли жетона?</strong> В общем случае нет. Требуются удостоверение и значок. Исключение — спецподразделения по ст. 9. При споре фиксируйте событие, требуйте должность и ФИО; при отказе запускается процедура установления личности по ст. 16.3 ПК.
+      <strong style="color:var(--txt)">Достаточно ли жетона?</strong> В общем случае нет. Требуются удостоверение и значок. Исключение — спецподразделения по ст. 9. При споре фиксируйте событие, требуйте должность и ФИО; при отказе запускается процедура установления личности по ст. 16.3 ПК.
     </div>
   </div>
 
   <div class="grid-2 mb14">
     <div class="tbl-wrap">
       <div class="tbl-head">🔫 По поводу оружия и спецсредств</div>
-      <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
-        Ст. 5: гражданское оружие предназначено для самообороны, спорта, охоты и иных законных целей; обычно имеет префикс <strong style="color:var(--txt1)">A</strong> в серийном номере (или иной допустимый гражданский формат).<br><br>
+      <div style="padding:14px;font-size:13px;color:var(--txt-2);line-height:1.85">
+        Ст. 5: гражданское оружие предназначено для самообороны, спорта, охоты и иных законных целей; обычно имеет префикс <strong style="color:var(--txt)">A</strong> в серийном номере (или иной допустимый гражданский формат).<br><br>
         Ст. 6 (спецсредства): бронежилеты, тайзер, резиновая дубинка, наручники, медпрепараты и инструменты (дефибриллятор, эпинефрин, стимуляторы), электрическая дубинка.<br><br>
         Если у гражданина есть лицензия и оружие в инвентаре с серийником на A — само хранение не нарушение; нарушение возможно при незаконном ношении/демонстрации.
       </div>
@@ -2176,29 +2340,29 @@ footer {
 
   <div class="tbl-wrap mb14">
     <div class="tbl-head">🧠 Субъекты, объекты, признаки, мнения</div>
-    <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
-      <strong style="color:var(--txt1)">Объект преступления:</strong> то, на что посягает преступление (жертва, цель, мотив).<br>
-      <strong style="color:var(--txt1)">Субъективная сторона:</strong> внутреннее психическое отношение лица к содеянному.<br>
-      <strong style="color:var(--txt1)">Объективная сторона:</strong> внешнее проявление деяния (действия, обстоятельства, последствия).<br><br>
-      <strong style="color:var(--txt1)">Объективное мнение:</strong> проверяемые факты, подлежат доказыванию; при ложности возможна ответственность (в т.ч. АК 5.1).<br>
-      <strong style="color:var(--txt1)">Субъективное мнение:</strong> оценочное суждение, но может стать нарушением при оскорблении/дискредитации (АК 6.4, УК 14.1 при существенном вреде).<br>
+    <div style="padding:14px;font-size:13px;color:var(--txt-2);line-height:1.85">
+      <strong style="color:var(--txt)">Объект преступления:</strong> то, на что посягает преступление (жертва, цель, мотив).<br>
+      <strong style="color:var(--txt)">Субъективная сторона:</strong> внутреннее психическое отношение лица к содеянному.<br>
+      <strong style="color:var(--txt)">Объективная сторона:</strong> внешнее проявление деяния (действия, обстоятельства, последствия).<br><br>
+      <strong style="color:var(--txt)">Объективное мнение:</strong> проверяемые факты, подлежат доказыванию; при ложности возможна ответственность (в т.ч. АК 5.1).<br>
+      <strong style="color:var(--txt)">Субъективное мнение:</strong> оценочное суждение, но может стать нарушением при оскорблении/дискредитации (АК 6.4, УК 14.1 при существенном вреде).<br>
       Намерение и контекст (умысел ввести в заблуждение) усиливают ответственность. В публичной речи учитывается проверяемость и общественная опасность.<br><br>
-      <strong style="color:var(--txt1)">Обязательные признаки:</strong> присутствуют всегда и определяют состав.<br>
-      <strong style="color:var(--txt1)">Факультативные признаки:</strong> присутствуют не всегда, уточняют состав и влияют на тяжесть наказания.
+      <strong style="color:var(--txt)">Обязательные признаки:</strong> присутствуют всегда и определяют состав.<br>
+      <strong style="color:var(--txt)">Факультативные признаки:</strong> присутствуют не всегда, уточняют состав и влияют на тяжесть наказания.
     </div>
   </div>
 
   <div class="tbl-wrap mb14">
     <div class="tbl-head">👨‍⚖️ Что может требовать/делать адвокат</div>
-    <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
+    <div style="padding:14px;font-size:13px;color:var(--txt-2);line-height:1.85">
       Причина задержания, видеофиксация, встреча с задержанным, нахождение в КПЗ LSPD/SHPD/FIB, устный договор с задержанным.<br>
-      <strong style="color:var(--red-l)">Не препятствуйте законной деятельности адвоката.</strong>
+      <strong style="color:var(--red)">Не препятствуйте законной деятельности адвоката.</strong>
     </div>
   </div>
 
   <div class="tbl-wrap mb14">
     <div class="tbl-head">🧍 Если человек пришел с розыском сдаваться</div>
-    <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
+    <div style="padding:14px;font-size:13px;color:var(--txt-2);line-height:1.85">
       Обязательно: запросить документы, снять маску (если есть), сделать фоторобот, только потом проверять причину розыска в планшете.<br>
       Если розыск автоматический — проводить задержание по процедуре (обычно ст. 6.2 ч.1), без излишнего давления, с соблюдением процессуальных действий.<br>
       Если розыск выдан вручную — через /dep вызвать инициатора розыска к месту удержания. Если ответа нет и инициатор офлайн — отпустить гражданина.<br>
@@ -2208,31 +2372,38 @@ footer {
 
   <div class="tbl-wrap">
     <div class="tbl-head">📚 Процессуальный кодекс: ключевые положения (выжимка)</div>
-    <div style="padding:14px;font-size:13px;color:var(--txt2);line-height:1.85">
-      <strong style="color:var(--txt1)">Законность производства:</strong> нельзя применять нормы, противоречащие ПК; решения суда/следствия/прокуратуры должны быть законными, обоснованными и мотивированными.<br>
-      <strong style="color:var(--txt1)">Честь и достоинство:</strong> осмотр жилья — по согласию или судебному акту; обыск — по ордеру/решению суда/ГП, в исключениях с уведомлением прокурора в срок до 1 часа.<br>
-      <strong style="color:var(--txt1)">Тайна переписки:</strong> ограничивается только судебным актом.<br>
-      <strong style="color:var(--txt1)">Презумпция невиновности:</strong> обвинение доказывает вину; сомнения трактуются в пользу обвиняемого; обвинительный приговор не строится на предположениях.<br>
-      <strong style="color:var(--txt1)">Свобода оценки доказательств:</strong> оцениваются по внутреннему убеждению в совокупности; заранее установленной силы нет.<br>
-      <strong style="color:var(--txt1)">Охрана прав человека:</strong> незаконно задержанный подлежит немедленному освобождению; условия содержания должны исключать угрозу жизни/здоровью.<br>
-      <strong style="color:var(--txt1)">Недопустимые доказательства:</strong> материалы, полученные с нарушением ПК, юридической силы не имеют (в т.ч. допрос до разъяснения прав).<br>
-      <strong style="color:var(--txt1)">Базовый порядок задержания:</strong> основания по ст. 16 ч.2; при отказе идентифицироваться — процедура установления личности и дальнейшие процессуальные действия по ст. 17.
+    <div style="padding:14px;font-size:13px;color:var(--txt-2);line-height:1.85">
+      <strong style="color:var(--txt)">Законность производства:</strong> нельзя применять нормы, противоречащие ПК; решения суда/следствия/прокуратуры должны быть законными, обоснованными и мотивированными.<br>
+      <strong style="color:var(--txt)">Честь и достоинство:</strong> осмотр жилья — по согласию или судебному акту; обыск — по ордеру/решению суда/ГП, в исключениях с уведомлением прокурора в срок до 1 часа.<br>
+      <strong style="color:var(--txt)">Тайна переписки:</strong> ограничивается только судебным актом.<br>
+      <strong style="color:var(--txt)">Презумпция невиновности:</strong> обвинение доказывает вину; сомнения трактуются в пользу обвиняемого; обвинительный приговор не строится на предположениях.<br>
+      <strong style="color:var(--txt)">Свобода оценки доказательств:</strong> оцениваются по внутреннему убеждению в совокупности; заранее установленной силы нет.<br>
+      <strong style="color:var(--txt)">Охрана прав человека:</strong> незаконно задержанный подлежит немедленному освобождению; условия содержания должны исключать угрозу жизни/здоровью.<br>
+      <strong style="color:var(--txt)">Недопустимые доказательства:</strong> материалы, полученные с нарушением ПК, юридической силы не имеют (в т.ч. допрос до разъяснения прав).<br>
+      <strong style="color:var(--txt)">Базовый порядок задержания:</strong> основания по ст. 16 ч.2; при отказе идентифицироваться — процедура установления личности и дальнейшие процессуальные действия по ст. 17.
       <br><br>
       Ф — работают FIB. Р — работают шерифы и PD.<br>
       Вызов адвоката/прокурора/начальства: телефон → правительство → адвокат/прокурор; /dep to (фракция задержанного): начальство в КПЗ (место).
     </div>
   </div>
+</div>
 </section>
+
 
 </main>
 
 <footer>
-  <div>LSCSD · Majestic RP · Phoenix · 2026</div>
-  <div>by okuname · v3.0</div>
+  <div class="footer-left">
+    <span class="footer-star">⭐</span>
+    <span>LSCSD · Majestic RP · Phoenix · 2026</span>
+  </div>
+  <div class="footer-right">by okuname · v3.0</div>
 </footer>
+
 <div id="imgLightbox" class="img-lightbox"><img id="imgLightboxPic" src="" alt="Просмотр"></div>
 
 <script>
+
 // ── CLOCK ──
 function updateClock() {
   const now = new Date();
@@ -2402,7 +2573,7 @@ input.addEventListener('input', () => {
         <div class="sr-item" onclick="goToSection('${m.section}')">
           <div style="display:flex;gap:8px;align-items:baseline">
             <span class="sr-art">${hl(m.key)}</span>
-            <span style="font-size:10px;color:var(--txt3)">${m.pun}</span>
+            <span style="font-size:10px;color:var(--txt-3)">${m.pun}</span>
           </div>
           <div class="sr-desc">${hl(m.desc.substring(0, 90))}${m.desc.length > 90 ? '…' : ''}</div>
           <div class="sr-tag">${m.tbl}</div>
@@ -2443,6 +2614,7 @@ document.addEventListener('click', e => {
 input.addEventListener('keydown', e => {
   if (e.key === 'Escape') { results.style.display = 'none'; input.blur(); }
 });
+
 </script>
 </body>
 </html>
