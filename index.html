@@ -87,6 +87,32 @@ body{
   overflow-x:hidden;
 }
 
+/* Accessibility */
+.skip-link{
+  position:fixed;
+  left:14px;
+  top:10px;
+  transform:translateY(-200%);
+  z-index:2000;
+  padding:8px 10px;
+  border-radius:2px;
+  background:var(--chrome-3);
+  border:1px solid var(--chrome-border);
+  color:var(--gold-2);
+  font-family:var(--f-display);
+  font-size:11px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  text-decoration:none;
+  outline:none;
+  transition:transform .12s, box-shadow .12s, border-color .12s;
+}
+.skip-link:focus{
+  transform:translateY(0);
+  border-color:var(--gold);
+  box-shadow:0 0 0 2px rgba(184,134,11,.15);
+}
+
 /* ══════════ TOPBAR ══════════ */
 #topbar{
   position:fixed;top:0;left:0;right:0;z-index:800;
@@ -503,6 +529,60 @@ body{
 .tag-mil{background:rgba(62,46,154,.10);color:var(--purple);border:1px solid rgba(62,46,154,.22)}
 .tag-reg{background:rgba(20,90,44,.10);color:var(--green);border:1px solid rgba(20,90,44,.22)}
 
+/* Новые стили для группировки */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.category-group {
+  background: var(--chrome-2);
+  border: 1px solid var(--chrome-border);
+  border-radius: 4px;
+  padding: 15px;
+}
+
+.category-header {
+  font-family: var(--f-display);
+  font-size: 14px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 1px solid var(--border-2);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quick-action-card {
+  background: var(--surface-2);
+  border-left: 3px solid var(--gold);
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.quick-action-card:hover {
+  transform: translateX(5px);
+  background: var(--chrome-4);
+}
+
+.quick-action-title {
+  font-weight: 700;
+  font-size: 13px;
+  display: block;
+}
+
+.quick-action-desc {
+  font-size: 11px;
+  color: var(--txt-3);
+}
+
 /* ══════════ EXPAND PANEL ══════════ */
 .art-panel{
   display:none;
@@ -750,10 +830,39 @@ footer{
 .mb4{margin-bottom:4px}.mb8{margin-bottom:8px}
 .mb14{margin-bottom:14px}.mb20{margin-bottom:20px}
 .mt8{margin-top:8px}.mt14{margin-top:14px}.mt20{margin-top:20px}
+.p14{padding:14px}.p16{padding:16px}
+.mt10{margin-top:10px}
 .mono{font-family:var(--f-mono)}
 .gold{color:var(--gold)}
 .txt2{color:var(--txt-2)}.txt3{color:var(--txt-3)}
 .txt-red{color:var(--red)}.txt-green{color:var(--green)}
+
+.link-reset{display:block;text-decoration:none;color:inherit}
+
+.quick-action-card--blue{border-left-color:var(--blue)}
+.quick-action-card--red{border-left-color:var(--red)}
+.quick-action-card--purple{border-left-color:var(--purple)}
+.quick-action-card--orange{border-left-color:var(--orange)}
+.quick-action-card--green{border-left-color:var(--green)}
+.quick-action-card--txtgreen{border-left-color:var(--txt-green)}
+.quick-action-card--gold3{border-left-color:var(--gold-3)}
+
+.note-danger{
+  margin-top:10px;
+  padding-top:8px;
+  font-size:11px;
+  color:var(--red-l);
+  font-weight:700;
+  text-transform:uppercase;
+  border-top:1px solid var(--border);
+}
+
+.text-muted-sm{font-size:12px;color:var(--txt-3)}
+.text-body{font-size:13px;color:var(--txt-2);line-height:1.9}
+.text-title-xs{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  color:var(--txt-3);text-transform:uppercase;margin-bottom:8px
+}
 
 .section-body{
   padding:22px 24px;
@@ -776,6 +885,8 @@ footer{
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Перейти к содержимому</a>
 
 <div id="progress"></div>
 
@@ -809,7 +920,7 @@ footer{
 </header>
 
 <!-- ══════ SIDEBAR ══════ -->
-<nav id="sidebar">
+<nav id="sidebar" aria-label="Навигация по разделам памятки">
   <div class="sidebar-brand">
     <div class="sidebar-brand-title">ПАМЯТКА</div>
     <div class="sidebar-brand-sub">Для сотрудника силовых органов</div>
@@ -817,8 +928,10 @@ footer{
 
   <div class="nav-group-label">Начало работы</div>
   <a class="nav-link" href="#home"><span class="nav-ico">🏠</span> Главная</a>
+  <a class="nav-link" href="#dashboard"><span class="nav-ico">⚡</span> Оперативный дашборд</a>
   <a class="nav-link" href="#procedures"><span class="nav-ico">📋</span> Задержание</a>
   <a class="nav-link" href="#miranda"><span class="nav-ico">🗣️</span> Правило Миранды</a>
+  <a class="nav-link" href="#legend"><span class="nav-ico">⚡</span> Легенда обозначений</a>
 
   <div class="nav-sep"></div>
   <div class="nav-group-label">Кодексы</div>
@@ -868,20 +981,96 @@ footer{
 </div>
 </section>
 
-<!-- LEGEND injected -->
-<div style="margin:-64px 0 64px 0;background:var(--chrome-3);border:1px solid var(--chrome-border);border-radius:3px;padding:16px 24px;">
-  <div style="font-family:var(--f-display);font-size:10px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--chrome-border)">⚡ Легенда обозначений</div>
-  <div style="display:flex;flex-wrap:wrap;gap:8px 28px;font-size:12.5px;color:var(--txt-2)">
-    <span><span style="color:#ff4444;font-weight:900;font-family:var(--f-mono);font-size:13px">С</span> — Судимость</span>
-    <span><span style="background:rgba(204,51,51,.12);color:var(--red);border:1px solid rgba(204,51,51,.3);font-family:var(--f-display);font-size:9px;font-weight:700;letter-spacing:1px;padding:1px 5px;border-radius:1px">Ф</span> — Федеральная (FIB)</span>
-    <span><span style="background:rgba(58,122,189,.12);color:var(--blue);border:1px solid rgba(58,122,189,.25);font-family:var(--f-display);font-size:9px;font-weight:700;letter-spacing:1px;padding:1px 5px;border-radius:1px">Р</span> — Региональная (LSPD / Sheriff)</span>
-    <span><span style="background:rgba(200,168,75,.10);color:var(--gold-3);border:1px solid var(--gold-border);font-family:var(--f-display);font-size:9px;font-weight:700;letter-spacing:1px;padding:1px 5px;border-radius:1px">Фин</span> — Финансовые (USSS)</span>
-    <span><span style="color:var(--gold);font-size:11px">★★★★★</span> — Тяжесть (1–5)</span>
-    <span><span style="color:#ff4444;font-weight:700">🚫</span> — Нет смягчения</span>
-    <span><span style="color:var(--blue);font-weight:700">⚖️</span> — Только суд/прокуратура</span>
+<section class="section" id="dashboard">
+  <div class="section-head">
+    <span class="section-ico">⚡</span>
+    <div class="section-titles">
+      <div class="section-title">Оперативный дашборд</div>
+      <div class="section-sub">Быстрый доступ к протоколам и нормам</div>
+    </div>
   </div>
-</div>
+  
+  <div class="section-body">
+    <div class="dashboard-grid">
+      
+      <div class="category-group">
+        <div class="category-header">👮 Силовые протоколы</div>
+        
+        <a class="link-reset" href="#procedures">
+          <div class="quick-action-card">
+            <span class="quick-action-title">Порядок задержания (ст. 17 ПК)</span>
+            <span class="quick-action-desc">От наручников до КПЗ: пошаговый алгоритм</span>
+          </div>
+        </a>
 
+        <a class="link-reset" href="#miranda">
+          <div class="quick-action-card quick-action-card--blue">
+            <span class="quick-action-title">Правило Миранды</span>
+            <span class="quick-action-desc">Юридическая чистота показаний</span>
+          </div>
+        </a>
+
+        <a class="link-reset" href="#force">
+          <div class="quick-action-card quick-action-card--red">
+            <span class="quick-action-title">Стадии применения силы</span>
+            <span class="quick-action-desc">Когда разрешено открывать огонь</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="category-group">
+        <div class="category-header">🛡️ Статусы и Территории</div>
+        
+        <a class="link-reset" href="#immunity">
+          <div class="quick-action-card quick-action-card--purple">
+            <span class="quick-action-title">Неприкосновенность</span>
+            <span class="quick-action-desc">Список лиц, которых нельзя задерживать</span>
+          </div>
+        </a>
+
+        <a class="link-reset" href="#territories">
+          <div class="quick-action-card quick-action-card--orange">
+            <span class="quick-action-title">Охраняемые территории</span>
+            <span class="quick-action-desc">Режим прохода и красные зоны</span>
+          </div>
+        </a>
+
+        <a class="link-reset" href="#jurisdiction">
+          <div class="quick-action-card quick-action-card--green">
+            <span class="quick-action-title">Юрисдикция</span>
+            <span class="quick-action-desc">Зоны ответственности LSPD/LSCSD/SANG</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="category-group">
+        <div class="category-header">📑 Особые случаи</div>
+        
+        <a class="link-reset" href="#search-grounds">
+          <div class="quick-action-card">
+            <span class="quick-action-title">Обыск и досмотр</span>
+            <span class="quick-action-desc">Основания для личного досмотра и авто</span>
+          </div>
+        </a>
+
+        <a class="link-reset" href="#dea">
+          <div class="quick-action-card quick-action-card--txtgreen">
+            <span class="quick-action-title">Наркотики (Веса)</span>
+            <span class="quick-action-desc">Разрешенная норма и ст. 13.1 - 13.2 УК</span>
+          </div>
+        </a>
+
+        <a class="link-reset" href="#bail">
+          <div class="quick-action-card quick-action-card--gold3">
+            <span class="quick-action-title">Залог и сроки</span>
+            <span class="quick-action-desc">Таблица выхода под залог по статьям</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════ PROCEDURES ═══════════ -->
 <section class="section" id="procedures">
@@ -972,7 +1161,7 @@ footer{
         </div>
       </div>
       
-      <div style="font-size: 11px; color: var(--red-l); font-weight: 700; text-transform: uppercase; border-top: 1px solid var(--border); pt-8;">
+      <div class="note-danger">
         ⛔ ЛИЧНЫЙ ОБЫСК КАТЕГОРИЧЕСКИ ЗАПРЕЩЕН. Только досмотр документов.
       </div>
     </div>
@@ -1004,6 +1193,27 @@ footer{
     </div>
   </div>
 </div>
+</section>
+
+<!-- ═══════════ LEGEND ═══════════ -->
+<section class="section" id="legend">
+  <div class="section-head">
+    <span class="section-ico">⚡</span>
+    <div class="section-titles">
+      <div class="section-title">Легенда обозначений</div>
+      <div class="section-sub">Расшифровка тегов и маркеров</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <div style="display:flex;flex-wrap:wrap;gap:8px 28px;font-size:12.5px;color:var(--txt-2)">
+      <span><span style="color:#ff4444;font-weight:900;font-family:var(--f-mono);font-size:13px">С</span> — Судимость</span>
+      <span><span style="background:rgba(204,51,51,.12);color:var(--red);border:1px solid rgba(204,51,51,.3);font-family:var(--f-display);font-size:9px;font-weight:700;letter-spacing:1px;padding:1px 5px;border-radius:1px">Ф</span> — Федеральная (FIB)</span>
+      <span><span style="background:rgba(58,122,189,.12);color:var(--blue);border:1px solid rgba(58,122,189,.25);font-family:var(--f-display);font-size:9px;font-weight:700;letter-spacing:1px;padding:1px 5px;border-radius:1px">Р</span> — Региональная (LSPD / Sheriff)</span>
+      <span><span style="color:var(--gold);font-size:11px">★★★★★</span> — Тяжесть (1–5)</span>
+      <span><span style="color:#ff4444;font-weight:700">🚫</span> — Нет смягчения</span>
+      <span><span style="color:var(--blue);font-weight:700">⚖️</span> — Только суд/прокуратура</span>
+    </div>
+  </div>
 </section>
 
 <!-- ═══════════ CRIMINAL CODE ═══════════ -->
@@ -1399,13 +1609,13 @@ footer{
       <div class="section-sub">Права и обязанности · доказательства · обыск</div>
     </div>
   </div>
-<div class="section-body">
+  <div class="section-body">
 
   <div class="grid-2 mb14">
     <div>
       <div class="tbl-wrap mb14">
         <div class="tbl-head">🏠 Обыск и досмотр (гл. IV ПК)</div>
-        <div style="padding:14px">
+        <div class="p14">
           <div class="info-list">
             <div class="info-row"><span class="ir-k">Осмотр жилища</span><span class="ir-v">С согласия жильца ИЛИ судебный акт</span></div>
             <div class="info-row"><span class="ir-k">Обыск жилища</span><span class="ir-v">Ордер суда / ГП / зам. ГП. В исключит. случаях — без ордера</span></div>
@@ -1416,7 +1626,7 @@ footer{
       </div>
       <div class="tbl-wrap">
         <div class="tbl-head">🔒 Залог (ст. 5.8 УК)</div>
-        <div style="padding:14px">
+        <div class="p14">
           <div class="info-list">
             <div class="info-row"><span class="ir-k">Приоритет 1</span><span class="--txt">$25,000</span></div>
             <div class="info-row"><span class="ir-k">Приоритет 2</span><span class="--txt">$50,000</span></div>
@@ -1424,14 +1634,14 @@ footer{
             <div class="info-row"><span class="ir-k">Приоритет 4</span><span class="--txt">$100,000</span></div>
             <div class="info-row"><span class="ir-k">Приоритет 5</span><span class="--txt">$125,000</span></div>
           </div>
-          <div style="margin-top:10px;font-size:12px;color:var(--txt-3)">Стоимость выхода под залог определяется по приоритету розыска.</div>
+          <div class="text-muted-sm mt10">Стоимость выхода под залог определяется по приоритету розыска.</div>
         </div>
       </div>
     </div>
     <div>
       <div class="tbl-wrap mb14">
         <div class="tbl-head">⚖️ Презумпция невиновности (ст. 6 ПК)</div>
-        <div style="padding:14px;font-size:13px;line-height:1.8;color:var(--txt-2)">
+        <div class="p14" style="font-size:13px;line-height:1.8;color:var(--txt-2)">
           Обвиняемый <strong style="color:var(--txt)">считается невиновным</strong> до доказательства вины.<br><br>
           Бремя доказывания — на <strong style="color:var(--txt)">стороне обвинения</strong>.<br><br>
           Все сомнения — <strong style="color:var(--txt)">в пользу обвиняемого</strong>.<br>
@@ -1444,7 +1654,7 @@ footer{
       </div>
       <div class="tbl-wrap">
         <div class="tbl-head">📝 Доказательства (ст. 11 ПК)</div>
-        <div style="padding:14px;font-size:13px;line-height:1.85;color:var(--txt)">
+        <div class="p14" style="font-size:13px;line-height:1.85;color:var(--txt)">
           ✅ Показания подозреваемого / обвиняемого<br>
           ✅ Показания потерпевшего и свидетеля<br>
           ✅ Заключение эксперта<br>
@@ -1464,11 +1674,11 @@ footer{
 
   <div class="tbl-wrap mb14">
     <div class="tbl-head">🔗 Права задержанного и обязанности сотрудника</div>
-    <div style="padding:16px">
+    <div class="p16">
       <div class="grid-3">
         <div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--txt-3);text-transform:uppercase;margin-bottom:8px">Адвокат вправе требовать</div>
-          <div style="font-size:13px;color:var(--txt-2);line-height:1.9">
+          <div class="text-title-xs">Адвокат вправе требовать</div>
+          <div class="text-body">
             ✅ Причину задержания<br>
             ✅ Видеофиксацию процедуры<br>
             ✅ Встречу с задержанным<br>
@@ -1826,9 +2036,9 @@ footer{
     <div class="tbl-head">🤝 Взаимодействие ведомств</div>
     <div style="padding:16px">
       <div class="info-list">
-        <div class="info-row"><span class="ir-k">FIB (FIB)</span><span class="ir-v">Вправе изъять любые дела федеральной юрисдикции. Региональные органы обязаны передать материалы и прекратить производство (ст. 15)</span></div>
-        <div class="info-row"><span class="ir-k">Секретная Служба (SS)</span><span class="ir-v">Изымает дела о посягательстве на жизнь членов правительства, экон. преступлениях, должностных преступлениях (ст. 16)</span></div>
-        <div class="info-row"><span class="ir-k">Нацгвардия</span><span class="ir-v">Кооперация при совместных следственных мероприятиях (ст. 17)</span></div>
+        <div class="info-row"><span class="ir-k">FIB </span><span class="ir-v">Вправе изъять любые дела федеральной юрисдикции. Региональные органы обязаны передать материалы и прекратить производство (ст. 15)</span></div>
+        <div class="info-row"><span class="ir-k">Секретная Служба (USSS)</span><span class="ir-v">Изымает дела о посягательстве на жизнь членов правительства, экон. преступлениях, должностных преступлениях (ст. 16)</span></div>
+        <div class="info-row"><span class="ir-k">Нацгвардия (SANG)</span><span class="ir-v">Кооперация при совместных следственных мероприятиях (ст. 17)</span></div>
         <div class="info-row"><span class="ir-k">Договор о нарушении юрисдикции</span><span class="ir-v">Согласован устно с ГП или Главой ДНБ; при фед. юрисдикции — письменное распоряжение ГП</span></div>
       </div>
     </div>
@@ -1967,7 +2177,7 @@ footer{
 
 <!-- ═══════════ DRUGS WORK ═══════════ -->
 <section class="section" id="dea">
-<div class="section-head"><span class="section-ico">💊</span><div class="section-titles"><div class="section-title">Работа с наркотиками</div><div class="section-sub">DEA · FIB</div></div></div>
+<div class="section-head"><span class="section-ico">💊</span><div class="section-titles"><div class="section-title">Работа с наркотиками</div><div class="section-sub">DEA/K9 · FIB/LSPD/LSCSD</div></div></div>
 <div class="section-body">
 <div class="alert a-gold mb14"><span class="alert-ico">⚖️</span><div>Статьи по наркотическому обороту. <span style="background:rgba(204,51,51,.12);color:var(--red);border:1px solid rgba(204,51,51,.3);font-family:var(--f-display);font-size:9px;font-weight:700;letter-spacing:1px;padding:1px 5px;border-radius:1px">📋</span> — Создание судимости</div></div>
 <div class="grid-2 mb20">
@@ -2005,7 +2215,7 @@ footer{
 </div></div>
 </div>
 
-<div class="subsec-title">🐕 Служебные собаки (DEA): правила</div>
+<div class="subsec-title">🐕 Служебные собаки (DEA/K9): правила</div>
 <div class="card card-green mb14"><div class="card-body">
 <div class="steps">
 <div class="step"><span class="step-n">1</span><div class="step-c"><strong>Перемещение</strong><span>Собака не покидает территорию фракции без кинолога. Исключение — ожидание у входа в больницу.</span></div></div>
@@ -2019,7 +2229,7 @@ footer{
 </div>
 </div></div>
 
-<div class="subsec-title">🌿 Работа с наркотическими кустами (DEA)</div>
+<div class="subsec-title">🌿 Работа с наркотическими кустами (DEA/K9)</div>
 <div class="tbl-wrap mb14"><div class="tbl-head">🌱 Стадии роста & Правила</div><div style="padding:16px">
 <div class="grid-2 mb14">
 <div>
@@ -2074,7 +2284,7 @@ footer{
   </div>
 </div>
 
-<div class="alert a-gold"><span class="alert-ico">📌</span><div>Данная памятка предназначена для сотрудников отдела DEA | FIB и может редактироваться под личные нужды. Рекомендуется к обязательному изучению. Знание правил — ваша защита и репутация отдела.</div></div>
+<div class="alert a-gold"><span class="alert-ico">📌</span><div>Данная памятка предназначена для сотрудников отдела DEA | FIB/LSPD/LSCSD и может редактироваться под личные нужды. Рекомендуется к обязательному изучению. Знание правил — ваша защита и репутация отдела.</div></div>
 </div>
 </section>
 
