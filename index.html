@@ -827,6 +827,153 @@ footer{
   #main{padding:calc(var(--topbar)+16px) 16px 40px}
 }
 
+/* ══════════ FEATURE 02 — SEARCH PILLS ══════════ */
+#search-pills{
+  position:absolute;top:46px;left:20px;right:20px;
+  background:var(--chrome-3);
+  border:1px solid var(--chrome-border);
+  border-radius:2px 2px 0 0;
+  padding:8px 10px;
+  display:none;flex-wrap:wrap;gap:5px;
+  z-index:1201;
+  border-bottom:1px solid var(--border-2);
+}
+#search-pills.pills-active{display:flex}
+.sp-pill{
+  display:inline-flex;align-items:center;gap:4px;
+  font-family:var(--f-display);font-size:9px;font-weight:700;letter-spacing:1px;
+  padding:3px 9px;border-radius:1px;cursor:pointer;
+  border:1px solid var(--chrome-border);
+  background:var(--chrome-4);color:var(--chrome-txt2);
+  transition:background .1s,border-color .1s,color .1s;
+  white-space:nowrap;user-select:none;
+}
+.sp-pill:hover{background:var(--chrome-5);color:var(--chrome-txt);border-color:var(--chrome-border)}
+.sp-pill.active{background:rgba(200,168,75,.15);color:var(--gold-2);border-color:var(--gold-border)}
+.sp-pill-f.active{background:rgba(204,51,51,.15);color:var(--red-l);border-color:rgba(204,51,51,.3)}
+.sp-pill-r.active{background:rgba(58,122,189,.15);color:var(--blue-l);border-color:rgba(58,122,189,.3)}
+.sp-pill-nosm.active{background:#7a1a1a;color:#ffaaaa;border-color:#ff4444}
+.sp-pill-nobal.active{background:#4a2a00;color:#ffcc88;border-color:#ff9900}
+.sp-pill-clear{color:var(--txt-3);font-size:8px}
+.sp-pill-clear:hover{color:var(--txt-red)}
+/* shift results down when pills are showing */
+.pills-active ~ #search-results{
+  border-top:none;
+  border-radius:0 0 2px 2px;
+}
+
+/* ══════════ FEATURE 03 — STICKY TIMING PANEL ══════════ */
+#timing-btn{
+  position:fixed;right:18px;bottom:22px;z-index:1500;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--chrome-3);
+  border:1px solid var(--gold-border);
+  color:var(--gold-2);font-size:18px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.5);
+  transition:background .15s,box-shadow .15s,transform .15s;
+}
+#timing-btn:hover{background:var(--chrome-4);transform:scale(1.07);box-shadow:0 6px 28px rgba(0,0,0,.6)}
+#timing-btn.tp-open{
+  background:rgba(200,168,75,.15);
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(200,168,75,.18),0 4px 20px rgba(0,0,0,.5);
+}
+#timing-panel{
+  position:fixed;right:18px;bottom:72px;z-index:1499;
+  width:260px;
+  background:var(--chrome);
+  border:1px solid var(--gold-border);
+  border-radius:3px;
+  box-shadow:0 16px 48px rgba(0,0,0,.7);
+  overflow:hidden;
+  transform:translateY(12px) scale(.97);
+  opacity:0;pointer-events:none;
+  transition:transform .18s,opacity .18s;
+}
+#timing-panel.tp-visible{
+  transform:translateY(0) scale(1);
+  opacity:1;pointer-events:auto;
+}
+.tp-header{
+  background:var(--chrome-3);
+  padding:9px 14px;
+  font-family:var(--f-display);font-size:10px;font-weight:700;
+  letter-spacing:2px;color:var(--gold-2);text-transform:uppercase;
+  border-bottom:1px solid var(--chrome-border);
+  display:flex;align-items:center;gap:8px;
+}
+.tp-body{padding:10px 0}
+.tp-row{
+  display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  padding:5px 14px;font-size:12px;
+  border-bottom:1px solid var(--border);
+}
+.tp-row:last-child{border-bottom:none}
+.tp-k{color:var(--txt-2);flex:1}
+.tp-v{font-family:var(--f-mono);font-size:11px;color:var(--gold);font-weight:600;white-space:nowrap}
+.tp-section{
+  padding:4px 14px 2px;
+  font-family:var(--f-display);font-size:8px;font-weight:700;
+  letter-spacing:2px;color:var(--txt-3);text-transform:uppercase;
+  margin-top:4px;
+}
+
+/* ══════════ FEATURE 05 — TABLE TAG FILTERS ══════════ */
+.tbl-filter-bar{
+  padding:7px 10px 0;
+  display:flex;flex-wrap:wrap;gap:5px;
+  background:var(--chrome-3);
+  border-bottom:1px solid var(--chrome-border);
+}
+.tbl-filter-bar:empty{display:none}
+.tf-pill{
+  display:inline-flex;align-items:center;
+  font-family:var(--f-display);font-size:9px;font-weight:700;letter-spacing:1px;
+  padding:2px 8px 3px;border-radius:1px;cursor:pointer;
+  border:1px solid var(--chrome-border);
+  background:var(--chrome-4);color:var(--chrome-txt2);
+  margin-bottom:6px;
+  transition:background .1s,border-color .1s,color .1s;
+  user-select:none;
+}
+.tf-pill:hover{background:var(--chrome-5);color:var(--chrome-txt)}
+.tf-pill.tf-active{outline:2px solid currentColor;outline-offset:1px}
+.tf-pill-nosm.tf-active{background:#7a1a1a;color:#ffaaaa;border-color:#ff4444}
+.tf-pill-nobal.tf-active{background:#4a2a00;color:#ffcc88;border-color:#ff9900}
+.tf-pill-f.tf-active{background:rgba(204,51,51,.15);color:var(--red-l);border-color:rgba(204,51,51,.3)}
+.tf-pill-r.tf-active{background:rgba(58,122,189,.15);color:var(--blue-l);border-color:rgba(58,122,189,.3)}
+.tf-pill-cdwl.tf-active{background:#2a1a4a;color:#cc99ff;border-color:#9966ff}
+.tf-pill-immunity.tf-active{background:#0d3a2a;color:#66ffbb;border-color:#00cc77}
+.tf-pill-conv.tf-active{background:#3a1a00;color:#ffaa44;border-color:#ff6600}
+.tf-all{background:transparent;border-color:var(--chrome-border);color:var(--txt-3)}
+.tf-all.tf-active{background:var(--chrome-4);color:var(--chrome-txt);border-color:var(--border-2)}
+.tf-count{
+  margin-left:4px;font-size:8px;
+  background:rgba(255,255,255,.08);
+  border-radius:1px;padding:0 3px;
+  font-family:var(--f-mono);
+}
+.law-row-hidden{display:none}
+
+/* ══════════ FEATURE 06 — NAV COUNTERS ══════════ */
+.nav-count{
+  margin-left:auto;
+  font-family:var(--f-mono);font-size:9px;font-weight:600;
+  padding:1px 5px;border-radius:1px;
+  background:var(--chrome-4);color:var(--chrome-txt3);
+  border:1px solid var(--chrome-border);
+  flex-shrink:0;
+}
+.nav-link:has(.nav-tag) .nav-count{margin-left:4px}
+.nav-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;
+  box-shadow:0 0 6px rgba(200,168,75,.6);
+  margin-left:auto;
+}
+.nav-link:has(.nav-dot) .nav-count{margin-left:4px}
+
 /* ══════════ UTILITY ══════════ */
 .mb4{margin-bottom:4px}.mb8{margin-bottom:8px}
 .mb14{margin-bottom:14px}.mb20{margin-bottom:20px}
@@ -1261,13 +1408,13 @@ footer{
         <tbody>
 
           <tr onclick="toggleArt(this)"><td class="art-num">6.1</td><td class="art-stars">★★</td><td class="art-desc">Умышленное и/или неоднократное нанесение телесных повреждений легкой или средней степени тяжести.<div class="art-flags"><span class="tag tag-no-soft">🚫 СМ</span><span class="tag tag-immunity">🛡️ НЕП</span></div></td><td class="art-pun">до 20 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.1 УК — Телесные повреждения</div><div class="art-panel-body">Умышленное и/или неоднократное нанесение телесных повреждений легкой или средней степени тяжести.</div><div class="art-panel-pun">⛓️ Наказание: до 20 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.1 УК — Телесные повреждения</div><div class="art-panel-body">Умышленное и/или неоднократное нанесение телесных повреждений легкой или средней степени тяжести.</div><div class="art-panel-pun">⛓️ Наказание: до 20 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">6.2</td><td class="art-stars">★★★★</td><td class="art-desc">Убийство, то есть умышленное причинение смерти другому человеку и/или нанесения телесных повреждений тяжелой степени.<div class="art-flags"><span class="tag tag-no-soft">🚫 СМ</span><span class="tag tag-no-bail">⛔ ЗАЛ</span><span class="tag tag-cdwl">🔫 CDWL</span><span class="tag tag-immunity">🛡️ НЕП</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 40 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.2 УК — Убийство</div><div class="art-panel-body">Убийство, то есть умышленное причинение смерти другому человеку и/или нанесения телесных повреждений тяжелой степени.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.2 УК — Убийство</div><div class="art-panel-body">Убийство, то есть умышленное причинение смерти другому человеку и/или нанесения телесных повреждений тяжелой степени.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">6.3</td><td class="art-stars">★★★★★</td><td class="art-desc">Тяжкое убийство, то есть убийство двух или более лиц, равно как убийство близких жертвы в связи с осуществлением данным лицом служебной деятельности.<div class="art-flags"><span class="tag tag-no-soft">🚫 СМ</span><span class="tag tag-no-bail">⛔ ЗАЛ</span><span class="tag tag-immunity">🛡️ НЕП</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 50 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.3 УК — Тяжкое убийство</div><div class="art-panel-body">Тяжкое убийство, то есть убийство двух или более лиц, равно как убийство близких жертвы в связи с осуществлением данным лицом служебной деятельности.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.3 УК — Тяжкое убийство</div><div class="art-panel-body">Тяжкое убийство, то есть убийство двух или более лиц, равно как убийство близких жертвы в связи с осуществлением данным лицом служебной деятельности.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">6.4</td><td class="art-stars">★★</td><td class="art-desc">Причинение тяжкого вреда здоровью по неосторожности.<div class="art-flags"><span class="tag tag-no-bail">⛔ ЗАЛ</span></div></td><td class="art-pun">до 20 мес</td><td><div class="art-tags"><span class="tag tag-r">Р</span></div></td></tr>
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.4 УК — Тяжкий вред по неосторожности</div><div class="art-panel-body">Причинение тяжкого вреда здоровью по неосторожности.</div><div class="art-panel-pun">⛓️ Наказание: до 20 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span></div></div></td></tr>
@@ -1285,7 +1432,7 @@ footer{
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.8 УК — Вред животному</div><div class="art-panel-body">Умышленное нанесение телесных повреждений животному.<br><br><em>Исключение:</em> законная охота и рыбалка.</div><div class="art-panel-pun">⛓️ Наказание: до 20 месяцев лишения свободы</div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">6.9</td><td class="art-stars">★★★★</td><td class="art-desc">Нарушение ПДД, повлекшее за собой причинение потерпевшим тяжкого вреда здоровью.<div class="art-flags"><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 40 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.9 УК — ДТП с тяжкими последствиями</div><div class="art-panel-body">Нарушение правил дорожного движения, повлекшее за собой причинение потерпевшим тяжкого вреда здоровью и(или) наступила их смерть.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 6.9 УК — ДТП с тяжкими последствиями</div><div class="art-panel-body">Нарушение правил дорожного движения, повлекшее за собой причинение потерпевшим тяжкого вреда здоровью и(или) наступила их смерть.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"></div><span class="tag tag-conv">⛓️ Судимость</span></div></td></tr>
 
         </tbody>
       </table>
@@ -1300,7 +1447,7 @@ footer{
         <tbody>
 
           <tr onclick="toggleArt(this)"><td class="art-num">7.1</td><td class="art-stars">★★★★★</td><td class="art-desc">Похищение человека.<div class="art-flags"><span class="tag tag-no-soft">🚫 СМ</span><span class="tag tag-no-bail">⛔ ЗАЛ</span><span class="tag tag-immunity">🛡️ НЕП</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 50 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 7.1 УК — Похищение</div><div class="art-panel-body">Похищение человека.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 7.1 УК — Похищение</div><div class="art-panel-body">Похищение человека.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">7.2</td><td class="art-stars">★★</td><td class="art-desc">Клевета, содержащаяся в публичном выступлении.</td><td class="art-pun">до 20 мес</td><td><div class="art-tags"><span class="tag tag-r">Р</span></div></td></tr>
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 7.2 УК — Клевета (публично/СМИ)</div><div class="art-panel-body">Клевета, содержащаяся в публичном выступлении, средствах массовой информации либо с использованием своего служебного положения.</div><div class="art-panel-pun">⛓️ Наказание: до 20 месяцев лишения свободы</div></div></td></tr>
@@ -1321,10 +1468,10 @@ footer{
         <tbody>
 
           <tr onclick="toggleArt(this)"><td class="art-num">8.1</td><td class="art-stars">★★★★</td><td class="art-desc">Насильственные действия сексуального характера.<div class="art-flags"><span class="tag tag-no-soft">🚫 СМ</span><span class="tag tag-immunity">🛡️ НЕП</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 40 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 8.1 УК — Насильственные действия сексуального характера</div><div class="art-panel-body">Насильственные действия сексуального характера, то есть половое сношение с применением насилия или с угрозой его применения к потерпевшей (потерпевшему) или к другим лицам либо с использованием беспомощного состояния потерпевшей (потерпевшему).</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 8.1 УК — Насильственные действия сексуального характера</div><div class="art-panel-body">Насильственные действия сексуального характера, то есть половое сношение с применением насилия или с угрозой его применения к потерпевшей (потерпевшему) или к другим лицам либо с использованием беспомощного состояния потерпевшей (потерпевшему).</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">8.2</td><td class="art-stars">★★★★★</td><td class="art-desc">Насильственные действия повлекшее по неосторожности причинение смерть потерпевшего.<div class="art-flags"><span class="tag tag-no-soft">🚫 СМ</span><span class="tag tag-immunity">🛡️ НЕП</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 50 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 8.2 УК — Насильственные действия (тяжкие последствия)</div><div class="art-panel-body">Насильственные действия сексуального характера повлекшее по неосторожности причинение тяжкого вреда здоровью или смерть потерпевшего (потерпевшей).</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 8.2 УК — Насильственные действия (тяжкие последствия)</div><div class="art-panel-body">Насильственные действия сексуального характера повлекшее по неосторожности причинение тяжкого вреда здоровью или смерть потерпевшего (потерпевшей).</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">8.3</td><td class="art-stars">★★</td><td class="art-desc">Насильственное принуждение лица к половому сношению путем шантажа и тп.<div class="art-flags"><span class="tag tag-no-soft">🚫 СМ</span><span class="tag tag-immunity">🛡️ НЕП</span></div></td><td class="art-pun">до 20 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 8.3 УК — Принуждение</div><div class="art-panel-body">Насильственное принуждение лица к половому сношению или совершению иных действий сексуального характера путем шантажа, угрозы уничтожением, повреждением или изъятием имущества либо с использованием материальной или иной зависимости потерпевшего (потерпевшей).</div><div class="art-panel-pun">⛓️ Наказание: до 20 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span></div></div></td></tr>
@@ -1357,13 +1504,13 @@ footer{
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.5 УК — Грабеж</div><div class="art-panel-body">Грабеж, то есть открытое хищение чужого имущества.</div><div class="art-panel-pun">⛓️ Наказание: до 30 месяцев лишения свободы</div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">10.6.1</td><td class="art-stars">★★★★★</td><td class="art-desc">Разбойное ограбление (Банки, бизаки).<div class="art-flags"><span class="tag tag-no-soft">🚫 СМ</span><span class="tag tag-cdwl">🔫 CDWL</span><span class="tag tag-immunity">🛡️ НЕП</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 50 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.6.1 УК — Разбой (крупные объекты)</div><div class="art-panel-body">Разбойное ограбление, то есть нападение в целях хищения чужого имущества, совершенное с применением насилия, опасного для жизни или здоровья, либо с угрозой применения такого насилия, в отношении крупных объектов, таких как банки или иные финансовые учреждения.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.6.1 УК — Разбой (крупные объекты)</div><div class="art-panel-body">Разбойное ограбление, то есть нападение в целях хищения чужого имущества, совершенное с применением насилия, опасного для жизни или здоровья, либо с угрозой применения такого насилия, в отношении крупных объектов, таких как банки или иные финансовые учреждения.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">10.7</td><td class="art-stars">★★★</td><td class="art-desc">Угон Т/С.</td><td class="art-pun">до 30 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.7 УК — Угон</div><div class="art-panel-body">Неправомерное завладение транспортным средством и(или) поездка на нем, в том числе и без цели хищения.</div><div class="art-panel-pun">⛓️ Наказание: до 30 месяцев лишения свободы</div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">10.7.1</td><td class="art-stars">★★★★</td><td class="art-desc">Угон государственного Т/С.<div class="art-flags"><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 40 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.7.1 УК — Угон гос. ТС</div><div class="art-panel-body">Неправомерное завладение транспортным средством (транспортным средством оперативного назначения), принадлежащим государству или государственной структуре (организации) и управление им, в том числе и без цели хищения лицом, не трудоустроенным или не проходящим службу в организации (структуры), которой принадлежит транспортное средство.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.7.1 УК — Угон гос. ТС</div><div class="art-panel-body">Неправомерное завладение транспортным средством (транспортным средством оперативного назначения), принадлежащим государству или государственной структуре (организации) и управление им, в том числе и без цели хищения лицом, не трудоустроенным или не проходящим службу в организации (структуры), которой принадлежит транспортное средство.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-conv">⛓️ Судимость</span></div><div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">10.8</td><td class="art-stars">★★</td><td class="art-desc">Умышленные уничтожение или повреждение чужого имущества.</td><td class="art-pun">до 20 мес</td><td><div class="art-tags"><span class="tag tag-r">Р</span></div></td></tr>
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.8 УК — Порча имущества</div><div class="art-panel-body">Умышленные уничтожение или повреждение чужого имущества.</div><div class="art-panel-pun">⛓️ Наказание: до 20 месяцев лишения свободы</div></div></td></tr>
@@ -1375,7 +1522,7 @@ footer{
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.12 УК — Кража с проникновением</div><div class="art-panel-body">Кража с проникновением в частное жилище или помещение, то есть тайное хищение чужого имущества, совершенное с незаконным проникновением в жилище, помещение либо иное хранилище.</div><div class="art-panel-pun">⛓️ Наказание: до 30 месяцев лишения свободы</div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">10.12.1</td><td class="art-stars">★★★★</td><td class="art-desc">Кража, совершенная группой лиц с проникновением в частное жилище.<div class="art-flags"><span class="tag tag-no-bail">⛔ ЗАЛ</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 40 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.12.1 УК — Групповая кража с проникновением</div><div class="art-panel-body">Кража, совершенная группой лиц с проникновением в частное жилище или помещение. То есть тайное хищение чужого имущества, совершенное с незаконным проникновением в жилище, помещение либо иное хранилище.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 10.12.1 УК — Групповая кража с проникновением</div><div class="art-panel-body">Кража, совершенная группой лиц с проникновением в частное жилище или помещение. То есть тайное хищение чужого имущества, совершенное с незаконным проникновением в жилище, помещение либо иное хранилище.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
         </tbody>
       </table>
@@ -1390,7 +1537,7 @@ footer{
         <tbody>
 
           <tr onclick="toggleArt(this)"><td class="art-num">12.1</td><td class="art-stars">★★★★★</td><td class="art-desc">Терроризм.<div class="art-flags"><span class="tag tag-no-soft">🚫 СМ</span><span class="tag tag-no-bail">⛔ ЗАЛ</span><span class="tag tag-cdwl">🔫 CDWL</span><span class="tag tag-immunity">🛡️ НЕП</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 50 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.1 УК — Терроризм</div><div class="art-panel-body">Терроризм, то есть совершение взрыва, поджога или иных действий, устрашающих население и создающих опасность гибели человека, причинения значительного имущественного ущерба либо наступления иных тяжких последствий, в целях дестабилизации деятельности органов власти или международных организаций либо воздействия на принятие ими решений, а также угроза совершения указанных действий в целях воздействия на принятие решений органами власти.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.1 УК — Терроризм</div><div class="art-panel-body">Терроризм, то есть совершение взрыва, поджога или иных действий, устрашающих население и создающих опасность гибели человека, причинения значительного имущественного ущерба либо наступления иных тяжких последствий, в целях дестабилизации деятельности органов власти или международных организаций либо воздействия на принятие ими решений, а также угроза совершения указанных действий в целях воздействия на принятие решений органами власти.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">12.6</td><td class="art-stars">★★</td><td class="art-desc">Хулиганство.</td><td class="art-pun">до 20 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.6 УК — Хулиганство</div><div class="art-panel-body">Хулиганство, грубое систематическое нарушение общественного порядка, выражающее явное неуважение к обществу или игнорировании требований о прекращении нарушений общественного порядка.</div><div class="art-panel-pun">⛓️ Наказание: до 20 месяцев лишения свободы</div></div></td></tr>
@@ -1399,16 +1546,16 @@ footer{
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.7 УК — Незаконное проникновение на объект</div><div class="art-panel-body">Незаконное проникновение и/или нахождение на закрытый в соответствии с законодательством штата Сан-Андреас, объект.</div><div class="art-panel-pun">⛓️ Наказание: до 30 месяцев лишения свободы</div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">12.7.1</td><td class="art-stars">★★★★★</td><td class="art-desc">Проникновение на особо охраняемый объект (SANG, FIB).<div class="art-flags"><span class="tag tag-no-bail">⛔ ЗАЛ</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 50 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.7.1 УК — Режимный/особый объект</div><div class="art-panel-body">Незаконное проникновение и/или нахождение на режимный объект, на объект, обладающий особым статусом, если таковой был закрыт для посещения уполномоченным лицом.<br><br><em>Примечание:</em> деяние описано в законе "О статусе территорий и особых объектах".</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.7.1 УК — Режимный/особый объект</div><div class="art-panel-body">Незаконное проникновение и/или нахождение на режимный объект, на объект, обладающий особым статусом, если таковой был закрыт для посещения уполномоченным лицом.<br><br><em>Примечание:</em> деяние описано в законе "О статусе территорий и особых объектах".</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">12.8</td><td class="art-stars">★★★★</td><td class="art-desc">Наказание за действия с оружием (покупка, продажа, перевозка и т.д.).<div class="art-flags"><span class="tag tag-cdwl">🔫 CDWL</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 40 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.8 УК — Незаконный оборот оружия</div><div class="art-panel-body">Незаконное приобретение, передача, сбыт, хранение, перевозка, ношение, использование легких бронежилетов, любых видов оружия или боеприпасов, за исключением гос. имущества.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.8 УК — Незаконный оборот оружия</div><div class="art-panel-body">Незаконное приобретение, передача, сбыт, хранение, перевозка, ношение, использование легких бронежилетов, любых видов оружия или боеприпасов, за исключением гос. имущества.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">12.8.1</td><td class="art-stars">★★★★★</td><td class="art-desc">Наказание за действия с гос.оружием (покупка, продажа, перевозка и т.д.).<div class="art-flags"><span class="tag tag-cdwl">🔫 CDWL</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 50 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.8.1 УК — Гос. спецсредства/имущество</div><div class="art-panel-body">Незаконное приобретение, передача, сбыт, хранение, перевозка, ношение, использование государственных спец. средств, дефибриллятора, шприца с эпинефрином, алкотестера, тяжелого бронежилета, тяжелой и сверхтяжелой бронеразгрузки-бронежилета или любого другого государственного имущества.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.8.1 УК — Гос. спецсредства/имущество</div><div class="art-panel-body">Незаконное приобретение, передача, сбыт, хранение, перевозка, ношение, использование государственных спец. средств, дефибриллятора, шприца с эпинефрином, алкотестера, тяжелого бронежилета, тяжелой и сверхтяжелой бронеразгрузки-бронежилета или любого другого государственного имущества.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">12.9</td><td class="art-stars">★★★★</td><td class="art-desc">Хищение огнестрельного оружия.<div class="art-flags"><span class="tag tag-cdwl">🔫 CDWL</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 40 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.9 УК — Хищение оружия</div><div class="art-panel-body">Хищение огнестрельного оружия, комплектующих деталей к нему, спец средств, взрывчатых веществ или взрывных устройств.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 12.9 УК — Хищение оружия</div><div class="art-panel-body">Хищение огнестрельного оружия, комплектующих деталей к нему, спец средств, взрывчатых веществ или взрывных устройств.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
         </tbody>
       </table>
@@ -1429,10 +1576,10 @@ footer{
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 13.2 УК — Наркотики (значительный размер)</div><div class="art-panel-body">Незаконное хранение, приобретение и перевозка наркотических веществ в значительном размере (свыше 3 грамм).</div><div class="art-panel-pun">⛓️ Наказание: до 30 месяцев лишения свободы</div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">13.3</td><td class="art-stars">★★★★★</td><td class="art-desc">Хранение, приобретение, наркотических средств в особо крупном (свыше 20 грамм).<div class="art-flags"><span class="tag tag-no-bail">⛔ ЗАЛ</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 50 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 13.3 УК — Наркотики (особо крупный размер)</div><div class="art-panel-body">Незаконное хранение, приобретение, перевозка наркотических средств в особо крупном размере (свыше 20 грамм).</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 13.3 УК — Наркотики (особо крупный размер)</div><div class="art-panel-body">Незаконное хранение, приобретение, перевозка наркотических средств в особо крупном размере (свыше 20 грамм).</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">13.5</td><td class="art-stars">★★★★★</td><td class="art-desc">Приобретение, хранение, изготовление, сбыт, сбор наркотиков сотрудниками гос. структур.<div class="art-flags"><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 50 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 13.5 УК — Наркотики у гос. сотрудников</div><div class="art-panel-body">Приобретение, хранение, перевозка, изготовление, сбыт, сбор наркотических веществ сотрудниками гос. структур.<br><br><em>Исключение:</em> сотрудники DEA, CID, DB, обособленного подразделения K-9 при исполнении обязанностей.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 13.5 УК — Наркотики у гос. сотрудников</div><div class="art-panel-body">Приобретение, хранение, перевозка, изготовление, сбыт, сбор наркотических веществ сотрудниками гос. структур.<br><br><em>Исключение:</em> сотрудники DEA, CID, DB, обособленного подразделения K-9 при исполнении обязанностей.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
         </tbody>
       </table>
@@ -1447,34 +1594,34 @@ footer{
         <tbody>
 
           <tr onclick="toggleArt(this)"><td class="art-num">15.1</td><td class="art-stars">★★★★</td><td class="art-desc">Превышение должностных полномочий.<div class="art-flags"><span class="tag tag-court">⚖️ СУД/ПРОК</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 40 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.1 УК — Превышение полномочий</div><div class="art-panel-body">Превышение должностных полномочий, то есть совершение должностным лицом действий, явно выходящих за пределы его полномочий и повлекших существенное нарушение прав и законных интересов граждан, государства или организаций.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-court">⚖️ Решение только суда или прокуратуры</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.1 УК — Превышение полномочий</div><div class="art-panel-body">Превышение должностных полномочий, то есть совершение должностным лицом действий, явно выходящих за пределы его полномочий и повлекших существенное нарушение прав и законных интересов граждан, государства или организаций.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-court">⚖️ Решение только суда или прокуратуры</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">15.1.1</td><td class="art-stars">★★★★★</td><td class="art-desc">Злоупотребление служебными полномочиями.<div class="art-flags"><span class="tag tag-no-soft">🚫 СМ</span><span class="tag tag-court">⚖️ СУД/ПРОК</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 50 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.1.1 УК — Злоупотребление полномочиями</div><div class="art-panel-body">Злоупотребление служебными полномочиями, причинившее существенный вред правам и законным интересам граждан, государства или организаций.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-court">⚖️ Решение только суда или прокуратуры</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.1.1 УК — Злоупотребление полномочиями</div><div class="art-panel-body">Злоупотребление служебными полномочиями, причинившее существенный вред правам и законным интересам граждан, государства или организаций.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-court">⚖️ Решение только суда или прокуратуры</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">15.4</td><td class="art-stars">★★★★★</td><td class="art-desc">Получение взятки должностным лицом.<div class="art-flags"><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 50 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.4 УК — Получение взятки</div><div class="art-panel-body">Получение взятки, то есть получение должностным лицом, лично или через посредника взятки в виде денег, иного имущества, либо в виде оказания ему услуг имущественного характера, предоставления иных имущественных прав за совершение действий (бездействие) в пользу взяткодателя или представляемых им лиц.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.4 УК — Получение взятки</div><div class="art-panel-body">Получение взятки, то есть получение должностным лицом, лично или через посредника взятки в виде денег, иного имущества, либо в виде оказания ему услуг имущественного характера, предоставления иных имущественных прав за совершение действий (бездействие) в пользу взяткодателя или представляемых им лиц.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">15.5</td><td class="art-stars">★★★★</td><td class="art-desc">Дача взятки должностному лицу.<div class="art-flags"><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 40 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.5 УК — Дача взятки</div><div class="art-panel-body">Дача взятки должностному лицу, лично или через посредника.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.5 УК — Дача взятки</div><div class="art-panel-body">Дача взятки должностному лицу, лично или через посредника.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы<div class="art-panel-flags"><span class="tag tag-conv">⛓️ Судимость</span></div></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">15.6</td><td class="art-stars">★★★★</td><td class="art-desc">Халатность.<div class="art-flags"><span class="tag tag-court">⚖️ СУД/ПРОК</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 40 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.6 УК — Халатность</div><div class="art-panel-body">Халатность, то есть неисполнение или ненадлежащее исполнение должностным лицом своих обязанностей вследствие недобросовестного или небрежного отношения к службе либо обязанностей по должности, если это деяние повлекло причинение крупного ущерба или существенное нарушение прав и/или законных интересов граждан и/или организаций либо охраняемых законом интересов общества или государства.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-court">⚖️ Решение только суда или прокуратуры</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">15.8</td><td class="art-stars">★★★★</td><td class="art-desc">Провокация государственного служащего при исполнении.<div class="art-flags"><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 40 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.8 УК — Провокация гос. служащего</div><div class="art-panel-body">Провокация государственного служащего, находящегося при исполнении служебных обязанностей, выражающаяся в умышленных действиях, направленных на его отвлечение от исполнения должностных полномочий, а равно создание препятствий для надлежащего исполнения им своих обязанностей.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 15.8 УК — Провокация гос. служащего</div><div class="art-panel-body">Провокация государственного служащего, находящегося при исполнении служебных обязанностей, выражающаяся в умышленных действиях, направленных на его отвлечение от исполнения должностных полномочий, а равно создание препятствий для надлежащего исполнения им своих обязанностей.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы<div class="art-panel-flags"><span class="tag tag-conv">⛓️ Судимость</span></div></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">16.15</td><td class="art-stars">★★★★</td><td class="art-desc">Дача заведомо ложных показаний.<div class="art-flags"><span class="tag tag-no-bail">⛔ ЗАЛ</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 40 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 16.15 УК — Ложные показания</div><div class="art-panel-body">Дача заведомо ложных показаний и сведений лицу, ведущему следствие и(или) адвокату в ходе рассмотрения дела, суде или проведения допроса.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 16.15 УК — Ложные показания</div><div class="art-panel-body">Дача заведомо ложных показаний и сведений лицу, ведущему следствие и(или) адвокату в ходе рассмотрения дела, суде или проведения допроса.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">16.19</td><td class="art-stars">★–★★★★★</td><td class="art-desc">Уклонение лица от отбывания наказания в виде ограничения свободы либо лишения свободы.<div class="art-flags"><span class="tag tag-no-bail">⛔ ЗАЛ</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">5–50 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 16.19 УК — Уклонение от наказания</div><div class="art-panel-body">Уклонение лица от отбывания наказания в виде ограничения свободы либо лишения свободы.<br><br><em>Примечание:</em> применяется только если уклонение не подпадает под иной состав.</div><div class="art-panel-pun">⛓️ Наказание: от 5 месяцев до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 16.19 УК — Уклонение от наказания</div><div class="art-panel-body">Уклонение лица от отбывания наказания в виде ограничения свободы либо лишения свободы.<br><br><em>Примечание:</em> применяется только если уклонение не подпадает под иной состав.</div><div class="art-panel-pun">⛓️ Наказание: от 5 месяцев до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">17.1</td><td class="art-stars">★★★★★</td><td class="art-desc">Посягательство на жизнь сотрудника правоохранительного органа.<div class="art-flags"><span class="tag tag-no-soft">🚫 СМ</span><span class="tag tag-no-bail">⛔ ЗАЛ</span><span class="tag tag-cdwl">🔫 CDWL</span><span class="tag tag-immunity">🛡️ НЕП</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 50 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.1 УК — Посягательство на жизнь сотрудника</div><div class="art-panel-body">Умышленное и/или неоднократное посягательство на жизнь сотрудника правоохранительного органа, военнослужащего, а равно их близких в связи с исполнением им своих должностных обязанностей либо из мести за такую деятельность, путем нанесения телесных повреждений высокой степени тяжести, или прямой угрозы жизни.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.1 УК — Посягательство на жизнь сотрудника</div><div class="art-panel-body">Умышленное и/или неоднократное посягательство на жизнь сотрудника правоохранительного органа, военнослужащего, а равно их близких в связи с исполнением им своих должностных обязанностей либо из мести за такую деятельность, путем нанесения телесных повреждений высокой степени тяжести, или прямой угрозы жизни.</div><div class="art-panel-pun">⛓️ Наказание: до 50 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-soft">🚫 Нет смягчения наказания</span><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">17.2</td><td class="art-stars">★★★★</td><td class="art-desc">Применение насилия, не опасного для жизни или здоровья, либо угроза применения насилия в отношении сотрудника правоохранительных органов.<div class="art-flags"><span class="tag tag-no-bail">⛔ ЗАЛ</span><span class="tag tag-cdwl">🔫 CDWL</span><span class="tag tag-immunity">🛡️ НЕП</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 40 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.2 УК — Насилие/угроза</div><div class="art-panel-body">Умышленное и/или неоднократное нанесением телесных повреждений легкой или средней степени тяжести, либо угроза применения насилия в отношении представителя власти или его близких в связи с исполнением им своих должностных обязанностей.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.2 УК — Насилие/угроза</div><div class="art-panel-body">Умышленное и/или неоднократное нанесением телесных повреждений легкой или средней степени тяжести, либо угроза применения насилия в отношении представителя власти или его близких в связи с исполнением им своих должностных обязанностей.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-cdwl">🔫 Изъятие лицензии CDWL</span><span class="tag tag-immunity">🛡️ Задержание неприкосновенного лица</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">17.3</td><td class="art-stars">★★★</td><td class="art-desc">Оскорбление представителя власти при исполнении.</td><td class="art-pun">до 30 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.3 УК — Оскорбление представителя власти</div><div class="art-panel-body">Оскорбление представителя власти при исполнении им своих должностных обязанностей или в связи с их исполнением.<br><br><em>Примечание:</em> оскорбление заключается в негативной оценке личности либо внешности человека, его качеств, поведения, причём в форме, противоречащей установленным правилам поведения и требованиям общечеловеческой морали.</div><div class="art-panel-pun">⛓️ Наказание: до 30 месяцев лишения свободы</div></div></td></tr>
@@ -1486,7 +1633,7 @@ footer{
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.7 УК — Отказ от оплаты</div><div class="art-panel-body">Отказ или уклонение от оплаты штрафа, выписанного правомочным лицом, а равно отказ от возмещения ущерба согласно законодательству.</div><div class="art-panel-pun">⛓️ Наказание: до 30 месяцев лишения свободы</div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">17.10</td><td class="art-stars">★★★★</td><td class="art-desc">Незаконная помеха при задержании, аресте или процессуальном принуждении нарушителя.<div class="art-flags"><span class="tag tag-no-bail">⛔ ЗАЛ</span><span class="tag tag-conv">⛓️ С</span></div></td><td class="art-pun">до 40 мес</td><td><div class="art-tags"><span class="tag tag-f">Ф</span><span class="tag tag-r">Р</span></div></td></tr>
-          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.10 УК — Помеха задержанию</div><div class="art-panel-body">Незаконная помеха при задержании, аресте или процессуальном принуждении нарушителя, равно как содействие помехе задержанию, аресту или процессуальному принуждению нарушителя.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span></div></div></td></tr>
+          <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.10 УК — Помеха задержанию</div><div class="art-panel-body">Незаконная помеха при задержании, аресте или процессуальном принуждении нарушителя, равно как содействие помехе задержанию, аресту или процессуальному принуждению нарушителя.</div><div class="art-panel-pun">⛓️ Наказание: до 40 месяцев лишения свободы</div><div class="art-panel-flags"><span class="tag tag-no-bail">⛔ Отказ в залоге</span><span class="tag tag-conv">⛓️ Судимость</span></div></div></td></tr>
 
           <tr onclick="toggleArt(this)"><td class="art-num">17.14</td><td class="art-stars">★★★</td><td class="art-desc">Браконьерство.</td><td class="art-pun">до 30 мес</td><td><div class="art-tags"><span class="tag tag-r">Р</span></div></td></tr>
           <tr class="art-panel-row"><td colspan="5"><div class="art-panel"><div class="art-panel-title">Ст. 17.14 УК — Браконьерство</div><div class="art-panel-body">Браконьерство и/или рыбалка в зонах запретного рыбного промысла то есть охота, отлов, сбыт, хранение, приобретение либо перевозка исчезающих видов животных и растений, а также предметов и продуктов получаемых из них.</div><div class="art-panel-pun">⛓️ Наказание: до 30 месяцев лишения свободы</div></div></td></tr>
@@ -2703,6 +2850,26 @@ footer{
 
 <div id="imgLightbox" class="img-lightbox"><img id="imgLightboxPic" src="" alt="Просмотр"></div>
 
+<!-- FEATURE 03: STICKY TIMING PANEL -->
+<button id="timing-btn" title="Тайминги задержания">⏱️</button>
+<div id="timing-panel">
+  <div class="tp-header">⏱️ Тайминги задержания</div>
+  <div class="tp-body">
+    <div class="tp-section">Задержание</div>
+    <div class="tp-row"><span class="tp-k">Максимальное задержание</span><span class="tp-v">1 час</span></div>
+    <div class="tp-row"><span class="tp-k">Звонок / конф. беседа</span><span class="tp-v">3 / 10 мин</span></div>
+    <div class="tp-section">Адвокат / Прокурор</div>
+    <div class="tp-row"><span class="tp-k">Ответ адвоката</span><span class="tp-v">3 мин</span></div>
+    <div class="tp-row"><span class="tp-k">Приезд адвоката</span><span class="tp-v">10 мин</span></div>
+    <div class="tp-row"><span class="tp-k">Ответ прокурора</span><span class="tp-v">15 мин</span></div>
+    <div class="tp-row"><span class="tp-k">Ожидание руководства</span><span class="tp-v">15 мин</span></div>
+    <div class="tp-section">Сроки давности</div>
+    <div class="tp-row"><span class="tp-k">Срок давности АК</span><span class="tp-v">72 ч</span></div>
+    <div class="tp-row"><span class="tp-k">Обжалование</span><span class="tp-v">48 ч</span></div>
+    <div class="tp-row"><span class="tp-k">Приостановл. неприкосн.</span><span class="tp-v">до 72 ч</span></div>
+  </div>
+</div>
+
 <script>
 
 // ── CLOCK ──
@@ -2915,6 +3082,230 @@ document.addEventListener('click', e => {
 input.addEventListener('keydown', e => {
   if (e.key === 'Escape') { results.style.display = 'none'; input.blur(); }
 });
+
+// ══════════ FEATURE 02 — SEARCH PILLS ══════════
+(function(){
+  const pillsData = [
+    { label:'🚫 СМ',    cls:'sp-pill-nosm',  key:'tag-no-soft',  title:'Нет смягчения' },
+    { label:'⛔ ЗАЛ',   cls:'sp-pill-nobal',  key:'tag-no-bail',  title:'Отказ в залоге' },
+    { label:'Ф',        cls:'sp-pill-f',       key:'tag-f',        title:'Федеральная (FIB)' },
+    { label:'Р',        cls:'sp-pill-r',       key:'tag-r',        title:'Региональная (LSPD/LSCSD)' },
+    { label:'🔫 CDWL',  cls:'',               key:'tag-cdwl',     title:'Изъятие лицензии CDWL' },
+    { label:'🛡️ НЕП',  cls:'',               key:'tag-immunity', title:'Задержание неприкосновенных' },
+    { label:'⛓️ С',     cls:'',               key:'tag-conv',     title:'Судимость' },
+  ];
+
+  // Build pills container, inserted inside .tb-search before #search-results
+  const searchWrap = document.querySelector('.tb-search');
+  const pillsBar = document.createElement('div');
+  pillsBar.id = 'search-pills';
+  // insert between input and results
+  const resultsDiv = document.getElementById('search-results');
+  searchWrap.insertBefore(pillsBar, resultsDiv);
+
+  // Clear pill
+  const clearPill = document.createElement('span');
+  clearPill.className = 'sp-pill sp-pill-clear';
+  clearPill.textContent = '✕ сбросить';
+  clearPill.style.display = 'none';
+
+  let activePillKey = null;
+
+  pillsData.forEach(p => {
+    const el = document.createElement('span');
+    el.className = 'sp-pill ' + (p.cls || '');
+    el.textContent = p.label;
+    el.title = p.title;
+    el.dataset.key = p.key;
+    el.addEventListener('click', () => {
+      if (activePillKey === p.key) {
+        // deactivate
+        el.classList.remove('active');
+        activePillKey = null;
+        clearPill.style.display = 'none';
+        results.style.display = 'none';
+        input.value = '';
+      } else {
+        // activate
+        pillsBar.querySelectorAll('.sp-pill').forEach(x => x.classList.remove('active'));
+        el.classList.add('active');
+        activePillKey = p.key;
+        clearPill.style.display = '';
+        showPillResults(p.key);
+      }
+    });
+    pillsBar.appendChild(el);
+  });
+
+  pillsBar.appendChild(clearPill);
+  clearPill.addEventListener('click', () => {
+    pillsBar.querySelectorAll('.sp-pill').forEach(x => x.classList.remove('active'));
+    activePillKey = null;
+    clearPill.style.display = 'none';
+    results.style.display = 'none';
+    input.value = '';
+  });
+
+  function showPillResults(tagKey) {
+    const tagMap = {
+      'tag-no-soft': 'tag-no-soft',
+      'tag-no-bail': 'tag-no-bail',
+      'tag-f': 'tag-f',
+      'tag-r': 'tag-r',
+      'tag-cdwl': 'tag-cdwl',
+      'tag-immunity': 'tag-immunity',
+      'tag-conv': 'tag-conv',
+    };
+    // Collect articles that have this tag class in their art-flags
+    const matchRows = [];
+    document.querySelectorAll('.law-table tbody tr:not(.art-panel-row)').forEach(row => {
+      if (row.querySelector('.' + tagKey)) {
+        const artNum = row.querySelector('.art-num')?.textContent?.trim();
+        const desc = row.querySelector('.art-desc, td:nth-child(2)')?.textContent?.replace(/\s+/g,' ').trim();
+        const pun = row.querySelector('.art-pun,.art-fine')?.textContent?.trim() || '';
+        const section = row.closest('section')?.id;
+        const tbl = row.closest('.tbl-wrap')?.querySelector('.tbl-head')?.textContent?.trim() || '';
+        if (artNum) matchRows.push({ artNum, desc: (desc||'').substring(0,90), pun, section, tbl });
+      }
+    });
+
+    if (!matchRows.length) {
+      results.innerHTML = '<div class="sr-empty">Статей с этим тегом не найдено</div>';
+    } else {
+      let html = '<div class="sr-header">' + matchRows.length + ' статей · клик для перехода</div>';
+      html += matchRows.map(m => `
+        <div class="sr-item" onclick="goToSection('${m.section}')">
+          <div style="display:flex;gap:8px;align-items:baseline">
+            <span class="sr-art">${m.artNum}</span>
+            <span style="font-size:10px;color:var(--txt-3)">${m.pun}</span>
+          </div>
+          <div class="sr-desc">${(m.desc||'').substring(0,90)}${(m.desc||'').length > 90 ? '…' : ''}</div>
+          <div class="sr-tag">${m.tbl}</div>
+        </div>`).join('');
+      results.innerHTML = html;
+    }
+    results.style.display = 'block';
+    // shift results below pills
+    results.style.top = (pillsBar.offsetHeight + 46) + 'px';
+  }
+
+  // Show pills when input focused
+  input.addEventListener('focus', () => { pillsBar.classList.add('pills-active'); });
+  // Keep pills visible when results shown
+  // Hide pills when clicking elsewhere
+  document.addEventListener('click', e => {
+    if (!searchWrap.contains(e.target)) {
+      pillsBar.classList.remove('pills-active');
+    }
+  });
+  // Re-run pill filter if active and input is cleared
+  input.addEventListener('input', () => {
+    if (activePillKey && !input.value.trim()) {
+      showPillResults(activePillKey);
+    }
+  });
+})();
+
+// ══════════ FEATURE 03 — STICKY TIMING PANEL ══════════
+(function(){
+  const btn = document.getElementById('timing-btn');
+  const panel = document.getElementById('timing-panel');
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = panel.classList.contains('tp-visible');
+    panel.classList.toggle('tp-visible', !open);
+    btn.classList.toggle('tp-open', !open);
+  });
+  document.addEventListener('click', e => {
+    if (!panel.contains(e.target) && e.target !== btn) {
+      panel.classList.remove('tp-visible');
+      btn.classList.remove('tp-open');
+    }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { panel.classList.remove('tp-visible'); btn.classList.remove('tp-open'); }
+  });
+})();
+
+// ══════════ FEATURE 05 — TABLE TAG FILTERS ══════════
+(function(){
+  const tagDefs = [
+    { key:'tag-no-soft',  label:'🚫 СМ',   cls:'tf-pill-nosm' },
+    { key:'tag-no-bail',  label:'⛔ ЗАЛ',  cls:'tf-pill-nobal' },
+    { key:'tag-f',        label:'Ф',        cls:'tf-pill-f' },
+    { key:'tag-r',        label:'Р',        cls:'tf-pill-r' },
+    { key:'tag-cdwl',     label:'🔫 CDWL', cls:'tf-pill-cdwl' },
+    { key:'tag-immunity', label:'🛡️ НЕП', cls:'tf-pill-immunity' },
+    { key:'tag-conv',     label:'⛓️ С',    cls:'tf-pill-conv' },
+  ];
+
+  document.querySelectorAll('.tbl-wrap').forEach(wrap => {
+    const table = wrap.querySelector('.law-table');
+    if (!table) return;
+    const rows = [...table.querySelectorAll('tbody tr:not(.art-panel-row)')];
+    if (rows.length < 2) return;
+
+    // Which tags are present in this table?
+    const presentTags = tagDefs.filter(t => rows.some(r => r.querySelector('.' + t.key)));
+    if (!presentTags.length) return;
+
+    // Build filter bar
+    const bar = document.createElement('div');
+    bar.className = 'tbl-filter-bar';
+
+    // All pill
+    const allPill = document.createElement('span');
+    allPill.className = 'tf-pill tf-all tf-active';
+    allPill.textContent = 'Все';
+    allPill.dataset.tag = 'all';
+    bar.appendChild(allPill);
+
+    let activeTag = 'all';
+
+    presentTags.forEach(t => {
+      const count = rows.filter(r => r.querySelector('.' + t.key)).length;
+      const pill = document.createElement('span');
+      pill.className = 'tf-pill ' + t.cls;
+      pill.innerHTML = t.label + '<span class="tf-count">' + count + '</span>';
+      pill.dataset.tag = t.key;
+      bar.appendChild(pill);
+    });
+
+    // Insert bar inside tbl-wrap, before tbl-scroll
+    const scroll = wrap.querySelector('.tbl-scroll');
+    if (scroll) wrap.insertBefore(bar, scroll);
+    else wrap.insertBefore(bar, wrap.querySelector('.tbl-head').nextSibling);
+
+    // Click handler
+    bar.addEventListener('click', e => {
+      const pill = e.target.closest('.tf-pill');
+      if (!pill) return;
+      const tag = pill.dataset.tag;
+      if (tag === activeTag) return;
+      activeTag = tag;
+
+      // Update pill states
+      bar.querySelectorAll('.tf-pill').forEach(p => p.classList.remove('tf-active'));
+      pill.classList.add('tf-active');
+
+      // Filter rows (and their panel rows)
+      rows.forEach(row => {
+        const panelRow = row.nextElementSibling;
+        if (tag === 'all') {
+          row.classList.remove('law-row-hidden');
+          if (panelRow?.classList.contains('art-panel-row')) panelRow.classList.remove('law-row-hidden');
+        } else {
+          const match = !!row.querySelector('.' + tag);
+          row.classList.toggle('law-row-hidden', !match);
+          if (panelRow?.classList.contains('art-panel-row')) panelRow.classList.toggle('law-row-hidden', !match);
+        }
+      });
+    });
+  });
+})();
+
+// ══════════ FEATURE 06 — NAV COUNTERS ══════════
+
 
 </script>
 </body>
