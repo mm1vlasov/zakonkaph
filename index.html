@@ -974,38 +974,74 @@
   }
   .nav-link:has(.nav-dot) .nav-count{margin-left:4px}
 
-  /* Правый рекламный баннер */
+ /* Правый рекламный баннер */
 .right-banner {
-  position: fixed;
-  top: calc(var(--topbar) + 20px);
-  right: 20px;
-  width: 300px;
-  z-index: 500;
+    position: fixed;
+    top: calc(var(--topbar) + 20px);
+    right: 20px;
+    width: 300px;
+    z-index: 500;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 /* Кликабельная область */
 .right-banner a {
-  display: block;
-  position: relative;
-  border-radius: 6px;
+    display: block;
+    position: relative;
+    border-radius: 6px;
 }
 
 /* Картинка */
 .right-banner img {
-  width: 100%;
-  border-radius: 20px;
-  border: 1px solid var(--chrome-border);
-  display: block;
-  position: relative;
-  z-index: 2;
+    width: 100%;
+    border-radius: 20px; /* Исправлено на 6px для соответствия контейнеру, или оставьте как было */
+    border: 1px solid var(--chrome-border);
+    display: block;
+    position: relative;
+    z-index: 2;
 }
 
-  /* Мобилки */
-  @media (max-width: 768px) {
+/* Кнопка закрытия */
+.banner-close-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    background: var(--chrome-3);
+    border: 1px solid var(--gold-border);
+    color: var(--gold-2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 14px;
+    line-height: 1;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    transition: background 0.2s, color 0.2s;
+}
+
+.banner-close-btn:hover {
+    background: var(--red);
+    color: #fff;
+    border-color: var(--red);
+}
+
+/* Скрытое состояние */
+.right-banner.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+}
+
+/* Мобилки */
+@media (max-width: 768px) {
     .right-banner {
-      display: none;
+        display: none;
     }
-  }
+}
 
   /* ══════════ UTILITY ══════════ */
   .mb4{margin-bottom:4px}.mb8{margin-bottom:8px}
@@ -1066,11 +1102,12 @@
   </style>
   </head>
 
-  <div class="right-banner">
+  <div class="right-banner" id="promoBanner">
+    <button class="banner-close-btn" onclick="closeBanner()" title="Закрыть рекламу">&times;</button>
     <a href="https://majestic-rp.ru/register?utm_campaign=londo" target="_blank">
-      <img src="londo.png" alt="Реклама">
+        <img src="londo.png" alt="Реклама">
     </a>
-  </div>
+</div>
 
   <body>
 
@@ -1102,7 +1139,7 @@
     <div class="tb-right">
       <div class="tb-meta-block">
         <div class="tb-date" id="clock"></div>
-        <div class="tb-ver">last updt: v2 · 29.04.2026</div>
+        <div class="tb-ver">v2 · 29.04.2026</div>
       </div>
     </div>
 
@@ -3267,6 +3304,26 @@
       if (e.key === 'Escape') { panel.classList.remove('tp-visible'); btn.classList.remove('tp-open'); }
     });
   })();
+
+// Функция закрытия баннера
+function closeBanner() {
+    const banner = document.getElementById('promoBanner');
+    if (banner) {
+        banner.classList.add('hidden');
+        // Опционально: можно сохранять состояние в localStorage, чтобы не показывать снова при перезагрузке
+        // localStorage.setItem('bannerClosed', 'true');
+    }
+}
+
+// Опционально: проверка при загрузке, если решили использовать localStorage
+/*
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('bannerClosed') === 'true') {
+        const banner = document.getElementById('promoBanner');
+        if (banner) banner.classList.add('hidden');
+    }
+});
+*/
 
   // ══════════ FEATURE 05 — TABLE TAG FILTERS ══════════
   (function(){
